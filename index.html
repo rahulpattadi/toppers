@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSLC Toppers - Daily Quiz Challenge</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -608,7 +612,7 @@
     <div class="container">
         <div class="header">
             <div class="logo">SSLC TOPPERS</div>
-            <div class="tagline">Daily Science & Math Challenges</div>
+            <div class="tagline">Daily Science & Math Challenge</div>
         </div>
 
         <div class="stats-grid">
@@ -889,6 +893,111 @@
                 counter.textContent = (currentCount + Math.floor(Math.random() * 2) + 1).toLocaleString();
             }
         }, 8000);
+
+        // Social Sharing Functions
+        function challengeFriend() {
+            const message = `🧠 Hey! I just took today's SSLC Toppers quiz. Can you beat my score?\n\nDaily Science & Math Challenge: https://sslctoppers.com\n\n#SSLCToppers #QuizChallenge`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'SSLC Toppers Quiz Challenge',
+                    text: message,
+                    url: 'https://sslctoppers.com'
+                });
+            } else {
+                navigator.clipboard.writeText(message);
+                showNotification('Challenge text copied! Share it with your friends 🚀');
+            }
+        }
+
+        function updateSocialLinks() {
+            const baseMessage = `🧠 I just took today's SSLC Toppers quiz! Can you beat my score?\n\nDaily Science & Math Challenge 📚`;
+            const url = 'https://sslctoppers.com';
+            
+            // Update WhatsApp link
+            const whatsappMessage = encodeURIComponent(`${baseMessage}\n\n${url}\n\n#SSLCToppers #QuizChallenge`);
+            document.getElementById('whatsappShare').href = `https://wa.me/?text=${whatsappMessage}`;
+            
+            // Update Telegram link
+            const telegramMessage = encodeURIComponent(`${baseMessage}\n\n${url}`);
+            document.getElementById('telegramShare').href = `https://t.me/share/url?url=${url}&text=${telegramMessage}`;
+        }
+
+        function copyReferralLink() {
+            const referralLink = document.getElementById('referralLink').textContent;
+            navigator.clipboard.writeText(referralLink).then(() => {
+                showNotification('Referral link copied! 🎉');
+            });
+        }
+
+        function showNotification(message) {
+            // Create notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 212, 170, 0.95);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 25px;
+                font-weight: 600;
+                z-index: 10000;
+                backdrop-filter: blur(10px);
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease forwards';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Add CSS for notification animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+                to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            }
+            @keyframes slideOut {
+                from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+                to { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize social links
+        updateSocialLinks();
+
+        // Update social sharing after quiz completion
+        const originalSubmitHandler = document.getElementById('submitBtn').onclick;
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            // Call original handler first
+            if (originalSubmitHandler) originalSubmitHandler.call(this);
+            
+            // Then update social links with score
+            setTimeout(() => {
+                if (quizSubmitted) {
+                    const score = Object.keys(selectedAnswers).filter(q => selectedAnswers[q] === correctAnswers[q]).length;
+                    const percentage = (score / 2) * 100;
+                    
+                    const scoreMessage = `🧠 I just scored ${score}/2 (${percentage}%) on today's SSLC Toppers quiz! Can you beat my score?\n\nDaily Science & Math Challenge 📚`;
+                    const url = 'https://sslctoppers.com';
+                    
+                    // Update social buttons with score
+                    const whatsappMessage = encodeURIComponent(`${scoreMessage}\n\n${url}\n\n#SSLCToppers #QuizChallenge`);
+                    document.getElementById('whatsappShare').href = `https://wa.me/?text=${whatsappMessage}`;
+                    
+                    const telegramMessage = encodeURIComponent(`${scoreMessage}\n\n${url}`);
+                    document.getElementById('telegramShare').href = `https://t.me/share/url?url=${url}&text=${telegramMessage}`;
+                }
+            }, 1000);
+        });
     </script>
 </body>
 </html>
