@@ -1508,7 +1508,7 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(15px);
-            z-index: 10000;
+            z-index: 10003;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1659,41 +1659,93 @@
         /* Notification */
         .notification {
             position: fixed;
-            top: 30px;
-            right: 30px;
+            top: 20px;
+            right: 20px;
+            left: 20px;
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             color: white;
-            padding: 20px 30px;
-            border-radius: 28px;
+            padding: 16px 24px;
+            border-radius: 20px;
             font-weight: 600;
-            z-index: 10000;
+            z-index: 10002;
             backdrop-filter: blur(20px);
             box-shadow: var(--shadow-medium);
-            transform: translateX(400px);
+            transform: translateY(-100px);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            font-size: 0.95rem;
+            margin: 0 auto;
+            max-width: 400px;
         }
 
-        /* Responsive Design */
+        .notification.show {
+            transform: translateY(0);
+        }
+
+        /* Image Support */
+        .question-image,
+        .option-image,
+        .solution-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--glass-border);
+        }
+
+        .question-image {
+            max-height: 300px;
+            object-fit: contain;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+        }
+
+        .option-image {
+            max-height: 80px;
+            max-width: 120px;
+            float: left;
+            margin-right: 15px;
+            margin-bottom: 10px;
+        }
+
+        .solution-image {
+            max-height: 400px;
+            object-fit: contain;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .image-caption {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Enhanced Mobile Responsive Design */
         @media (max-width: 768px) {
-            .hero { padding: 60px 0; }
-            .quiz-section { padding: 40px 25px; }
-            .practice-section { padding: 40px 25px; }
-            .youtube-section { padding: 40px 25px; }
-            .question { padding: 30px 25px; }
-            .practice-question { padding: 25px 20px; }
-            .modal-content { padding: 40px 25px; }
-            .modal-buttons { flex-direction: column; }
+            .hero { padding: 50px 0; }
+            .quiz-section { padding: 30px 20px; }
+            .practice-section { padding: 30px 20px; }
+            .youtube-section { padding: 30px 20px; }
+            .question { padding: 25px 18px; }
+            .practice-question { padding: 20px 15px; }
+            .modal-content { padding: 30px 20px; }
+            .modal-buttons { flex-direction: column; gap: 15px; }
             .social-buttons { grid-template-columns: 1fr; }
-            .live-stats { grid-template-columns: 1fr; }
-            .brand-header { padding: 30px 0 15px; }
-            .brand-logo { padding: 15px 30px; }
+            .live-stats { grid-template-columns: 1fr; gap: 20px; }
+            .brand-header { padding: 25px 0 15px; }
+            .brand-logo { padding: 15px 25px; }
             .video-container { padding: 20px; }
             .channel-section { 
                 grid-template-columns: 1fr; 
-                gap: 25px; 
+                gap: 20px; 
                 text-align: center; 
-                padding: 25px; 
+                padding: 20px; 
             }
             .channel-info { 
                 flex-direction: column; 
@@ -1703,6 +1755,7 @@
             .channel-actions { 
                 flex-direction: row; 
                 justify-content: center; 
+                gap: 15px;
             }
             .practice-question-header {
                 flex-direction: column;
@@ -1710,39 +1763,144 @@
                 text-align: center;
             }
             .solution-content { padding: 20px; }
+            
+            /* Mobile notification fix */
+            .notification {
+                top: 15px;
+                right: 15px;
+                left: 15px;
+                padding: 14px 20px;
+                font-size: 0.9rem;
+                border-radius: 16px;
+            }
+            
+            /* Ensure modals don't interfere */
+            .modal {
+                padding: 20px;
+            }
+            
+            /* Option text wrapping for mobile */
+            .option {
+                padding: 20px 24px;
+                font-size: 1.1rem;
+                line-height: 1.4;
+            }
+            
+            /* Question text responsive */
+            .question-text {
+                font-size: 1.2rem;
+                line-height: 1.5;
+            }
+            
+            .practice-question-text {
+                font-size: 1.1rem;
+                line-height: 1.5;
+            }
         }
 
         @media (max-width: 480px) {
-            .container { padding: 15px; }
-            .hero { padding: 40px 0; }
-            .quiz-section { padding: 30px 20px; }
-            .practice-section { padding: 30px 20px; }
-            .youtube-section { padding: 30px 20px; }
-            .question { padding: 25px 20px; }
-            .practice-question { padding: 20px 15px; }
-            .question-header { flex-direction: column; gap: 15px; text-align: center; }
+            .container { padding: 12px; }
+            .hero { padding: 35px 0; }
+            .quiz-section { padding: 25px 15px; }
+            .practice-section { padding: 25px 15px; }
+            .youtube-section { padding: 25px 15px; }
+            .question { padding: 20px 15px; }
+            .practice-question { padding: 18px 12px; }
+            .question-header { flex-direction: column; gap: 12px; text-align: center; }
             .brand-header { padding: 20px 0 10px; }
-            .brand-logo { padding: 12px 25px; }
+            .brand-logo { padding: 12px 20px; }
             .video-container { padding: 15px; }
-            .channel-section { padding: 20px; }
+            .channel-section { padding: 15px; }
             .channel-actions { 
                 flex-direction: column; 
                 gap: 12px; 
             }
             .subscribe-btn, .visit-channel-btn {
-                padding: 12px 20px;
-                font-size: 0.95rem;
+                padding: 12px 18px;
+                font-size: 0.9rem;
             }
             .solution-toggle {
-                padding: 12px 20px;
-                font-size: 0.95rem;
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                gap: 8px;
             }
             .solution-content { 
                 padding: 15px; 
             }
             .equation {
+                font-size: 0.95rem;
+                padding: 12px;
+            }
+            
+            /* Ultra mobile notification */
+            .notification {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                padding: 12px 16px;
+                font-size: 0.85rem;
+                border-radius: 14px;
+                max-width: none;
+            }
+            
+            /* Smaller modal for mobile */
+            .modal-content {
+                padding: 25px 15px;
+                margin: 10px;
+                border-radius: 24px;
+            }
+            
+            .modal-title {
+                font-size: 2rem;
+            }
+            
+            /* Smaller options on mobile */
+            .option {
+                padding: 16px 20px;
                 font-size: 1rem;
-                padding: 15px;
+                border-radius: 20px;
+            }
+            
+            /* Adjust question icons for mobile */
+            .question-icon,
+            .practice-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            /* Mobile image adjustments */
+            .question-image {
+                max-height: 200px;
+                padding: 8px;
+            }
+            
+            .option-image {
+                max-height: 60px;
+                max-width: 80px;
+                margin-right: 10px;
+            }
+            
+            .solution-image {
+                max-height: 250px;
+                padding: 10px;
+            }
+        }
+
+        /* Ultra small screens */
+        @media (max-width: 360px) {
+            .notification {
+                font-size: 0.8rem;
+                padding: 10px 14px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .option {
+                padding: 14px 16px;
+                font-size: 0.95rem;
             }
         }
 
@@ -1842,12 +2000,28 @@
                             <div class="question-subject">Physics</div>
                         </div>
                     </div>
-                    <div class="question-text">What is the SI unit of electric current?</div>
+                    <div class="question-text">
+                        What is the SI unit of electric current shown in the circuit diagram below?
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Simple_circuit.svg/400px-Simple_circuit.svg.png" alt="Simple electric circuit" class="question-image">
+                        <div class="image-caption">Figure 1: Simple electric circuit with battery, resistor and ammeter</div>
+                    </div>
                     <div class="options">
-                        <div class="option" data-question="1" data-answer="a">A) Ampere</div>
-                        <div class="option" data-question="1" data-answer="b">B) Volt</div>
-                        <div class="option" data-question="1" data-answer="c">C) Ohm</div>
-                        <div class="option" data-question="1" data-answer="d">D) Watt</div>
+                        <div class="option" data-question="1" data-answer="a">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Ammeter_symbol.svg/60px-Ammeter_symbol.svg.png" alt="Ampere symbol" class="option-image">
+                            A) Ampere (A)
+                        </div>
+                        <div class="option" data-question="1" data-answer="b">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Voltmeter_symbol.svg/60px-Voltmeter_symbol.svg.png" alt="Volt symbol" class="option-image">
+                            B) Volt (V)
+                        </div>
+                        <div class="option" data-question="1" data-answer="c">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Resistor_symbol_America.svg/60px-Resistor_symbol_America.svg.png" alt="Ohm symbol" class="option-image">
+                            C) Ohm (Ω)
+                        </div>
+                        <div class="option" data-question="1" data-answer="d">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Wattmeter_symbol.svg/60px-Wattmeter_symbol.svg.png" alt="Watt symbol" class="option-image">
+                            D) Watt (W)
+                        </div>
                     </div>
                 </div>
 
@@ -1860,12 +2034,28 @@
                             <div class="question-subject">Mathematics</div>
                         </div>
                     </div>
-                    <div class="question-text">If log₂(x) = 3, what is the value of x?</div>
+                    <div class="question-text">
+                        Based on the logarithmic graph shown below, if log₂(x) = 3, what is the value of x?
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Binary_logarithm_plot_with_ticks.svg/400px-Binary_logarithm_plot_with_ticks.svg.png" alt="Logarithmic graph" class="question-image">
+                        <div class="image-caption">Figure 2: Graph of y = log₂(x) showing the relationship between x and y</div>
+                    </div>
                     <div class="options">
-                        <div class="option" data-question="2" data-answer="a">A) 6</div>
-                        <div class="option" data-question="2" data-answer="b">B) 8</div>
-                        <div class="option" data-question="2" data-answer="c">C) 9</div>
-                        <div class="option" data-question="2" data-answer="d">D) 12</div>
+                        <div class="option" data-question="2" data-answer="a">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/6_Dice.svg/80px-6_Dice.svg.png" alt="Number 6" class="option-image">
+                            A) 6
+                        </div>
+                        <div class="option" data-question="2" data-answer="b">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/8_dots.svg/80px-8_dots.svg.png" alt="Number 8" class="option-image">
+                            B) 8
+                        </div>
+                        <div class="option" data-question="2" data-answer="c">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/9_dots.svg/80px-9_dots.svg.png" alt="Number 9" class="option-image">
+                            C) 9
+                        </div>
+                        <div class="option" data-question="2" data-answer="d">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/12_dots.svg/80px-12_dots.svg.png" alt="Number 12" class="option-image">
+                            D) 12
+                        </div>
                     </div>
                 </div>
 
@@ -1897,7 +2087,9 @@
                         </div>
                     </div>
                     <div class="practice-question-text">
-                        Define electric current and state its SI unit.
+                        Based on the circuit diagram shown below, define electric current and state its SI unit.
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Electric_current_flow.svg/400px-Electric_current_flow.svg.png" alt="Electric current flow in circuit" class="question-image">
+                        <div class="image-caption">Figure: Electric current flow in a simple circuit with conventional current direction</div>
                     </div>
                     <button class="solution-toggle" onclick="toggleSolution('solution1')">
                         <i class="fas fa-lightbulb"></i>
@@ -1910,6 +2102,10 @@
                             <p><strong>Electric Current:</strong> Electric current is defined as the rate of flow of electric charge through a conductor.</p>
                             <p><strong>Formula:</strong> I = Q/t</p>
                             <p>Where: I = Current, Q = Charge, t = Time</p>
+                            
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Current_notation.svg/300px-Current_notation.svg.png" alt="Current flow diagram" class="solution-image">
+                            <div class="image-caption">Diagram showing conventional current flow from positive to negative terminal</div>
+                            
                             <p><strong>SI Unit:</strong> Ampere (A)</p>
                             <div class="solution-tip">
                                 <i class="fas fa-star"></i>
@@ -1929,7 +2125,9 @@
                         </div>
                     </div>
                     <div class="practice-question-text">
-                        Solve: If log₂(x) = 5, find the value of x. Also, verify your answer.
+                        Using the logarithmic properties shown in the graph below, solve: If log₂(x) = 5, find the value of x. Also, verify your answer.
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logarithm_plots.png/400px-Logarithm_plots.png" alt="Logarithmic functions graph" class="question-image">
+                        <div class="image-caption">Figure: Comparison of different logarithmic functions including log₂(x)</div>
                     </div>
                     <button class="solution-toggle" onclick="toggleSolution('solution2')">
                         <i class="fas fa-lightbulb"></i>
@@ -1942,6 +2140,10 @@
                             <p><strong>Given:</strong> log₂(x) = 5</p>
                             <p><strong>Step 1:</strong> Convert to exponential form</p>
                             <p>If log₂(x) = 5, then x = 2⁵</p>
+                            
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Powers_of_2.svg/400px-Powers_of_2.svg.png" alt="Powers of 2 diagram" class="solution-image">
+                            <div class="image-caption">Visual representation of powers of 2: 2¹, 2², 2³, 2⁴, 2⁵</div>
+                            
                             <p><strong>Step 2:</strong> Calculate the value</p>
                             <p>x = 2⁵ = 2 × 2 × 2 × 2 × 2 = 32</p>
                             <p><strong>Step 3:</strong> Verification</p>
@@ -1965,7 +2167,9 @@
                         </div>
                     </div>
                     <div class="practice-question-text">
-                        What is the molecular formula of methane? Draw its structure.
+                        Observe the molecular structure shown below. What is the molecular formula of this compound? Draw its Lewis structure.
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Methane-3D-balls.png/300px-Methane-3D-balls.png" alt="Methane 3D structure" class="question-image">
+                        <div class="image-caption">Figure: 3D ball-and-stick model of the simplest hydrocarbon molecule</div>
                     </div>
                     <button class="solution-toggle" onclick="toggleSolution('solution3')">
                         <i class="fas fa-lightbulb"></i>
@@ -1975,27 +2179,36 @@
                     <div class="solution-dropdown" id="solution3">
                         <div class="solution-content">
                             <h4>Solution:</h4>
-                            <p><strong>Molecular Formula:</strong> CH₄</p>
-                            <p><strong>Structure:</strong></p>
+                            <p><strong>Molecular Formula:</strong> CH₄ (Methane)</p>
+                            
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Methane-2D-dimensions.svg/300px-Methane-2D-dimensions.svg.png" alt="Methane 2D structure" class="solution-image">
+                            <div class="image-caption">2D Lewis structure of methane showing bond angles and lengths</div>
+                            
+                            <p><strong>Lewis Structure:</strong></p>
                             <div class="structure-diagram">
                                 <pre>
     H
     |
-H—C—H
+H—C—H    (Bond angle: 109.5°)
     |
     H
                                 </pre>
                             </div>
+                            
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Methane-tetrahedral-3D-balls.png/250px-Methane-tetrahedral-3D-balls.png" alt="Methane tetrahedral structure" class="solution-image">
+                            <div class="image-caption">Tetrahedral geometry of methane molecule showing sp³ hybridization</div>
+                            
                             <p><strong>Details:</strong></p>
                             <ul>
                                 <li>1 Carbon atom bonded to 4 Hydrogen atoms</li>
-                                <li>Tetrahedral geometry</li>
-                                <li>Simplest alkane</li>
+                                <li>Tetrahedral geometry with 109.5° bond angles</li>
+                                <li>Simplest alkane (saturated hydrocarbon)</li>
                                 <li>Also known as natural gas</li>
+                                <li>sp³ hybridization of carbon</li>
                             </ul>
                             <div class="solution-tip">
                                 <i class="fas fa-star"></i>
-                                <span>Remember: Methane has sp³ hybridization</span>
+                                <span>Remember: Methane is the simplest member of the alkane family (CₙH₂ₙ₊₂)</span>
                             </div>
                         </div>
                     </div>
@@ -2011,7 +2224,9 @@ H—C—H
                         </div>
                     </div>
                     <div class="practice-question-text">
-                        Explain the process of photosynthesis. Write the overall chemical equation.
+                        Study the leaf cross-section diagram below. Explain the process of photosynthesis and write the overall chemical equation.
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Leaf_tissue_structure.svg/400px-Leaf_tissue_structure.svg.png" alt="Leaf cross-section structure" class="question-image">
+                        <div class="image-caption">Figure: Cross-section of a leaf showing chloroplast-containing cells where photosynthesis occurs</div>
                     </div>
                     <button class="solution-toggle" onclick="toggleSolution('solution4')">
                         <i class="fas fa-lightbulb"></i>
@@ -2023,22 +2238,29 @@ H—C—H
                             <h4>Solution:</h4>
                             <p><strong>Photosynthesis:</strong> The process by which green plants convert carbon dioxide and water into glucose using sunlight and chlorophyll.</p>
                             
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Photosynthesis_overview.svg/400px-Photosynthesis_overview.svg.png" alt="Photosynthesis process diagram" class="solution-image">
+                            <div class="image-caption">Overview of photosynthesis showing light reactions and Calvin cycle in chloroplasts</div>
+                            
                             <p><strong>Chemical Equation:</strong></p>
                             <div class="equation">
                                 6CO₂ + 6H₂O + Light Energy → C₆H₁₂O₆ + 6O₂
                             </div>
                             
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Chloroplast_structure.svg/350px-Chloroplast_structure.svg.png" alt="Chloroplast structure" class="solution-image">
+                            <div class="image-caption">Internal structure of chloroplast showing thylakoids and stroma where different stages occur</div>
+                            
                             <p><strong>Process Details:</strong></p>
                             <ul>
-                                <li><strong>Reactants:</strong> Carbon dioxide, Water, Light energy</li>
-                                <li><strong>Products:</strong> Glucose, Oxygen</li>
-                                <li><strong>Location:</strong> Chloroplasts (mainly in leaves)</li>
-                                <li><strong>Catalyst:</strong> Chlorophyll</li>
+                                <li><strong>Reactants:</strong> Carbon dioxide (CO₂), Water (H₂O), Light energy</li>
+                                <li><strong>Products:</strong> Glucose (C₆H₁₂O₆), Oxygen (O₂)</li>
+                                <li><strong>Location:</strong> Chloroplasts (mainly in mesophyll cells of leaves)</li>
+                                <li><strong>Catalyst:</strong> Chlorophyll pigment</li>
+                                <li><strong>Two stages:</strong> Light reactions (thylakoids) and Calvin cycle (stroma)</li>
                             </ul>
                             
                             <div class="solution-tip">
                                 <i class="fas fa-star"></i>
-                                <span>Remember: Light reaction + Dark reaction = Photosynthesis</span>
+                                <span>Remember: Light reaction produces ATP & NADPH, Calvin cycle uses them to make glucose</span>
                             </div>
                         </div>
                     </div>
@@ -2644,29 +2866,43 @@ Daily Science & Math Challenge 📚`;
             document.getElementById('telegramShare').href = `https://t.me/share/url?url=${url}&text=${telegramMessage}`;
         }
 
-        // Enhanced notification system
+        // Enhanced notification system with mobile-friendly positioning
         function showNotification(message, type = 'info') {
+            // Remove any existing notifications first
+            const existingNotifications = document.querySelectorAll('.notification');
+            existingNotifications.forEach(notification => notification.remove());
+            
             const notification = document.createElement('div');
             notification.className = 'notification';
             
             let bgColor = 'rgba(0, 255, 136, 0.9)';
             if (type === 'error') bgColor = 'rgba(255, 107, 107, 0.9)';
             if (type === 'info') bgColor = 'rgba(79, 172, 254, 0.9)';
+            if (type === 'success') bgColor = 'rgba(0, 255, 136, 0.9)';
             
             notification.style.background = bgColor;
-            notification.textContent = message;
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <span>${message}</span>
+                </div>
+            `;
+            
             document.body.appendChild(notification);
             
-            // Slide in
+            // Show notification
             setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
+                notification.classList.add('show');
             }, 100);
             
-            // Slide out and remove
+            // Hide and remove notification
             setTimeout(() => {
-                notification.style.transform = 'translateX(400px)';
-                setTimeout(() => notification.remove(), 400);
-            }, 5000);
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification && notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 400);
+            }, 4000);
         }
 
         // Toggle solution dropdown with enhanced animation
@@ -2728,6 +2964,76 @@ Daily Science & Math Challenge 📚`;
         document.head.appendChild(style);
 
         console.log('🌟 SSLC Toppers - Enhanced Version - Inspiring Academic Excellence! 🚀');
+
+        /*
+        🖼️ COMPLETE EXAMPLES OF QUESTIONS WITH IMAGES:
+
+        1️⃣ **PHYSICS MCQ WITH CIRCUIT DIAGRAM:**
+        ✅ Question shows actual circuit diagram
+        ✅ Options have electrical symbols as images
+        ✅ Solution includes current flow diagram
+
+        2️⃣ **MATHEMATICS MCQ WITH GRAPH:**
+        ✅ Question shows logarithmic graph
+        ✅ Options use visual number representations
+        ✅ Solution includes powers of 2 diagram
+
+        3️⃣ **CHEMISTRY PRACTICE WITH MOLECULAR MODELS:**
+        ✅ Question shows 3D molecular structure
+        ✅ Solution includes multiple molecular diagrams
+        ✅ 2D Lewis structure + 3D tetrahedral model
+
+        4️⃣ **BIOLOGY PRACTICE WITH BIOLOGICAL DIAGRAMS:**
+        ✅ Question shows leaf cross-section
+        ✅ Solution includes photosynthesis process diagram
+        ✅ Chloroplast structure with detailed labeling
+
+        📝 **MORE EXAMPLE QUESTION TYPES YOU CAN CREATE:**
+
+        🔬 **PHYSICS EXAMPLES:**
+        - Ray diagrams for optics
+        - Wave interference patterns
+        - Magnetic field lines
+        - Electronic circuit symbols
+        - Pendulum motion diagrams
+
+        ⚗️ **CHEMISTRY EXAMPLES:**
+        - Periodic table sections
+        - Chemical apparatus diagrams
+        - Molecular orbital diagrams
+        - pH indicator color charts
+        - Crystal structure models
+
+        🧬 **BIOLOGY EXAMPLES:**
+        - Cell organelle diagrams
+        - Human organ systems
+        - Plant anatomy sections
+        - Microscopic images
+        - Evolutionary trees
+
+        📐 **MATHEMATICS EXAMPLES:**
+        - Geometric shapes and theorems
+        - Function graphs and plots
+        - Statistical charts and graphs
+        - Trigonometric unit circles
+        - Coordinate geometry diagrams
+
+        🌐 **RELIABLE IMAGE SOURCES:**
+        • Wikimedia Commons (educational, free)
+        • NASA Image Gallery (space/science)
+        • NIH Image Gallery (biology/medicine)
+        • Khan Academy resources
+        • OpenStax textbook images
+        • Your own diagrams/photos
+
+        💡 **PRO TIPS FOR BETTER QUESTIONS:**
+        • Use high-contrast images for better visibility
+        • Include descriptive captions for context
+        • Ensure images are relevant to the question
+        • Test images on mobile devices
+        • Use consistent image styling
+        • Always provide alt text for accessibility
+        */
     </script>
 </body>
 </html>
