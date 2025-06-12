@@ -590,6 +590,7 @@
             box-shadow: 0 5px 15px rgba(77, 171, 247, 0.3);
         }
 
+        /* NAME MODAL STYLES */
         .name-modal {
             position: fixed;
             top: 0;
@@ -719,7 +720,7 @@
     <div class="live-badge">
         <div class="live-dot"></div>
         <span class="live-text">Live:</span>
-        <span class="live-count" id="liveCounter">1,247</span>
+        <span class="live-count" id="liveCounter">0</span>
     </div>
 
     <div class="container">
@@ -831,34 +832,9 @@
                     <i class="fas fa-trophy leaderboard-icon"></i>
                     <span class="leaderboard-title">Today's Top Performers</span>
                 </div>
-                <div class="leaderboard-list">
-                    <div class="leaderboard-item">
-                        <div class="rank gold">1</div>
-                        <div class="player-info">
-                            <div class="player-name">Arjun K.</div>
-                            <div class="player-score">Perfect Score • 2 min 15 sec</div>
-                        </div>
-                    </div>
-                    <div class="leaderboard-item">
-                        <div class="rank silver">2</div>
-                        <div class="player-info">
-                            <div class="player-name">Priya M.</div>
-                            <div class="player-score">Perfect Score • 2 min 28 sec</div>
-                        </div>
-                    </div>
-                    <div class="leaderboard-item">
-                        <div class="rank bronze">3</div>
-                        <div class="player-info">
-                            <div class="player-name">Rahul S.</div>
-                            <div class="player-score">Perfect Score • 2 min 45 sec</div>
-                        </div>
-                    </div>
-                    <div class="leaderboard-item">
-                        <div class="rank">4</div>
-                        <div class="player-info">
-                            <div class="player-name">Sneha R.</div>
-                            <div class="player-score">1/2 Correct • 1 min 52 sec</div>
-                        </div>
+                <div class="leaderboard-list" id="leaderboardList">
+                    <div style="text-align: center; color: #a0a9c0; padding: 20px;">
+                        No entries yet today. Be the first! 🚀
                     </div>
                 </div>
             </div>
@@ -894,6 +870,25 @@
     </div>
 
     <script>
+        // 🔥 FIREBASE CONFIGURATION
+        const firebaseConfig = {
+            apiKey: "AIzaSyA8lD-OvRp7QXst2p1EgJVfJ27JwMsRqew",
+            authDomain: "csolutions-88ca8.firebaseapp.com",
+            databaseURL: "https://csolutions-88ca8-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "csolutions-88ca8",
+            storageBucket: "csolutions-88ca8.firebasestorage.app",
+            messagingSenderId: "826388660484",
+            appId: "1:826388660484:web:a83e02d17ee348f841d051",
+            measurementId: "G-M84783CE7W"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Get today's date for database organization
+        const today = new Date().toISOString().split('T')[0];
+        
         // Correct answers
         const correctAnswers = {
             1: 'a', // Ampere
@@ -902,86 +897,286 @@
 
         let selectedAnswers = {};
         let quizSubmitted = false;
+        let userStartTime = Date.now();
+        let userName = null;
+
+        // 🔥 FIREBASE REAL-TIME FUNCTIONS
+
+        // Initialize today's data structure if it doesn't exist
+        function initializeDailyData() {
+            const todayRef = database.ref(`dailyStats/${today}`);
+            
+            todayRef.once('value', (snapshot) => {
+                if (!snapshot.exists()) {
+                    const initialData = {
+                        [`dailyStats/${today}/quizTakers`]: 0,
+                        [`dailyStats/${today}/topScore`]: 0,
+                        [`leaderboard/${today}`]: {},
+                        'globalStats/totalQuizzes': 365,
+                        'globalStats/totalParticipants': 0
+                    };
+                    
+                    database.ref().update(initialData);
+                    console.log('✅ Initialized daily data structure for', today);
+                }
+            });
+        }
+
+        // 1. Update live counter in real-time
+        function initializeLiveCounter() {
+            const liveCounterRef = database.ref(`dailyStats/${today}/quizTakers`);
+            
+            liveCounterRef.on('value', (snapshot) => {
+                const count = snapshot.val() || 0;
+                document.getElementById('liveCounter').textContent = count.toLocaleString();
+                console.log('📊 Live counter updated:', count);
+            });
+        }
+
+        // 2. Update leaderboard in real-time
+        function initializeLeaderboard() {
+            const leaderboardRef = database.ref(`leaderboard/${today}`);
+            
+            leaderboardRef.on('value', (snapshot) => {
+                const data = snapshot.val();
+                if (data && Object.keys(data).length > 0) {
+                    updateLeaderboardDisplay(data);
+                    console.log('🏆 Leaderboard updated');
+                }
+            });
+        }
+
+        function updateLeaderboardDisplay(data) {
+            const leaderboardList = document.getElementById('leaderboardList');
+            const entries = Object.values(data)
+                .sort((a, b) => {
+                    if (b.score !== a.score) return b.score - a.score;
+                    return a.completionTime - b.completionTime;
+                })
+                .slice(0, 4);
+
+            if (entries.length > 0) {
+                leaderboardList.innerHTML = entries.map((entry, index) => {
+                    const rankClass = index === 0 ? 'gold' : index === 1 ? 'silver' : index === 2 ? 'bronze' : '';
+                    const scoreText = entry.score === 2 ? 'Perfect Score' : `${entry.score}/2 Correct`;
+                    const timeText = formatTime(entry.completionTime);
+                    
+                    return `
+                        <div class="leaderboard-item">
+                            <div class="rank ${rankClass}">${index + 1}</div>
+                            <div class="player-info">
+                                <div class="player-name">${entry.name || 'Anonymous'}</div>
+                                <div class="player-score">${scoreText} • ${timeText}</div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins} min ${secs} sec`;
+        }
+
+        // 3. Update daily statistics
+        function updateDailyStats(score, completionTime, playerName) {
+            console.log('📝 Updating Firebase with:', { score, completionTime, playerName });
+            
+            const updates = {};
+            
+            // Increment quiz takers
+            updates[`dailyStats/${today}/quizTakers`] = firebase.database.ServerValue.increment(1);
+            
+            // Update total participants (all time)
+            updates[`globalStats/totalParticipants`] = firebase.database.ServerValue.increment(1);
+            
+            // Add to leaderboard
+            const userId = 'user_' + Date.now();
+            updates[`leaderboard/${today}/${userId}`] = {
+                score: score,
+                completionTime: completionTime,
+                timestamp: Date.now(),
+                name: playerName
+            };
+            
+            // Update if this is today's high score
+            database.ref(`dailyStats/${today}/topScore`).once('value', (snapshot) => {
+                const currentTopScore = snapshot.val() || 0;
+                const percentage = (score / 2) * 100;
+                if (percentage > currentTopScore) {
+                    updates[`dailyStats/${today}/topScore`] = percentage;
+                }
+                
+                // Apply all updates atomically
+                database.ref().update(updates).then(() => {
+                    console.log('🔥 Firebase updated successfully!');
+                }).catch((error) => {
+                    console.error('❌ Firebase update failed:', error);
+                });
+            });
+        }
+
+        // Initialize Firebase features
+        function initializeFirebase() {
+            console.log('🔥 Initializing Firebase...');
+            
+            initializeDailyData();
+            initializeLiveCounter();
+            initializeLeaderboard();
+            
+            console.log('✅ Firebase initialized successfully');
+        }
+
+        // QUIZ FUNCTIONALITY
 
         // Handle option selection
-        document.querySelectorAll('.option').forEach(option => {
-            option.addEventListener('click', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    if (quizSubmitted) return;
+                    
+                    const question = this.dataset.question;
+                    const answer = this.dataset.answer;
+                    
+                    // Remove previous selection for this question
+                    document.querySelectorAll(`[data-question="${question}"]`).forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Select current option
+                    this.classList.add('selected');
+                    selectedAnswers[question] = answer;
+                    
+                    // Enable submit button if all questions answered
+                    if (Object.keys(selectedAnswers).length === 2) {
+                        document.getElementById('submitBtn').disabled = false;
+                    }
+                });
+            });
+
+            // Handle quiz submission
+            document.getElementById('submitBtn').addEventListener('click', function() {
                 if (quizSubmitted) return;
                 
-                const question = this.dataset.question;
-                const answer = this.dataset.answer;
+                console.log('🎯 Quiz submitted!');
+                quizSubmitted = true;
+                this.disabled = true;
+                this.innerHTML = '<i class="fas fa-check"></i> Submitted!';
                 
-                // Remove previous selection for this question
-                document.querySelectorAll(`[data-question="${question}"]`).forEach(opt => {
-                    opt.classList.remove('selected');
-                });
+                // Calculate completion time
+                const completionTime = Math.floor((Date.now() - userStartTime) / 1000);
                 
-                // Select current option
-                this.classList.add('selected');
-                selectedAnswers[question] = answer;
+                let score = 0;
                 
-                // Enable submit button if all questions answered
-                if (Object.keys(selectedAnswers).length === 2) {
-                    document.getElementById('submitBtn').disabled = false;
+                // Check answers and apply styling
+                for (let question in correctAnswers) {
+                    const userAnswer = selectedAnswers[question];
+                    const correctAnswer = correctAnswers[question];
+                    
+                    document.querySelectorAll(`[data-question="${question}"]`).forEach(option => {
+                        const optionAnswer = option.dataset.answer;
+                        
+                        if (optionAnswer === correctAnswer) {
+                            option.classList.add('correct');
+                        } else if (optionAnswer === userAnswer && userAnswer !== correctAnswer) {
+                            option.classList.add('incorrect');
+                        }
+                        
+                        option.style.pointerEvents = 'none';
+                    });
+                    
+                    if (userAnswer === correctAnswer) {
+                        score++;
+                    }
+                }
+                
+                // Show result
+                const percentage = (score / 2) * 100;
+                const resultDiv = document.getElementById('result');
+                
+                let resultClass, resultText;
+                if (percentage >= 100) {
+                    resultClass = 'excellent';
+                    resultText = `🎉 Perfect Score! You got ${score}/2 questions right!`;
+                    createConfetti();
+                } else if (percentage >= 50) {
+                    resultClass = 'good';
+                    resultText = `👍 Good job! You scored ${score}/2 (${percentage}%)`;
+                } else {
+                    resultClass = 'needs-improvement';
+                    resultText = `📚 Keep practicing! You scored ${score}/2 (${percentage}%)`;
+                }
+                
+                resultDiv.className = `result ${resultClass}`;
+                resultDiv.textContent = resultText;
+                
+                // Show name modal after 1 second
+                setTimeout(() => {
+                    console.log('📝 Showing name modal...');
+                    showNameModal(score, completionTime);
+                }, 1000);
+                
+                // Update social sharing with score
+                updateSocialLinksWithScore(score, percentage);
+            });
+
+            // Initialize everything
+            initializeFirebase();
+            updateSocialLinks();
+            userStartTime = Date.now();
+            
+            // Add Enter key functionality to name input
+            document.getElementById('nameInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    saveName();
                 }
             });
         });
 
-        // Handle quiz submission
-        document.getElementById('submitBtn').addEventListener('click', function() {
-            if (quizSubmitted) return;
+        // NAME MODAL FUNCTIONS
+        let pendingScore, pendingTime;
+
+        function showNameModal(score, completionTime) {
+            pendingScore = score;
+            pendingTime = completionTime;
             
-            quizSubmitted = true;
-            this.disabled = true;
-            this.innerHTML = '<i class="fas fa-check"></i> Submitted!';
+            const modal = document.getElementById('nameModal');
+            modal.classList.add('show');
+            document.getElementById('nameInput').focus();
+        }
+
+        function hideNameModal() {
+            const modal = document.getElementById('nameModal');
+            modal.classList.remove('show');
+        }
+
+        function saveName() {
+            const nameInput = document.getElementById('nameInput');
+            const inputName = nameInput.value.trim();
             
-            let score = 0;
-            
-            // Check answers and apply styling
-            for (let question in correctAnswers) {
-                const userAnswer = selectedAnswers[question];
-                const correctAnswer = correctAnswers[question];
-                
-                document.querySelectorAll(`[data-question="${question}"]`).forEach(option => {
-                    const optionAnswer = option.dataset.answer;
-                    
-                    if (optionAnswer === correctAnswer) {
-                        option.classList.add('correct');
-                    } else if (optionAnswer === userAnswer && userAnswer !== correctAnswer) {
-                        option.classList.add('incorrect');
-                    }
-                    
-                    option.style.pointerEvents = 'none';
-                });
-                
-                if (userAnswer === correctAnswer) {
-                    score++;
-                }
+            if (inputName.length < 2) {
+                nameInput.style.borderColor = '#ff6b9d';
+                nameInput.placeholder = 'Please enter at least 2 characters';
+                return;
             }
             
-            // Show result
-            const percentage = (score / 2) * 100;
-            const resultDiv = document.getElementById('result');
+            userName = inputName;
+            console.log('👤 Name saved:', userName);
             
-            let resultClass, resultText;
-            if (percentage >= 100) {
-                resultClass = 'excellent';
-                resultText = `🎉 Perfect Score! You got ${score}/2 questions right!`;
-                createConfetti();
-            } else if (percentage >= 50) {
-                resultClass = 'good';
-                resultText = `👍 Good job! You scored ${score}/2 (${percentage}%)`;
-            } else {
-                resultClass = 'needs-improvement';
-                resultText = `📚 Keep practicing! You scored ${score}/2 (${percentage}%)`;
-            }
+            hideNameModal();
+            updateDailyStats(pendingScore, pendingTime, userName);
+            showNotification(`Welcome ${userName}! 🎉`);
+        }
+
+        function skipName() {
+            userName = 'Anonymous Student';
+            console.log('👤 Name skipped, using:', userName);
             
-            resultDiv.className = `result ${resultClass}`;
-            resultDiv.textContent = resultText;
-            
-            // Update live counter
-            updateLiveCounter();
-        });
+            hideNameModal();
+            updateDailyStats(pendingScore, pendingTime, userName);
+        }
 
         // Create confetti animation
         function createConfetti() {
@@ -1004,22 +1199,6 @@
             }
         }
 
-        // Update live counter
-        function updateLiveCounter() {
-            const counter = document.getElementById('liveCounter');
-            let currentCount = parseInt(counter.textContent.replace(/[^\d]/g, ''));
-            counter.textContent = (currentCount + 1).toLocaleString();
-        }
-
-        // Simulate live updates
-        setInterval(() => {
-            if (!quizSubmitted && Math.random() > 0.8) {
-                const counter = document.getElementById('liveCounter');
-                let currentCount = parseInt(counter.textContent.replace(/[^\d]/g, ''));
-                counter.textContent = (currentCount + Math.floor(Math.random() * 2) + 1).toLocaleString();
-            }
-        }, 8000);
-
         // Social Sharing Functions
         function challengeFriend() {
             const message = `🧠 Hey! I just took today's SSLC Toppers quiz. Can you beat my score?\n\nDaily Science & Math Challenge: https://sslctoppers.com\n\n#SSLCToppers #QuizChallenge`;
@@ -1040,12 +1219,21 @@
             const baseMessage = `🧠 I just took today's SSLC Toppers quiz! Can you beat my score?\n\nDaily Science & Math Challenge 📚`;
             const url = 'https://sslctoppers.com';
             
-            // Update WhatsApp link
             const whatsappMessage = encodeURIComponent(`${baseMessage}\n\n${url}\n\n#SSLCToppers #QuizChallenge`);
             document.getElementById('whatsappShare').href = `https://wa.me/?text=${whatsappMessage}`;
             
-            // Update Telegram link
             const telegramMessage = encodeURIComponent(`${baseMessage}\n\n${url}`);
+            document.getElementById('telegramShare').href = `https://t.me/share/url?url=${url}&text=${telegramMessage}`;
+        }
+
+        function updateSocialLinksWithScore(score, percentage) {
+            const scoreMessage = `🧠 I just scored ${score}/2 (${percentage}%) on today's SSLC Toppers quiz! Can you beat my score?\n\nDaily Science & Math Challenge 📚`;
+            const url = 'https://sslctoppers.com';
+            
+            const whatsappMessage = encodeURIComponent(`${scoreMessage}\n\n${url}\n\n#SSLCToppers #QuizChallenge`);
+            document.getElementById('whatsappShare').href = `https://wa.me/?text=${whatsappMessage}`;
+            
+            const telegramMessage = encodeURIComponent(`${scoreMessage}\n\n${url}`);
             document.getElementById('telegramShare').href = `https://t.me/share/url?url=${url}&text=${telegramMessage}`;
         }
 
@@ -1057,7 +1245,6 @@
         }
 
         function showNotification(message) {
-            // Create notification
             const notification = document.createElement('div');
             notification.style.cssText = `
                 position: fixed;
@@ -1076,7 +1263,6 @@
             notification.textContent = message;
             document.body.appendChild(notification);
             
-            // Remove after 3 seconds
             setTimeout(() => {
                 notification.style.animation = 'slideOut 0.3s ease forwards';
                 setTimeout(() => notification.remove(), 300);
@@ -1096,34 +1282,6 @@
             }
         `;
         document.head.appendChild(style);
-
-        // Initialize social links
-        updateSocialLinks();
-
-        // Update social sharing after quiz completion
-        const originalSubmitHandler = document.getElementById('submitBtn').onclick;
-        document.getElementById('submitBtn').addEventListener('click', function() {
-            // Call original handler first
-            if (originalSubmitHandler) originalSubmitHandler.call(this);
-            
-            // Then update social links with score
-            setTimeout(() => {
-                if (quizSubmitted) {
-                    const score = Object.keys(selectedAnswers).filter(q => selectedAnswers[q] === correctAnswers[q]).length;
-                    const percentage = (score / 2) * 100;
-                    
-                    const scoreMessage = `🧠 I just scored ${score}/2 (${percentage}%) on today's SSLC Toppers quiz! Can you beat my score?\n\nDaily Science & Math Challenge 📚`;
-                    const url = 'https://sslctoppers.com';
-                    
-                    // Update social buttons with score
-                    const whatsappMessage = encodeURIComponent(`${scoreMessage}\n\n${url}\n\n#SSLCToppers #QuizChallenge`);
-                    document.getElementById('whatsappShare').href = `https://wa.me/?text=${whatsappMessage}`;
-                    
-                    const telegramMessage = encodeURIComponent(`${scoreMessage}\n\n${url}`);
-                    document.getElementById('telegramShare').href = `https://t.me/share/url?url=${url}&text=${telegramMessage}`;
-                }
-            }, 1000);
-        });
     </script>
 </body>
 </html>
