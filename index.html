@@ -590,6 +590,117 @@
             box-shadow: 0 5px 15px rgba(77, 171, 247, 0.3);
         }
 
+        .name-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .name-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .name-modal-content {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .name-modal.show .name-modal-content {
+            transform: scale(1);
+        }
+
+        .name-modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .name-modal-subtitle {
+            color: #a0a9c0;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .name-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .name-input:focus {
+            outline: none;
+            border-color: #4dabf7;
+            background: rgba(77, 171, 247, 0.1);
+        }
+
+        .name-input::placeholder {
+            color: #a0a9c0;
+        }
+
+        .name-modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .name-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 100px;
+        }
+
+        .name-btn-primary {
+            background: linear-gradient(135deg, #4dabf7, #00d4aa);
+            color: #fff;
+        }
+
+        .name-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(77, 171, 247, 0.3);
+        }
+
+        .name-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .name-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
         @media (max-width: 768px) {
             .container { padding: 15px; }
             .quiz-card { padding: 24px; }
@@ -597,6 +708,8 @@
             .question-text { font-size: 1.1rem; }
             .live-badge { position: relative; top: auto; right: auto; margin: 0 auto 20px; width: fit-content; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .name-modal-content { padding: 30px 20px; }
+            .name-modal-buttons { flex-direction: column; }
         }
     </style>
 </head>
@@ -766,6 +879,19 @@
     </div>
 
     <div class="celebration" id="celebration"></div>
+
+    <!-- Name Input Modal -->
+    <div class="name-modal" id="nameModal">
+        <div class="name-modal-content">
+            <div class="name-modal-title">🏆 Join the Leaderboard!</div>
+            <div class="name-modal-subtitle">Enter your name to appear on today's top performers list</div>
+            <input type="text" id="nameInput" class="name-input" placeholder="Enter your name (e.g., Arjun K.)" maxlength="20">
+            <div class="name-modal-buttons">
+                <button class="name-btn name-btn-primary" onclick="saveName()">Save & Continue</button>
+                <button class="name-btn name-btn-secondary" onclick="skipName()">Skip</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Correct answers
