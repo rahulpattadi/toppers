@@ -10,8 +10,25 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
         
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --accent-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --danger-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --dark-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 16px 64px rgba(0, 0, 0, 0.15);
+            --shadow-strong: 0 24px 96px rgba(0, 0, 0, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -19,15 +36,22 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 15%, #16213e 30%, #0f3460 45%, #533483 60%, #16213e 75%, #0e1a2e 90%, #000000 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
-            color: #fff;
+            color: var(--text-primary);
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Animated Background */
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Enhanced Animated Background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -46,100 +70,558 @@
 
         .shape {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
             border-radius: 50%;
-            animation: float 15s infinite ease-in-out;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: float 20s infinite ease-in-out;
         }
 
-        .shape:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-delay: 0s; }
-        .shape:nth-child(2) { width: 120px; height: 120px; left: 20%; animation-delay: 2s; }
-        .shape:nth-child(3) { width: 60px; height: 60px; left: 70%; animation-delay: 4s; }
-        .shape:nth-child(4) { width: 100px; height: 100px; left: 80%; animation-delay: 6s; }
-        .shape:nth-child(5) { width: 140px; height: 140px; left: 50%; animation-delay: 8s; }
+        .shape:nth-child(1) { 
+            width: 120px; height: 120px; left: 10%; 
+            animation-delay: 0s; 
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+        }
+        .shape:nth-child(2) { 
+            width: 80px; height: 80px; left: 80%; 
+            animation-delay: 2s; 
+            background: linear-gradient(45deg, rgba(240, 147, 251, 0.3), rgba(245, 87, 108, 0.3));
+        }
+        .shape:nth-child(3) { 
+            width: 160px; height: 160px; left: 60%; 
+            animation-delay: 4s; 
+            background: linear-gradient(45deg, rgba(79, 172, 254, 0.3), rgba(0, 242, 254, 0.3));
+        }
+        .shape:nth-child(4) { 
+            width: 100px; height: 100px; left: 20%; 
+            animation-delay: 6s; 
+            background: linear-gradient(45deg, rgba(67, 233, 123, 0.3), rgba(56, 249, 215, 0.3));
+        }
+        .shape:nth-child(5) { 
+            width: 140px; height: 140px; left: 70%; 
+            animation-delay: 8s; 
+            background: linear-gradient(45deg, rgba(250, 112, 154, 0.3), rgba(254, 225, 64, 0.3));
+        }
+        .shape:nth-child(6) { 
+            width: 90px; height: 90px; left: 40%; 
+            animation-delay: 10s; 
+            background: linear-gradient(45deg, rgba(30, 60, 114, 0.4), rgba(42, 82, 152, 0.4));
+        }
 
         @keyframes float {
-            0%, 100% { transform: translateY(100vh) scale(0); }
-            10% { transform: translateY(90vh) scale(1); }
-            90% { transform: translateY(-10vh) scale(1); }
-            100% { transform: translateY(-10vh) scale(0); }
+            0%, 100% { 
+                transform: translateY(100vh) scale(0) rotate(0deg); 
+                opacity: 0; 
+            }
+            5% { 
+                transform: translateY(95vh) scale(1) rotate(45deg); 
+                opacity: 1; 
+            }
+            95% { 
+                transform: translateY(-5vh) scale(1) rotate(315deg); 
+                opacity: 1; 
+            }
+            100% { 
+                transform: translateY(-10vh) scale(0) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+
+        /* Particles Animation */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 25s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { 
+                transform: translateY(100vh) translateX(0px); 
+                opacity: 0; 
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateY(-10vh) translateX(100px); 
+                opacity: 0; 
+            }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
             position: relative;
             z-index: 10;
         }
 
-        /* Hero Section */
+        /* Brand Header */
+        .brand-header {
+            text-align: center;
+            padding: 40px 0 20px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .brand-logo {
+            display: inline-block;
+            background: var(--glass-bg);
+            padding: 20px 40px;
+            border-radius: 50px;
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-medium);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .brand-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-accent {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .brand-tagline {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* Enhanced Hero Section */
         .hero {
             text-align: center;
-            padding: 60px 0;
-            margin-bottom: 40px;
+            padding: 80px 0;
+            margin-bottom: 60px;
+            position: relative;
         }
 
         .hero-badge {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 8px 20px;
+            background: var(--glass-bg);
+            padding: 12px 24px;
             border-radius: 50px;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #fff, #f8f9fa, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.1;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 400;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
-        /* Live Stats */
-        .live-stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 60px;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 25px;
-            border-radius: 20px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            min-width: 150px;
-            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-soft);
+            animation: fadeInUp 1s ease-out;
             position: relative;
             overflow: hidden;
         }
 
-        .stat:before {
+        .hero-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #fff, #f8f9fa, #fff, #e9ecef);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            animation: titleShine 4s ease-in-out infinite, fadeInUp 1.2s ease-out;
+            position: relative;
+        }
+
+        @keyframes titleShine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            animation: fadeInUp 1.4s ease-out;
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
+            font-weight: 400;
+            animation: fadeInUp 1.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced Live Stats */
+        .live-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+            animation: fadeInUp 1.8s ease-out;
+        }
+
+        .stat {
+            text-align: center;
+            background: var(--glass-bg);
+            padding: 35px 25px;
+            border-radius: 24px;
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat:hover::before {
+            opacity: 1;
+        }
+
+        .stat::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .stat:hover::after {
+            left: 100%;
+        }
+
+        .stat:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            display: block;
+            margin-bottom: 12px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .live-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 12px;
+            height: 12px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1); 
+                box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            }
+            50% { 
+                opacity: 0.7; 
+                transform: scale(1.4); 
+                box-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+            }
+        }
+
+        /* Enhanced Quiz Section */
+        .quiz-section {
+            background: var(--glass-bg);
+            border-radius: 32px;
+            padding: 60px;
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-strong);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 2s ease-out;
+        }
+
+        /* YouTube Learning Section */
+        .youtube-section {
+            background: var(--glass-bg);
+            border-radius: 32px;
+            padding: 60px;
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-strong);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 2.1s ease-out;
+        }
+
+        .youtube-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff0000, #ff4500, #ff6b35, #f7931e, #ffd700);
+            background-size: 400% 100%;
+            animation: rainbow 4s linear infinite;
+        }
+
+        .youtube-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .youtube-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #f8f9fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.01em;
+        }
+
+        .youtube-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-secondary);
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        .youtube-content {
+            display: grid;
+            gap: 40px;
+        }
+
+        .video-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            background: var(--glass-bg);
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        .video-info {
+            text-align: center;
+        }
+
+        .video-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .video-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .channel-section {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+            align-items: center;
+            background: var(--glass-bg);
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+        }
+
+        .channel-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .channel-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff0000, #ff4500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #fff;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .channel-details h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .channel-stats {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .channel-description {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.5;
+            max-width: 400px;
+        }
+
+        .channel-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .subscribe-btn,
+        .visit-channel-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subscribe-btn {
+            background: linear-gradient(135deg, #ff0000, #ff4500);
+            color: #fff;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .visit-channel-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 1px solid var(--glass-border);
+        }
+
+        .subscribe-btn:hover,
+        .visit-channel-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .subscribe-btn::before,
+        .visit-channel-btn::before {
             content: '';
             position: absolute;
             top: 0;
@@ -150,62 +632,23 @@
             transition: left 0.5s;
         }
 
-        .stat:hover:before {
+        .subscribe-btn:hover::before,
+        .visit-channel-btn:hover::before {
             left: 100%;
         }
 
-        .stat:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 8px;
-            background: linear-gradient(45deg, #fff, #f8f9fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            font-weight: 500;
-        }
-
-        .live-indicator {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 8px;
-            height: 8px;
-            background: #00ff88;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.4); }
-        }
-
-        /* Quiz Section */
-        .quiz-section {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 50px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .quiz-section:before {
+        .quiz-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -213,79 +656,118 @@
             right: 0;
             height: 4px;
             background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
-            animation: rainbow 3s linear infinite;
+            background-size: 400% 100%;
+            animation: rainbow 4s linear infinite;
         }
 
         @keyframes rainbow {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
         }
 
         .quiz-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .quiz-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 15px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 20px;
             background: linear-gradient(45deg, #fff, #f8f9fa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -0.01em;
         }
 
         .quiz-subtitle {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 30px;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-secondary);
+            margin-bottom: 35px;
+            font-weight: 500;
         }
 
         .motivation-text {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 15px;
+            background: var(--glass-bg);
+            padding: 25px 30px;
+            border-radius: 20px;
             border-left: 4px solid #00ff88;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             font-style: italic;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* Questions */
-        .question {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 25px;
-            padding: 35px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.3s ease;
+            color: var(--text-secondary);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-soft);
             position: relative;
         }
 
+        .motivation-text::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 3rem;
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        /* Enhanced Questions */
+        .question {
+            background: var(--glass-bg);
+            border-radius: 28px;
+            padding: 40px;
+            margin-bottom: 35px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-soft);
+        }
+
         .question:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .question::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .question:hover::before {
+            transform: scaleX(1);
         }
 
         .question-header {
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 25px;
+            gap: 25px;
+            margin-bottom: 30px;
         }
 
         .question-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 20px;
+            width: 70px;
+            height: 70px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #fff;
             position: relative;
             overflow: hidden;
+            box-shadow: var(--shadow-soft);
         }
 
         .physics-icon {
@@ -309,123 +791,144 @@
         }
 
         .question-number {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 5px;
-            font-weight: 500;
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .question-subject {
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .question-text {
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
             color: #fff;
             line-height: 1.6;
-            margin-bottom: 25px;
-            font-weight: 500;
+            margin-bottom: 30px;
+            font-weight: 600;
         }
 
         .options {
             display: grid;
-            gap: 15px;
+            gap: 18px;
         }
 
         .option {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 20px 25px;
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 24px 30px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.2rem;
+            font-weight: 600;
             color: #fff;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(15px);
         }
 
-        .option:before {
+        .option::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
             transition: left 0.5s;
         }
 
-        .option:hover:before {
+        .option:hover::before {
             left: 100%;
         }
 
         .option:hover {
             border-color: rgba(255, 255, 255, 0.5);
-            transform: translateX(10px);
+            transform: translateX(8px) scale(1.02);
             background: rgba(255, 255, 255, 0.15);
+            box-shadow: var(--shadow-soft);
         }
 
         .option.selected {
             border-color: #00ff88;
             background: rgba(0, 255, 136, 0.2);
-            transform: translateX(10px);
+            transform: translateX(8px) scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
         }
 
         .option.correct {
             border-color: #00ff88;
             background: rgba(0, 255, 136, 0.3);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+            animation: correctPulse 0.6s ease-out;
         }
 
         .option.incorrect {
             border-color: #ff6b6b;
             background: rgba(255, 107, 107, 0.3);
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 0 30px rgba(255, 107, 107, 0.4);
+            animation: incorrectShake 0.6s ease-out;
         }
 
-        /* Submit Button */
+        @keyframes correctPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes incorrectShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Enhanced Submit Button */
         .submit-section {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--primary-gradient);
             color: #fff;
             border: none;
             border-radius: 50px;
-            padding: 20px 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
+            padding: 24px 60px;
+            font-size: 1.3rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: var(--shadow-medium);
+            letter-spacing: 0.5px;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        .submit-btn:before {
+        .submit-btn::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
         }
 
-        .submit-btn:hover:before {
+        .submit-btn:hover::before {
             left: 100%;
         }
 
         .submit-btn:hover:not(:disabled) {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: var(--shadow-strong);
         }
 
         .submit-btn:disabled {
@@ -434,58 +937,78 @@
             transform: none;
         }
 
-        /* Results */
+        .submit-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        /* Enhanced Results */
         .result {
-            margin-top: 40px;
-            padding: 30px;
-            border-radius: 25px;
+            margin-top: 50px;
+            padding: 40px;
+            border-radius: 28px;
             text-align: center;
-            font-size: 1.3rem;
-            font-weight: 600;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 1.4rem;
+            font-weight: 700;
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            animation: resultSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-medium);
+        }
+
+        @keyframes resultSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .result.excellent {
             background: rgba(0, 255, 136, 0.2);
             border-color: #00ff88;
             color: #fff;
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.4);
         }
 
         .result.good {
             background: rgba(78, 205, 196, 0.2);
             border-color: #4ecdc4;
             color: #fff;
-            box-shadow: 0 0 30px rgba(78, 205, 196, 0.3);
+            box-shadow: 0 0 40px rgba(78, 205, 196, 0.4);
         }
 
         .result.needs-improvement {
             background: rgba(255, 107, 107, 0.2);
             border-color: #ff6b6b;
             color: #fff;
-            box-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 0 40px rgba(255, 107, 107, 0.4);
         }
 
-        /* Social Section */
+        /* Enhanced Social Section */
         .social-section {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 40px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            margin-bottom: 30px;
+            background: var(--glass-bg);
+            border-radius: 28px;
+            padding: 50px;
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-medium);
+            animation: slideInUp 2.2s ease-out;
         }
 
         .social-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .social-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            font-weight: 800;
+            margin-bottom: 15px;
             background: linear-gradient(45deg, #fff, #f8f9fa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -493,37 +1016,39 @@
         }
 
         .social-subtitle {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
         .social-buttons {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
         .social-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            padding: 18px 25px;
+            gap: 15px;
+            padding: 20px 30px;
             border: none;
-            border-radius: 20px;
-            font-size: 1rem;
-            font-weight: 600;
+            border-radius: 24px;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             color: #fff;
             position: relative;
             overflow: hidden;
+            box-shadow: var(--shadow-soft);
         }
 
         .challenge-btn {
-            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            background: var(--danger-gradient);
         }
 
         .whatsapp-btn {
@@ -535,84 +1060,105 @@
         }
 
         .social-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: var(--shadow-medium);
         }
 
-        /* Leaderboard */
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .social-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Enhanced Leaderboard */
         .leaderboard {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 30px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--glass-bg);
+            border-radius: 28px;
+            padding: 40px;
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-medium);
         }
 
         .leaderboard-header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
         }
 
         .leaderboard-title {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            font-weight: 800;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .leaderboard-list {
             display: grid;
-            gap: 15px;
+            gap: 20px;
         }
 
         .leaderboard-item {
             display: flex;
             align-items: center;
-            gap: 20px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 25px;
+            padding: 25px;
+            background: var(--glass-bg);
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(15px);
         }
 
         .leaderboard-item:hover {
             background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-soft);
         }
 
         .rank {
-            width: 45px;
-            height: 45px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
+            font-weight: 800;
             color: #fff;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .rank.gold {
             background: linear-gradient(135deg, #ffd700, #ffed4e);
             color: #333;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
         }
 
         .rank.silver {
             background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
             color: #333;
-            box-shadow: 0 0 20px rgba(192, 192, 192, 0.5);
+            box-shadow: 0 0 25px rgba(192, 192, 192, 0.6);
         }
 
         .rank.bronze {
             background: linear-gradient(135deg, #cd7f32, #d4a574);
             color: #fff;
-            box-shadow: 0 0 20px rgba(205, 127, 50, 0.5);
+            box-shadow: 0 0 25px rgba(205, 127, 50, 0.6);
         }
 
         .rank.other {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--primary-gradient);
+            box-shadow: var(--shadow-soft);
         }
 
         .player-info {
@@ -620,18 +1166,20 @@
         }
 
         .player-name {
-            font-weight: 600;
+            font-weight: 700;
             color: #fff;
-            font-size: 1.1rem;
-            margin-bottom: 4px;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .player-score {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 500;
         }
 
-        /* Name Modal */
+        /* Enhanced Name Modal */
         .modal {
             position: fixed;
             top: 0;
@@ -639,14 +1187,14 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             z-index: 10000;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .modal.show {
@@ -655,16 +1203,17 @@
         }
 
         .modal-content {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 30px;
-            padding: 50px;
-            backdrop-filter: blur(20px);
-            max-width: 500px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 60px;
+            backdrop-filter: blur(30px);
+            max-width: 550px;
             width: 90%;
             text-align: center;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
+            transform: scale(0.8);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-strong);
         }
 
         .modal.show .modal-content {
@@ -672,114 +1221,211 @@
         }
 
         .modal-title {
-            font-size: 2rem;
-            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 800;
             color: #fff;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .modal-subtitle {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 30px;
-            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 35px;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
         .name-input {
             width: 100%;
-            padding: 18px 25px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 28px;
+            border: 2px solid var(--glass-border);
+            border-radius: 24px;
+            background: var(--glass-bg);
             color: #fff;
-            font-size: 1.1rem;
-            margin-bottom: 25px;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
+            font-weight: 600;
         }
 
         .name-input:focus {
             outline: none;
             border-color: #00ff88;
             background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
         }
 
         .name-input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
         .modal-buttons {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
         }
 
         .modal-btn {
-            padding: 15px 30px;
+            padding: 18px 35px;
             border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
+            border-radius: 28px;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--primary-gradient);
             color: #fff;
+            box-shadow: var(--shadow-soft);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-medium);
         }
 
         .btn-secondary {
             background: rgba(255, 255, 255, 0.2);
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid var(--glass-border);
         }
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
-        /* Confetti Animation */
+        /* Enhanced Confetti Animation */
         .confetti {
             position: fixed;
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             pointer-events: none;
-            animation: confetti-fall 3s linear forwards;
+            animation: confetti-fall 4s linear forwards;
+            z-index: 10001;
         }
 
         @keyframes confetti-fall {
             to {
                 transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
             }
         }
 
-        /* Responsive */
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--accent-gradient);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 28px;
+            font-weight: 600;
+            z-index: 10000;
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-medium);
+            transform: translateX(400px);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .live-stats { gap: 20px; }
-            .quiz-section { padding: 30px 20px; }
-            .question { padding: 25px; }
-            .modal-content { padding: 30px 20px; }
+            .hero { padding: 60px 0; }
+            .quiz-section { padding: 40px 25px; }
+            .youtube-section { padding: 40px 25px; }
+            .question { padding: 30px 25px; }
+            .modal-content { padding: 40px 25px; }
             .modal-buttons { flex-direction: column; }
+            .social-buttons { grid-template-columns: 1fr; }
+            .live-stats { grid-template-columns: 1fr; }
+            .brand-header { padding: 30px 0 15px; }
+            .brand-logo { padding: 15px 30px; }
+            .video-container { padding: 20px; }
+            .channel-section { 
+                grid-template-columns: 1fr; 
+                gap: 25px; 
+                text-align: center; 
+                padding: 25px; 
+            }
+            .channel-info { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 15px; 
+            }
+            .channel-actions { 
+                flex-direction: row; 
+                justify-content: center; 
+            }
         }
 
         @media (max-width: 480px) {
-            .hero-title { font-size: 2rem; }
-            .live-stats { flex-direction: column; align-items: center; }
+            .container { padding: 15px; }
+            .hero { padding: 40px 0; }
+            .quiz-section { padding: 30px 20px; }
+            .youtube-section { padding: 30px 20px; }
+            .question { padding: 25px 20px; }
+            .question-header { flex-direction: column; gap: 15px; text-align: center; }
+            .brand-header { padding: 20px 0 10px; }
+            .brand-logo { padding: 12px 25px; }
+            .video-container { padding: 15px; }
+            .channel-section { padding: 20px; }
+            .channel-actions { 
+                flex-direction: column; 
+                gap: 12px; 
+            }
+            .subscribe-btn, .visit-channel-btn {
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
+    <!-- Enhanced Animated Background -->
     <div class="bg-animation">
         <div class="floating-shapes">
+            <div class="shape"></div>
             <div class="shape"></div>
             <div class="shape"></div>
             <div class="shape"></div>
@@ -788,8 +1434,19 @@
         </div>
     </div>
 
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
     <div class="container">
-        <!-- Hero Section -->
+        <!-- Brand Header -->
+        <div class="brand-header">
+            <div class="brand-logo">
+                <span class="brand-name">Simplified<span class="brand-accent">Minds</span></span>
+                <span class="brand-tagline">Empowering Young Minds</span>
+            </div>
+        </div>
+
+        <!-- Enhanced Hero Section -->
         <section class="hero">
             <div class="hero-badge">🚀 Your Journey to Excellence Starts Here</div>
             <h1 class="hero-title">SSLC TOPPERS</h1>
@@ -798,9 +1455,14 @@
                 Join thousands of ambitious students on their path to academic excellence. 
                 Challenge yourself, compete with friends, and become the scholar you're meant to be.
             </p>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar" id="heroProgress"></div>
+            </div>
         </section>
 
-        <!-- Live Stats -->
+        <!-- Enhanced Live Stats -->
         <section class="live-stats">
             <div class="stat">
                 <div class="live-indicator"></div>
@@ -819,13 +1481,13 @@
             </div>
         </section>
 
-        <!-- Quiz Section -->
+        <!-- Enhanced Quiz Section -->
         <section class="quiz-section">
             <div class="quiz-header">
                 <h2 class="quiz-title">Today's Challenge</h2>
                 <p class="quiz-subtitle">Ready to test your knowledge and climb the leaderboard?</p>
                 <div class="motivation-text">
-                    💡 "Success is the sum of small efforts repeated day in and day out." - Take today's quiz and move one step closer to your dreams!
+                    💡 Success is the sum of small efforts repeated day in and day out. Take today's quiz and move one step closer to your dreams!
                 </div>
             </div>
 
@@ -876,7 +1538,61 @@
             </div>
         </section>
 
-        <!-- Social Section -->
+        <!-- YouTube Learning Section -->
+        <section class="youtube-section">
+            <div class="youtube-header">
+                <h2 class="youtube-title">📚 Learn With Us</h2>
+                <p class="youtube-subtitle">Master concepts with our expert explanations and join our learning community</p>
+            </div>
+            
+            <div class="youtube-content">
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <!-- Replace YOUR_VIDEO_ID with actual YouTube video ID -->
+                        <iframe 
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&showinfo=0&modestbranding=1" 
+                            title="SSLC Physics Explained" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Master SSLC Physics - Electric Current Explained</h3>
+                        <p class="video-description">
+                            🔬 Understand the fundamental concepts of electric current, resistance, and voltage with our expert explanations. Perfect preparation for your SSLC exams!
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="channel-section">
+                    <div class="channel-info">
+                        <div class="channel-avatar">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div class="channel-details">
+                            <h4 class="channel-name">SimplifiedMinds Academy</h4>
+                            <p class="channel-stats">50K+ subscribers • 500+ videos</p>
+                            <p class="channel-description">Your ultimate destination for SSLC exam preparation with expert teachers and comprehensive explanations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="channel-actions">
+                        <!-- Replace YOUR_CHANNEL_ID with actual YouTube channel ID -->
+                        <a href="https://www.youtube.com/channel/UCyour_channel_id?sub_confirmation=1" target="_blank" class="subscribe-btn">
+                            <i class="fab fa-youtube"></i>
+                            Subscribe Now
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCyour_channel_id" target="_blank" class="visit-channel-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                            Visit Channel
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Social Section -->
         <section class="social-section">
             <div class="social-header">
                 <h2 class="social-title">🌟 Share Your Achievement</h2>
@@ -898,7 +1614,7 @@
                 </a>
             </div>
 
-            <!-- Leaderboard -->
+            <!-- Enhanced Leaderboard -->
             <div class="leaderboard">
                 <div class="leaderboard-header">
                     <h3 class="leaderboard-title">🏆 Today's Champions</h3>
@@ -912,7 +1628,7 @@
         </section>
     </div>
 
-    <!-- Name Modal -->
+    <!-- Enhanced Name Modal -->
     <div class="modal" id="nameModal">
         <div class="modal-content">
             <h3 class="modal-title">🎉 Join Our Community!</h3>
@@ -926,7 +1642,7 @@
     </div>
 
     <script>
-        // 🔥 FIREBASE CONFIGURATION
+        // 🔥 FIREBASE CONFIGURATION (keeping original Firebase setup intact)
         const firebaseConfig = {
             apiKey: "AIzaSyA8lD-OvRp7QXst2p1EgJVfJ27JwMsRqew",
             authDomain: "csolutions-88ca8.firebaseapp.com",
@@ -956,7 +1672,7 @@
         let userStartTime = Date.now();
         let userName = null;
 
-        // 🔥 FIREBASE REAL-TIME FUNCTIONS
+        // 🔥 FIREBASE REAL-TIME FUNCTIONS (keeping original Firebase logic)
 
         // Initialize today's data structure if it doesn't exist
         function initializeDailyData() {
@@ -983,17 +1699,27 @@
             
             liveCounterRef.on('value', (snapshot) => {
                 const count = snapshot.val() || 0;
-                document.getElementById('liveCounter').textContent = count.toLocaleString();
-                
-                // Animate number change
-                const element = document.getElementById('liveCounter');
-                element.style.transform = 'scale(1.1)';
-                setTimeout(() => {
-                    element.style.transform = 'scale(1)';
-                }, 200);
+                animateNumber(document.getElementById('liveCounter'), count);
                 
                 console.log('📊 Live counter updated:', count);
             });
+        }
+
+        // Enhanced number animation
+        function animateNumber(element, targetValue) {
+            const currentValue = parseInt(element.textContent.replace(/,/g, '')) || 0;
+            const increment = Math.ceil((targetValue - currentValue) / 20);
+            
+            if (currentValue < targetValue) {
+                element.textContent = (currentValue + increment).toLocaleString();
+                element.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    element.style.transform = 'scale(1)';
+                    animateNumber(element, targetValue);
+                }, 50);
+            } else {
+                element.textContent = targetValue.toLocaleString();
+            }
         }
 
         // Update leaderboard in real-time
@@ -1029,7 +1755,7 @@
                     const timeText = formatTime(entry.completionTime);
                     
                     return `
-                        <div class="leaderboard-item">
+                        <div class="leaderboard-item" style="animation-delay: ${index * 0.1}s">
                             <div class="rank ${rankClass}">${index + 1}</div>
                             <div class="player-info">
                                 <div class="player-name">${entry.name || 'Anonymous Scholar'}</div>
@@ -1080,10 +1806,10 @@
             // Apply updates with error handling
             database.ref().update(updates).then(() => {
                 console.log('🔥 Firebase updated successfully!');
-                showNotification('Your score has been recorded! 🎉');
+                showNotification('Your score has been recorded! 🎉', 'success');
             }).catch((error) => {
                 console.error('❌ Firebase update failed:', error);
-                showNotification('Score recorded locally. Leaderboard may update shortly.');
+                showNotification('Score recorded locally. Leaderboard may update shortly.', 'info');
             });
         }
 
@@ -1098,9 +1824,49 @@
             console.log('✅ Firebase initialized successfully');
         }
 
-        // QUIZ FUNCTIONALITY
+        // Enhanced particle system
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            function addParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particlesContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 30000);
+            }
+            
+            setInterval(addParticle, 2000);
+        }
+
+        // Enhanced progress bar animation
+        function animateProgressBar() {
+            const progressBar = document.getElementById('heroProgress');
+            let progress = 0;
+            
+            const interval = setInterval(() => {
+                progress += Math.random() * 2;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        progress = 0;
+                        progressBar.style.width = '0%';
+                        setTimeout(animateProgressBar, 1000);
+                    }, 2000);
+                }
+                progressBar.style.width = progress + '%';
+            }, 100);
+        }
+
+        // ENHANCED QUIZ FUNCTIONALITY
         document.addEventListener('DOMContentLoaded', function() {
-            // Handle option selection with smooth animations
+            // Handle option selection with enhanced animations
             document.querySelectorAll('.option').forEach(option => {
                 option.addEventListener('click', function() {
                     if (quizSubmitted) return;
@@ -1113,81 +1879,105 @@
                         opt.classList.remove('selected');
                     });
                     
-                    // Select current option with animation
+                    // Select current option with enhanced animation
                     this.classList.add('selected');
                     selectedAnswers[question] = answer;
                     
-                    // Animate selection
-                    this.style.transform = 'scale(1.02)';
+                    // Enhanced selection animation
+                    this.style.transform = 'scale(1.05)';
                     setTimeout(() => {
                         this.style.transform = '';
+                    }, 300);
+                    
+                    // Sound effect simulation (visual feedback)
+                    this.style.background = 'rgba(0, 255, 136, 0.3)';
+                    setTimeout(() => {
+                        this.style.background = '';
                     }, 200);
                     
                     // Enable submit button if all questions answered
                     if (Object.keys(selectedAnswers).length === 2) {
                         const submitBtn = document.getElementById('submitBtn');
                         submitBtn.disabled = false;
-                        submitBtn.style.transform = 'scale(1.05)';
+                        submitBtn.style.transform = 'scale(1.1)';
+                        submitBtn.style.boxShadow = '0 0 30px rgba(102, 126, 234, 0.6)';
                         setTimeout(() => {
                             submitBtn.style.transform = '';
-                        }, 200);
+                            submitBtn.style.boxShadow = '';
+                        }, 300);
                     }
                 });
             });
 
-            // Handle quiz submission
+            // Handle quiz submission with enhanced feedback
             document.getElementById('submitBtn').addEventListener('click', function() {
                 if (quizSubmitted) return;
                 
                 console.log('🎯 Quiz submitted!');
                 quizSubmitted = true;
                 this.disabled = true;
-                this.innerHTML = '<i class="fas fa-check"></i> Submitted Successfully!';
+                this.innerHTML = '<div class="loading"></div> Processing...';
                 
                 // Calculate completion time
                 const completionTime = Math.floor((Date.now() - userStartTime) / 1000);
                 
                 let score = 0;
                 
-                // Check answers and apply styling with animations
+                // Enhanced answer checking with staggered animations
                 for (let question in correctAnswers) {
                     const userAnswer = selectedAnswers[question];
                     const correctAnswer = correctAnswers[question];
                     
-                    document.querySelectorAll(`[data-question="${question}"]`).forEach(option => {
-                        const optionAnswer = option.dataset.answer;
-                        
-                        // Animate reveal
-                        setTimeout(() => {
+                    setTimeout(() => {
+                        document.querySelectorAll(`[data-question="${question}"]`).forEach(option => {
+                            const optionAnswer = option.dataset.answer;
+                            
                             if (optionAnswer === correctAnswer) {
                                 option.classList.add('correct');
                             } else if (optionAnswer === userAnswer && userAnswer !== correctAnswer) {
                                 option.classList.add('incorrect');
                             }
                             option.style.pointerEvents = 'none';
-                        }, parseInt(question) * 500);
-                    });
+                        });
+                    }, parseInt(question) * 600);
                     
                     if (userAnswer === correctAnswer) {
                         score++;
                     }
                 }
                 
-                // Show result with delay for drama
+                // Update submit button
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-check"></i> Submitted Successfully!';
+                }, 1000);
+                
+                // Show result with enhanced delay
                 setTimeout(() => {
                     showResults(score, completionTime);
-                }, 1500);
+                }, 2000);
             });
 
-            // Initialize everything
+            // Initialize everything with enhanced startup
             initializeFirebase();
             updateSocialLinks();
+            createParticles();
+            animateProgressBar();
             userStartTime = Date.now();
             
             // Add Enter key functionality
             document.getElementById('nameInput').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     saveName();
+                }
+            });
+
+            // Add escape key to close modal
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('nameModal');
+                    if (modal.classList.contains('show')) {
+                        skipName();
+                    }
                 }
             });
         });
@@ -1201,7 +1991,7 @@
                 resultClass = 'excellent';
                 resultText = `🎉 Outstanding! Perfect Score!`;
                 motivationText = `You got ${score}/2 questions right in ${formatTime(completionTime)}. You're destined for greatness!`;
-                createConfetti();
+                createEnhancedConfetti();
             } else if (percentage >= 50) {
                 resultClass = 'good';
                 resultText = `🌟 Great Job! Well Done!`;
@@ -1214,20 +2004,42 @@
             
             resultDiv.className = `result ${resultClass}`;
             resultDiv.innerHTML = `
-                <div style="font-size: 1.5rem; margin-bottom: 10px;">${resultText}</div>
-                <div style="font-size: 1rem; opacity: 0.9;">${motivationText}</div>
+                <div style="font-size: 1.8rem; margin-bottom: 15px; font-family: 'Space Grotesk', sans-serif;">${resultText}</div>
+                <div style="font-size: 1.1rem; opacity: 0.9; line-height: 1.5;">${motivationText}</div>
             `;
             
             // Show name modal after result
             setTimeout(() => {
                 showNameModal(score, completionTime);
-            }, 2000);
+            }, 2500);
             
             // Update social sharing
             updateSocialLinksWithScore(score, percentage);
         }
 
-        // NAME MODAL FUNCTIONS
+        // Enhanced confetti animation
+        function createEnhancedConfetti() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#667eea', '#764ba2'];
+            
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.top = '-20px';
+                    confetti.style.width = (Math.random() * 10 + 8) + 'px';
+                    confetti.style.height = confetti.style.width;
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 4000);
+                }, i * 30);
+            }
+        }
+
+        // NAME MODAL FUNCTIONS (keeping original logic)
         let pendingScore, pendingTime;
 
         function showNameModal(score, completionTime) {
@@ -1250,6 +2062,7 @@
             
             if (inputName.length < 2) {
                 nameInput.style.borderColor = '#ff6b6b';
+                nameInput.style.boxShadow = '0 0 20px rgba(255, 107, 107, 0.4)';
                 nameInput.placeholder = 'Please enter at least 2 characters';
                 return;
             }
@@ -1259,7 +2072,7 @@
             
             hideNameModal();
             updateDailyStats(pendingScore, pendingTime, userName);
-            showNotification(`Welcome to our community, ${userName}! 🌟`);
+            showNotification(`Welcome to our community, ${userName}! 🌟`, 'success');
         }
 
         function skipName() {
@@ -1268,30 +2081,10 @@
             
             hideNameModal();
             updateDailyStats(pendingScore, pendingTime, userName);
-            showNotification('Score recorded! Join with your name anytime! 😊');
+            showNotification('Score recorded! Join with your name anytime! 😊', 'info');
         }
 
-        // Create confetti animation
-        function createConfetti() {
-            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
-            
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.style.left = Math.random() * 100 + 'vw';
-                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.top = '-10px';
-                    document.body.appendChild(confetti);
-                    
-                    setTimeout(() => {
-                        confetti.remove();
-                    }, 3000);
-                }, i * 50);
-            }
-        }
-
-        // Social Sharing Functions
+        // Enhanced Social Sharing Functions
         function challengeFriend() {
             const message = `🌟 I just challenged myself with today's SSLC Toppers quiz! 
 
@@ -1309,7 +2102,7 @@ Daily Science & Math Challenge: https://sslctoppers.com
                 });
             } else {
                 navigator.clipboard.writeText(message);
-                showNotification('Challenge message copied! Share it with your friends 🚀');
+                showNotification('Challenge message copied! Share it with your friends 🚀', 'success');
             }
         }
 
@@ -1343,23 +2136,16 @@ Daily Science & Math Challenge 📚`;
             document.getElementById('telegramShare').href = `https://t.me/share/url?url=${url}&text=${telegramMessage}`;
         }
 
-        function showNotification(message) {
+        // Enhanced notification system
+        function showNotification(message, type = 'info') {
             const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 30px;
-                right: 30px;
-                background: rgba(0, 255, 136, 0.9);
-                color: white;
-                padding: 15px 25px;
-                border-radius: 25px;
-                font-weight: 600;
-                z-index: 10000;
-                backdrop-filter: blur(10px);
-                box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
-                transform: translateX(400px);
-                transition: transform 0.3s ease;
-            `;
+            notification.className = 'notification';
+            
+            let bgColor = 'rgba(0, 255, 136, 0.9)';
+            if (type === 'error') bgColor = 'rgba(255, 107, 107, 0.9)';
+            if (type === 'info') bgColor = 'rgba(79, 172, 254, 0.9)';
+            
+            notification.style.background = bgColor;
             notification.textContent = message;
             document.body.appendChild(notification);
             
@@ -1371,11 +2157,11 @@ Daily Science & Math Challenge 📚`;
             // Slide out and remove
             setTimeout(() => {
                 notification.style.transform = 'translateX(400px)';
-                setTimeout(() => notification.remove(), 300);
-            }, 4000);
+                setTimeout(() => notification.remove(), 400);
+            }, 5000);
         }
 
-        console.log('🌟 SSLC Toppers - Inspiring Academic Excellence! 🚀');
+        console.log('🌟 SSLC Toppers - Enhanced Version - Inspiring Academic Excellence! 🚀');
     </script>
 </body>
 </html>
