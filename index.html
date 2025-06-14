@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSLC Toppers - Your Journey to Excellence</title>
+    <title>SimplifiedMinds - SSLC Toppers Excellence</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <!-- Firebase SDK -->
@@ -13,20 +13,40 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
         
         :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --accent-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            --danger-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-            --dark-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            /* Brand Colors - Red and Yellow Theme */
+            --primary-red: #dc2626;
+            --primary-yellow: #fbbf24;
+            --red-light: #ef4444;
+            --yellow-light: #fde047;
+            --red-dark: #991b1b;
+            --yellow-dark: #d97706;
+            
+            /* Secondary Colors */
+            --primary-gradient: linear-gradient(135deg, #dc2626 0%, #fbbf24 100%);
+            --secondary-gradient: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            --success-gradient: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+            --danger-gradient: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
+            --dark-gradient: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            
+            /* Glass Effect */
             --glass-bg: rgba(255, 255, 255, 0.1);
             --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            
+            /* Text Colors */
             --text-primary: #ffffff;
             --text-secondary: rgba(255, 255, 255, 0.8);
-            --text-muted: rgba(255, 255, 255, 0.6);
-            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
-            --shadow-medium: 0 16px 64px rgba(0, 0, 0, 0.15);
-            --shadow-strong: 0 24px 96px rgba(0, 0, 0, 0.2);
+            --text-light: rgba(255, 255, 255, 0.6);
+            --text-dark: #1f2937;
+            
+            /* Effects */
+            --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --shadow-strong: 0 16px 48px rgba(0, 0, 0, 0.2);
+            --radius: 12px;
+            --radius-large: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -42,6 +62,7 @@
             animation: gradientShift 15s ease infinite;
             min-height: 100vh;
             color: var(--text-primary);
+            line-height: 1.6;
             overflow-x: hidden;
             position: relative;
         }
@@ -80,32 +101,32 @@
         .shape:nth-child(1) { 
             width: 120px; height: 120px; left: 10%; 
             animation-delay: 0s; 
-            background: linear-gradient(45deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            background: linear-gradient(45deg, rgba(220, 38, 38, 0.3), rgba(251, 191, 36, 0.3));
         }
         .shape:nth-child(2) { 
             width: 80px; height: 80px; left: 80%; 
             animation-delay: 2s; 
-            background: linear-gradient(45deg, rgba(240, 147, 251, 0.3), rgba(245, 87, 108, 0.3));
+            background: linear-gradient(45deg, rgba(251, 191, 36, 0.3), rgba(220, 38, 38, 0.3));
         }
         .shape:nth-child(3) { 
             width: 160px; height: 160px; left: 60%; 
             animation-delay: 4s; 
-            background: linear-gradient(45deg, rgba(79, 172, 254, 0.3), rgba(0, 242, 254, 0.3));
+            background: linear-gradient(45deg, rgba(139, 92, 246, 0.3), rgba(167, 139, 250, 0.3));
         }
         .shape:nth-child(4) { 
             width: 100px; height: 100px; left: 20%; 
             animation-delay: 6s; 
-            background: linear-gradient(45deg, rgba(67, 233, 123, 0.3), rgba(56, 249, 215, 0.3));
+            background: linear-gradient(45deg, rgba(16, 185, 129, 0.3), rgba(52, 211, 153, 0.3));
         }
         .shape:nth-child(5) { 
             width: 140px; height: 140px; left: 70%; 
             animation-delay: 8s; 
-            background: linear-gradient(45deg, rgba(250, 112, 154, 0.3), rgba(254, 225, 64, 0.3));
+            background: linear-gradient(45deg, rgba(239, 68, 68, 0.3), rgba(248, 113, 113, 0.3));
         }
         .shape:nth-child(6) { 
             width: 90px; height: 90px; left: 40%; 
             animation-delay: 10s; 
-            background: linear-gradient(45deg, rgba(30, 60, 114, 0.4), rgba(42, 82, 152, 0.4));
+            background: linear-gradient(45deg, rgba(251, 191, 36, 0.4), rgba(220, 38, 38, 0.4));
         }
 
         @keyframes float {
@@ -159,78 +180,223 @@
             }
         }
 
-        .container {
+        /* Enhanced Header */
+        .header {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .navbar {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
         }
 
-        /* Brand Header */
-        .brand-header {
-            text-align: center;
-            padding: 40px 0 20px;
-            margin-bottom: 40px;
-            position: relative;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: var(--transition);
         }
 
-        .brand-logo {
-            display: inline-block;
-            background: var(--glass-bg);
-            padding: 20px 40px;
-            border-radius: 50px;
-            backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow-medium);
-            animation: fadeInUp 0.8s ease-out;
+        .logo:hover {
+            transform: scale(1.05);
         }
 
-        .brand-name {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: -0.02em;
-        }
-
-        .brand-accent {
-            background: var(--accent-gradient);
+        .logo-icon {
+            font-size: 2.2rem;
+            background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: logoFloat 3s ease-in-out infinite;
         }
 
-        .brand-tagline {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-top: 8px;
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-yellow) 50%, var(--primary-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
             font-weight: 500;
-            letter-spacing: 1px;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+            font-size: 0.95rem;
         }
 
-        /* Enhanced Hero Section */
-        .hero {
-            text-align: center;
-            padding: 80px 0;
-            margin-bottom: 60px;
+        .nav-link:hover {
+            color: var(--primary-yellow);
+        }
+
+        .nav-link.active {
+            color: var(--primary-yellow);
+            font-weight: 600;
+        }
+
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #34d399;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            backdrop-filter: blur(20px);
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
             position: relative;
+        }
+
+        /* Enhanced Hero Section with Header Spacing */
+        .main-content {
+            margin-top: 80px; /* Account for fixed header */
+        }
+
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(251, 191, 36, 0.1) 0%, transparent 50%);
+            z-index: -1;
         }
 
         .hero-badge {
             display: inline-block;
             background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
             padding: 12px 24px;
             border-radius: 50px;
             font-size: 0.95rem;
             margin-bottom: 30px;
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
             font-weight: 600;
-            letter-spacing: 0.5px;
+            color: var(--text-primary);
             box-shadow: var(--shadow-soft);
-            animation: fadeInUp 1s ease-out;
+            animation: fadeInUp 0.8s ease-out;
             position: relative;
             overflow: hidden;
         }
@@ -253,18 +419,22 @@
 
         .hero-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(3rem, 8vw, 5rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 900;
             margin-bottom: 25px;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-title-main {
             background: linear-gradient(45deg, #fff, #f8f9fa, #fff, #e9ecef);
             background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            animation: titleShine 4s ease-in-out infinite, fadeInUp 1.2s ease-out;
-            position: relative;
+            animation: titleShine 4s ease-in-out infinite;
+            display: block;
         }
 
         @keyframes titleShine {
@@ -272,23 +442,27 @@
             50% { background-position: 100% 50%; }
         }
 
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
-            margin-bottom: 20px;
+        .hero-title-sub {
             color: var(--text-secondary);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            animation: fadeInUp 1.4s ease-out;
+            display: block;
+            margin-top: 10px;
         }
 
-        .hero-description {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            color: var(--text-muted);
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-secondary);
             max-width: 700px;
-            margin: 0 auto 50px;
-            line-height: 1.7;
-            font-weight: 400;
-            animation: fadeInUp 1.6s ease-out;
+            margin: 0 auto 40px;
+            font-weight: 500;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 50px;
+            animation: fadeInUp 1.4s ease-out;
         }
 
         @keyframes fadeInUp {
@@ -303,134 +477,670 @@
         }
 
         /* Enhanced Live Stats */
-        .live-stats {
+        .stats-section {
+            padding: 40px 0;
+            margin-bottom: 60px;
+        }
+
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
-            margin-bottom: 80px;
-            animation: fadeInUp 1.8s ease-out;
+            animation: fadeInUp 1.6s ease-out;
         }
 
-        .stat {
-            text-align: center;
+        .stat-card {
             background: var(--glass-bg);
-            padding: 35px 25px;
-            border-radius: 24px;
             backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: var(--radius-large);
+            padding: 30px 25px;
+            text-align: center;
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
             box-shadow: var(--shadow-soft);
         }
 
-        .stat::before {
+        .stat-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
+            height: 4px;
             background: var(--primary-gradient);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
-        .stat:hover::before {
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .stat-card:hover::before {
             opacity: 1;
         }
 
-        .stat::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.6s;
-        }
-
-        .stat:hover::after {
-            left: 100%;
-        }
-
-        .stat:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-medium);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
         .stat-number {
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 800;
-            display: block;
-            margin-bottom: 12px;
-            background: var(--accent-gradient);
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 8px;
+            display: block;
         }
 
         .stat-label {
             font-size: 1rem;
-            opacity: 0.9;
+            color: var(--text-secondary);
             font-weight: 600;
-            letter-spacing: 0.5px;
         }
 
-        .live-indicator {
+        .live-pulse {
             position: absolute;
             top: 15px;
             right: 15px;
             width: 12px;
             height: 12px;
-            background: #00ff88;
+            background: #10b981;
             border-radius: 50%;
             animation: pulse 2s infinite;
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
         }
 
         @keyframes pulse {
             0%, 100% { 
                 opacity: 1; 
                 transform: scale(1); 
-                box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+                box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
             }
             50% { 
                 opacity: 0.7; 
                 transform: scale(1.4); 
-                box-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.8);
             }
         }
 
         /* Enhanced Quiz Section */
         .quiz-section {
             background: var(--glass-bg);
-            border-radius: 32px;
-            padding: 60px;
             backdrop-filter: blur(30px);
             border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow-strong);
+            border-radius: var(--radius-large);
+            padding: 50px;
             margin-bottom: 60px;
+            box-shadow: var(--shadow-strong);
             position: relative;
             overflow: hidden;
-            animation: slideInUp 2s ease-out;
         }
 
-        /* YouTube Learning Section */
-        .youtube-section {
+        .quiz-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+            background-size: 400% 100%;
+            animation: rainbow 4s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .motivation-quote {
             background: var(--glass-bg);
-            border-radius: 32px;
-            padding: 60px;
-            backdrop-filter: blur(30px);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow-strong);
-            margin-bottom: 60px;
+            border-left: 4px solid var(--primary-yellow);
+            border-radius: var(--radius);
+            padding: 20px 25px;
+            margin-bottom: 40px;
+            font-style: italic;
+            color: var(--text-secondary);
+            position: relative;
+        }
+
+        .motivation-quote::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-size: 3rem;
+            color: var(--primary-yellow);
+            font-weight: bold;
+        }
+
+        /* Enhanced Questions */
+        .question {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-large);
+            padding: 35px;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .question:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .question-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .question-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: bold;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .physics-icon {
+            background: linear-gradient(135deg, #ef4444, #f87171);
+        }
+
+        .math-icon {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+        }
+
+        .chemistry-icon {
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+        }
+
+        .biology-icon {
+            background: linear-gradient(135deg, #10b981, #34d399);
+        }
+
+        .question-meta {
+            flex: 1;
+        }
+
+        .question-number {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .question-subject {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .options {
+            display: grid;
+            gap: 15px;
+        }
+
+        .option {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 2px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 20px 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
             position: relative;
             overflow: hidden;
-            animation: slideInUp 2.1s ease-out;
+        }
+
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.5s;
+        }
+
+        .option:hover::before {
+            left: 100%;
+        }
+
+        .option:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateX(8px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .option.selected {
+            border-color: var(--primary-yellow);
+            background: rgba(251, 191, 36, 0.2);
+            transform: translateX(8px);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .option.correct {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+            animation: correctPulse 0.6s ease-out;
+        }
+
+        .option.incorrect {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.3);
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+            animation: incorrectShake 0.6s ease-out;
+        }
+
+        @keyframes correctPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes incorrectShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Enhanced Submit Button */
+        .submit-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .submit-btn {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-medium);
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Enhanced Results */
+        .result {
+            margin-top: 40px;
+            padding: 30px;
+            border-radius: var(--radius-large);
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            backdrop-filter: blur(25px);
+            animation: resultSlideIn 0.8s ease-out;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .result.excellent {
+            background: rgba(16, 185, 129, 0.2);
+            border: 2px solid #10b981;
+            color: #34d399;
+        }
+
+        .result.good {
+            background: rgba(251, 191, 36, 0.2);
+            border: 2px solid #f59e0b;
+            color: #fbbf24;
+        }
+
+        .result.needs-improvement {
+            background: rgba(239, 68, 68, 0.2);
+            border: 2px solid #ef4444;
+            color: #f87171;
+        }
+
+        @keyframes resultSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Practice Questions Section - Enhanced */
+        .practice-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-large);
+            padding: 50px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow-strong);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .practice-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ef4444, #f59e0b, #8b5cf6, #10b981);
+            background-size: 400% 100%;
+            animation: rainbow 4s linear infinite;
+        }
+
+        .practice-questions {
+            display: grid;
+            gap: 25px;
+        }
+
+        .practice-question {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-large);
+            padding: 30px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .practice-question:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .practice-question-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .practice-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        .practice-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .practice-marks {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            width: fit-content;
+        }
+
+        .practice-subject {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .practice-question-text {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .solution-toggle {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .solution-toggle:hover::before {
+            left: 100%;
+        }
+
+        .solution-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .toggle-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .solution-toggle.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .solution-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .solution-dropdown.show {
+            max-height: 1000px;
+            opacity: 1;
+        }
+
+        .solution-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: var(--radius);
+            padding: 25px;
+            border: 1px solid var(--glass-border);
+            margin-top: 10px;
+        }
+
+        .solution-content h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #34d399;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .solution-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .solution-content strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .solution-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .solution-content li {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .equation {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: var(--radius);
+            padding: 15px;
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-yellow);
+            margin: 12px 0;
+            letter-spacing: 1px;
+        }
+
+        .structure-diagram {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            padding: 15px;
+            margin: 12px 0;
+            border: 1px solid var(--glass-border);
+        }
+
+        .structure-diagram pre {
+            color: var(--text-primary);
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            line-height: 1.3;
+            text-align: center;
+            margin: 0;
+        }
+
+        .solution-tip {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(220, 38, 38, 0.1));
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: var(--radius);
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .solution-tip i {
+            color: var(--primary-yellow);
+            font-size: 1rem;
+        }
+
+        .solution-tip span {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* YouTube Section - Enhanced */
+        .youtube-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-large);
+            padding: 50px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow-strong);
+            position: relative;
+            overflow: hidden;
         }
 
         .youtube-section::before {
@@ -440,57 +1150,33 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #ff0000, #ff4500, #ff6b35, #f7931e, #ffd700);
+            background: linear-gradient(90deg, #ff0000, #ff4500, #ff6b35);
             background-size: 400% 100%;
-            animation: rainbow 4s linear infinite;
+            animation: youtubeGlow 3s linear infinite;
         }
 
-        .youtube-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .youtube-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #fff, #f8f9fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.01em;
-        }
-
-        .youtube-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            color: var(--text-secondary);
-            margin-bottom: 35px;
-            font-weight: 500;
-        }
-
-        .youtube-content {
-            display: grid;
-            gap: 40px;
+        @keyframes youtubeGlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
         }
 
         .video-container {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 30px;
+            gap: 25px;
             background: var(--glass-bg);
-            border-radius: 24px;
-            padding: 30px;
-            border: 1px solid var(--glass-border);
             backdrop-filter: blur(20px);
+            border-radius: var(--radius);
+            padding: 25px;
+            border: 1px solid var(--glass-border);
         }
 
         .video-wrapper {
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            border-radius: 20px;
+            padding-bottom: 56.25%;
+            border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow-medium);
         }
@@ -501,18 +1187,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 20px;
-        }
-
-        .video-info {
-            text-align: center;
+            border-radius: var(--radius);
         }
 
         .video-title {
             font-family: 'Space Grotesk', sans-serif;
             font-size: clamp(1.4rem, 3vw, 1.8rem);
             font-weight: 700;
-            color: #fff;
+            color: var(--text-primary);
             margin-bottom: 15px;
             line-height: 1.3;
         }
@@ -527,31 +1209,31 @@
         .channel-section {
             display: grid;
             grid-template-columns: 1fr auto;
-            gap: 30px;
+            gap: 25px;
             align-items: center;
             background: var(--glass-bg);
-            border-radius: 24px;
-            padding: 30px;
-            border: 1px solid var(--glass-border);
             backdrop-filter: blur(20px);
+            border-radius: var(--radius);
+            padding: 25px;
+            border: 1px solid var(--glass-border);
         }
 
         .channel-info {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         .channel-avatar {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background: linear-gradient(135deg, #ff0000, #ff4500);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            color: #fff;
+            font-size: 1.5rem;
+            color: white;
             box-shadow: var(--shadow-soft);
         }
 
@@ -559,12 +1241,12 @@
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.4rem;
             font-weight: 700;
-            color: #fff;
+            color: var(--text-primary);
             margin-bottom: 8px;
         }
 
         .channel-stats {
-            color: var(--text-muted);
+            color: var(--text-light);
             font-size: 0.95rem;
             margin-bottom: 10px;
             font-weight: 600;
@@ -588,36 +1270,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 15px 25px;
+            gap: 8px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 50px;
-            font-size: 1rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition);
             text-decoration: none;
-            font-family: 'Space Grotesk', sans-serif;
             position: relative;
             overflow: hidden;
         }
 
         .subscribe-btn {
             background: linear-gradient(135deg, #ff0000, #ff4500);
-            color: #fff;
+            color: white;
             box-shadow: var(--shadow-soft);
         }
 
         .visit-channel-btn {
             background: rgba(255, 255, 255, 0.2);
-            color: #fff;
+            color: var(--text-primary);
             border: 1px solid var(--glass-border);
-        }
-
-        .subscribe-btn:hover,
-        .visit-channel-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: var(--shadow-medium);
         }
 
         .subscribe-btn::before,
@@ -637,738 +1312,136 @@
             left: 100%;
         }
 
-        /* Quick Practice Questions Section */
-        .practice-section {
-            background: var(--glass-bg);
-            border-radius: 32px;
-            padding: 60px;
-            backdrop-filter: blur(30px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow-strong);
-            margin-bottom: 60px;
-            position: relative;
-            overflow: hidden;
-            animation: slideInUp 2.05s ease-out;
+        .subscribe-btn:hover,
+        .visit-channel-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
         }
 
-        .practice-section::before {
+        /* Testimonials Section */
+        .testimonials-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-large);
+            padding: 50px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow-strong);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe);
-            background-size: 400% 100%;
-            animation: rainbow 4s linear infinite;
+            background: var(--primary-gradient);
         }
 
-        .practice-header {
-            text-align: center;
-            margin-bottom: 50px;
+        .testimonial-slider {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 15px;
+            scrollbar-width: none;
         }
 
-        .practice-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #fff, #f8f9fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.01em;
+        .testimonial-slider::-webkit-scrollbar {
+            display: none;
         }
 
-        .practice-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            color: var(--text-secondary);
-            margin-bottom: 35px;
-            font-weight: 500;
-        }
-
-        .practice-questions {
-            display: grid;
-            gap: 30px;
-        }
-
-        .practice-question {
+        .testimonial-card {
+            min-width: 350px;
             background: var(--glass-bg);
-            border-radius: 28px;
-            padding: 35px;
-            border: 1px solid var(--glass-border);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
             backdrop-filter: blur(20px);
+            border-radius: var(--radius);
+            padding: 25px;
+            border: 1px solid var(--glass-border);
             box-shadow: var(--shadow-soft);
+            scroll-snap-align: start;
+            transition: var(--transition);
         }
 
-        .practice-question:hover {
+        .testimonial-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-medium);
-            border-color: rgba(255, 255, 255, 0.3);
         }
 
-        .practice-question::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent-gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .practice-question:hover::before {
-            transform: scaleX(1);
-        }
-
-        .practice-question-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .practice-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .physics-practice {
-            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-        }
-
-        .math-practice {
-            background: linear-gradient(135deg, #4ecdc4, #44a08d);
-        }
-
-        .chemistry-practice {
-            background: linear-gradient(135deg, #45b7d1, #96c93d);
-        }
-
-        .biology-practice {
-            background: linear-gradient(135deg, #96ceb4, #fcea2b);
-        }
-
-        .practice-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .practice-marks {
-            background: var(--accent-gradient);
-            color: #000;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            width: fit-content;
-            letter-spacing: 0.5px;
-        }
-
-        .practice-subject {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #fff;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .practice-question-text {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            color: #fff;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            font-weight: 600;
-        }
-
-        .solution-toggle {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: #fff;
-            border: none;
-            border-radius: 25px;
-            padding: 15px 25px;
+        .testimonial-text {
             font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            margin-bottom: 20px;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .solution-toggle::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .solution-toggle:hover::before {
-            left: 100%;
-        }
-
-        .solution-toggle:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .toggle-icon {
-            transition: transform 0.3s ease;
-            margin-left: auto;
-        }
-
-        .solution-toggle.active .toggle-icon {
-            transform: rotate(180deg);
-        }
-
-        .solution-dropdown {
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-        }
-
-        .solution-dropdown.show {
-            max-height: 1000px;
-            opacity: 1;
-        }
-
-        .solution-content {
-            background: var(--glass-bg);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(15px);
-            margin-top: 10px;
-        }
-
-        .solution-content h4 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #00ff88;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .solution-content h4::before {
-            content: '💡';
-            font-size: 1.2rem;
-        }
-
-        .solution-content p {
             color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-style: italic;
             line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 1rem;
         }
 
-        .solution-content strong {
-            color: #fff;
-            font-weight: 700;
-        }
-
-        .solution-content ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        .solution-content li {
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-
-        .equation {
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #00ff88;
-            margin: 15px 0;
-            letter-spacing: 1px;
-        }
-
-        .structure-diagram {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px 0;
-            border: 1px solid var(--glass-border);
-        }
-
-        .structure-diagram pre {
-            color: #fff;
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-            line-height: 1.4;
-            text-align: center;
-            margin: 0;
-        }
-
-        .solution-tip {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.1));
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 15px;
-            padding: 15px 20px;
+        .testimonial-author {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-top: 20px;
         }
 
-        .solution-tip i {
-            color: #ffd700;
-            font-size: 1.1rem;
+        .author-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
-        .solution-tip span {
-            color: #fff;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .quiz-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
-            background-size: 400% 100%;
-            animation: rainbow 4s linear infinite;
-        }
-
-        @keyframes rainbow {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 400% 50%; }
-        }
-
-        .quiz-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .quiz-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #fff, #f8f9fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.01em;
-        }
-
-        .quiz-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            color: var(--text-secondary);
-            margin-bottom: 35px;
-            font-weight: 500;
-        }
-
-        .motivation-text {
-            background: var(--glass-bg);
-            padding: 25px 30px;
-            border-radius: 20px;
-            border-left: 4px solid #00ff88;
-            margin-bottom: 40px;
-            font-style: italic;
-            color: var(--text-secondary);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow-soft);
-            position: relative;
-        }
-
-        .motivation-text::before {
-            content: '"';
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            font-size: 3rem;
-            color: #00ff88;
-            font-weight: bold;
-        }
-
-        /* Enhanced Questions */
-        .question {
-            background: var(--glass-bg);
-            border-radius: 28px;
-            padding: 40px;
-            margin-bottom: 35px;
-            border: 1px solid var(--glass-border);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(20px);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .question:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .question::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent-gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .question:hover::before {
-            transform: scaleX(1);
-        }
-
-        .question-header {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .question-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .physics-icon {
-            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-        }
-
-        .math-icon {
-            background: linear-gradient(135deg, #4ecdc4, #44a08d);
-        }
-
-        .chemistry-icon {
-            background: linear-gradient(135deg, #45b7d1, #96c93d);
-        }
-
-        .biology-icon {
-            background: linear-gradient(135deg, #96ceb4, #fcea2b);
-        }
-
-        .question-meta {
-            flex: 1;
-        }
-
-        .question-number {
+        .author-info h4 {
             font-size: 1rem;
-            color: var(--text-muted);
-            margin-bottom: 8px;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+            color: var(--text-primary);
         }
 
-        .question-subject {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-            font-family: 'Space Grotesk', sans-serif;
+        .author-info p {
+            font-size: 0.85rem;
+            color: var(--text-light);
         }
 
-        .question-text {
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
-            color: #fff;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            font-weight: 600;
-        }
-
-        .options {
-            display: grid;
-            gap: 18px;
-        }
-
-        .option {
-            background: var(--glass-bg);
-            border: 2px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 24px 30px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(15px);
-        }
-
-        .option::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-            transition: left 0.5s;
-        }
-
-        .option:hover::before {
-            left: 100%;
-        }
-
-        .option:hover {
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateX(8px) scale(1.02);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .option.selected {
-            border-color: #00ff88;
-            background: rgba(0, 255, 136, 0.2);
-            transform: translateX(8px) scale(1.02);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
-        }
-
-        .option.correct {
-            border-color: #00ff88;
-            background: rgba(0, 255, 136, 0.3);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
-            animation: correctPulse 0.6s ease-out;
-        }
-
-        .option.incorrect {
-            border-color: #ff6b6b;
-            background: rgba(255, 107, 107, 0.3);
-            box-shadow: 0 0 30px rgba(255, 107, 107, 0.4);
-            animation: incorrectShake 0.6s ease-out;
-        }
-
-        @keyframes correctPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes incorrectShake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-
-        /* Enhanced Submit Button */
-        .submit-section {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .submit-btn {
-            background: var(--primary-gradient);
-            color: #fff;
-            border: none;
-            border-radius: 50px;
-            padding: 24px 60px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-medium);
-            letter-spacing: 0.5px;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s;
-        }
-
-        .submit-btn:hover::before {
-            left: 100%;
-        }
-
-        .submit-btn:hover:not(:disabled) {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: var(--shadow-strong);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .submit-btn:active {
-            transform: translateY(-2px) scale(1.02);
-        }
-
-        /* Enhanced Results */
-        .result {
-            margin-top: 50px;
-            padding: 40px;
-            border-radius: 28px;
-            text-align: center;
-            font-size: 1.4rem;
-            font-weight: 700;
-            backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border);
-            animation: resultSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow-medium);
-        }
-
-        @keyframes resultSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .result.excellent {
-            background: rgba(0, 255, 136, 0.2);
-            border-color: #00ff88;
-            color: #fff;
-            box-shadow: 0 0 40px rgba(0, 255, 136, 0.4);
-        }
-
-        .result.good {
-            background: rgba(78, 205, 196, 0.2);
-            border-color: #4ecdc4;
-            color: #fff;
-            box-shadow: 0 0 40px rgba(78, 205, 196, 0.4);
-        }
-
-        .result.needs-improvement {
-            background: rgba(255, 107, 107, 0.2);
-            border-color: #ff6b6b;
-            color: #fff;
-            box-shadow: 0 0 40px rgba(255, 107, 107, 0.4);
-        }
-
-        /* Enhanced Social Section */
+        /* Social Section - Enhanced */
         .social-section {
             background: var(--glass-bg);
-            border-radius: 28px;
-            padding: 50px;
-            backdrop-filter: blur(25px);
+            backdrop-filter: blur(30px);
             border: 1px solid var(--glass-border);
-            margin-bottom: 40px;
-            box-shadow: var(--shadow-medium);
-            animation: slideInUp 2.2s ease-out;
-        }
-
-        .social-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .social-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.4rem);
-            font-weight: 800;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, #fff, #f8f9fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .social-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            font-weight: 500;
+            border-radius: var(--radius-large);
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow-strong);
         }
 
         .social-buttons {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
         .social-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            padding: 20px 30px;
+            gap: 10px;
+            padding: 15px 20px;
             border: none;
-            border-radius: 24px;
-            font-size: 1.1rem;
+            border-radius: var(--radius);
+            font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition);
             text-decoration: none;
-            color: #fff;
+            color: white;
             position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow-soft);
         }
 
         .challenge-btn {
-            background: var(--danger-gradient);
+            background: var(--primary-gradient);
         }
 
         .whatsapp-btn {
@@ -1377,11 +1450,6 @@
 
         .telegram-btn {
             background: linear-gradient(135deg, #0088cc, #229ed9);
-        }
-
-        .social-btn:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: var(--shadow-medium);
         }
 
         .social-btn::before {
@@ -1399,62 +1467,52 @@
             left: 100%;
         }
 
-        /* Enhanced Leaderboard */
-        .leaderboard {
-            background: var(--glass-bg);
-            border-radius: 28px;
-            padding: 40px;
-            backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border);
+        .social-btn:hover {
+            transform: translateY(-3px) scale(1.02);
             box-shadow: var(--shadow-medium);
         }
 
-        .leaderboard-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .leaderboard-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 15px;
+        /* Leaderboard */
+        .leaderboard {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius);
+            padding: 30px;
+            border: 1px solid var(--glass-border);
         }
 
         .leaderboard-list {
             display: grid;
-            gap: 20px;
+            gap: 15px;
         }
 
         .leaderboard-item {
             display: flex;
             align-items: center;
-            gap: 25px;
-            padding: 25px;
+            gap: 20px;
+            padding: 20px;
             background: var(--glass-bg);
-            border-radius: 24px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid var(--glass-border);
             backdrop-filter: blur(15px);
+            border-radius: var(--radius);
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
         }
 
         .leaderboard-item:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px) scale(1.02);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-soft);
         }
 
         .rank {
-            width: 55px;
-            height: 55px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            color: #fff;
-            font-size: 1.3rem;
+            color: white;
+            font-size: 1.1rem;
             font-family: 'Space Grotesk', sans-serif;
         }
 
@@ -1472,13 +1530,11 @@
 
         .rank.bronze {
             background: linear-gradient(135deg, #cd7f32, #d4a574);
-            color: #fff;
             box-shadow: 0 0 25px rgba(205, 127, 50, 0.6);
         }
 
         .rank.other {
             background: var(--primary-gradient);
-            box-shadow: var(--shadow-soft);
         }
 
         .player-info {
@@ -1487,19 +1543,19 @@
 
         .player-name {
             font-weight: 700;
-            color: #fff;
+            color: var(--text-primary);
             font-size: 1.2rem;
             margin-bottom: 6px;
             font-family: 'Space Grotesk', sans-serif;
         }
 
         .player-score {
-            color: var(--text-muted);
+            color: var(--text-light);
             font-size: 1rem;
             font-weight: 500;
         }
 
-        /* Enhanced Name Modal */
+        /* Enhanced Modal */
         .modal {
             position: fixed;
             top: 0;
@@ -1508,13 +1564,13 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(15px);
-            z-index: 10003;
+            z-index: 10000;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
         }
 
         .modal.show {
@@ -1524,15 +1580,15 @@
 
         .modal-content {
             background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 32px;
-            padding: 60px;
             backdrop-filter: blur(30px);
-            max-width: 550px;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-large);
+            padding: 40px;
+            max-width: 500px;
             width: 90%;
             text-align: center;
             transform: scale(0.8);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.4s ease;
             box-shadow: var(--shadow-strong);
         }
 
@@ -1542,154 +1598,227 @@
 
         .modal-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.4rem;
+            font-size: 2rem;
             font-weight: 800;
-            color: #fff;
-            margin-bottom: 20px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
         }
 
         .modal-subtitle {
             color: var(--text-secondary);
-            margin-bottom: 35px;
-            font-size: 1.1rem;
-            font-weight: 500;
+            margin-bottom: 25px;
+            font-size: 1rem;
         }
 
         .name-input {
             width: 100%;
-            padding: 20px 28px;
+            padding: 15px 20px;
             border: 2px solid var(--glass-border);
-            border-radius: 24px;
+            border-radius: var(--radius);
             background: var(--glass-bg);
-            color: #fff;
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
             backdrop-filter: blur(15px);
-            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            transition: var(--transition);
         }
 
         .name-input:focus {
             outline: none;
-            border-color: #00ff88;
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
+            border-color: var(--primary-yellow);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
         }
 
         .name-input::placeholder {
-            color: var(--text-muted);
+            color: var(--text-light);
             font-weight: 500;
         }
 
         .modal-buttons {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
         }
 
         .modal-btn {
-            padding: 18px 35px;
+            padding: 12px 25px;
             border: none;
-            border-radius: 28px;
-            font-size: 1.1rem;
-            font-weight: 700;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-family: 'Space Grotesk', sans-serif;
+            transition: var(--transition);
         }
 
-        .btn-primary {
+        .btn-primary-modal {
             background: var(--primary-gradient);
-            color: #fff;
+            color: white;
             box-shadow: var(--shadow-soft);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .btn-secondary {
+        .btn-secondary-modal {
             background: rgba(255, 255, 255, 0.2);
-            color: #fff;
+            color: var(--text-primary);
             border: 1px solid var(--glass-border);
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.3);
+        .btn-primary-modal:hover,
+        .btn-secondary-modal:hover {
             transform: translateY(-2px);
         }
 
-        /* Enhanced Confetti Animation */
-        .confetti {
-            position: fixed;
-            width: 12px;
-            height: 12px;
+        /* Enhanced Footer */
+        .footer {
+            background: var(--dark-gradient);
+            color: white;
+            padding: 50px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-icon {
+            font-size: 1.8rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
-            pointer-events: none;
-            animation: confetti-fall 4s linear forwards;
-            z-index: 10001;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: white;
+            text-decoration: none;
         }
 
-        @keyframes confetti-fall {
-            to {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
+        .social-link:hover {
+            background: var(--primary-red);
+            transform: translateY(-2px);
         }
 
-        /* Progress Bar */
-        .progress-container {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-            margin: 30px 0;
-            overflow: hidden;
+        .footer-heading {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
         }
 
-        .progress-bar {
-            height: 100%;
-            background: var(--accent-gradient);
-            border-radius: 3px;
-            width: 0%;
-            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        .footer-links {
+            list-style: none;
         }
 
-        /* Notification */
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Notification System */
         .notification {
             position: fixed;
-            top: 20px;
+            top: 100px;
             right: 20px;
             left: 20px;
             background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            color: white;
-            padding: 16px 24px;
-            border-radius: 20px;
-            font-weight: 600;
-            z-index: 10002;
             backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            padding: 15px 20px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            z-index: 10001;
             box-shadow: var(--shadow-medium);
             transform: translateY(-100px);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition);
             text-align: center;
-            font-size: 0.95rem;
-            margin: 0 auto;
             max-width: 400px;
+            margin: 0 auto;
         }
 
         .notification.show {
             transform: translateY(0);
         }
 
+        .notification.success {
+            border-left: 4px solid #10b981;
+        }
+
+        .notification.error {
+            border-left: 4px solid #ef4444;
+        }
+
+        .notification.info {
+            border-left: 4px solid var(--primary-red);
+        }
+
         /* Image Support */
         .question-image,
-        .option-image,
         .solution-image {
             max-width: 100%;
             height: auto;
-            border-radius: 12px;
+            border-radius: var(--radius);
             margin: 15px 0;
             box-shadow: var(--shadow-soft);
             border: 1px solid var(--glass-border);
@@ -1698,217 +1827,39 @@
         .question-image {
             max-height: 300px;
             object-fit: contain;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.1);
             padding: 10px;
         }
 
         .option-image {
-            max-height: 80px;
-            max-width: 120px;
+            max-height: 60px;
+            max-width: 80px;
             float: left;
-            margin-right: 15px;
-            margin-bottom: 10px;
+            margin-right: 10px;
+            margin-bottom: 5px;
         }
 
         .solution-image {
-            max-height: 400px;
+            max-height: 350px;
             object-fit: contain;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            margin: 15px 0;
         }
 
         .image-caption {
-            font-size: 0.85rem;
-            color: var(--text-muted);
+            font-size: 0.8rem;
+            color: var(--text-light);
             text-align: center;
-            margin-top: 8px;
+            margin-top: 5px;
             font-style: italic;
-        }
-
-        /* Enhanced Mobile Responsive Design */
-        @media (max-width: 768px) {
-            .hero { padding: 50px 0; }
-            .quiz-section { padding: 30px 20px; }
-            .practice-section { padding: 30px 20px; }
-            .youtube-section { padding: 30px 20px; }
-            .question { padding: 25px 18px; }
-            .practice-question { padding: 20px 15px; }
-            .modal-content { padding: 30px 20px; }
-            .modal-buttons { flex-direction: column; gap: 15px; }
-            .social-buttons { grid-template-columns: 1fr; }
-            .live-stats { grid-template-columns: 1fr; gap: 20px; }
-            .brand-header { padding: 25px 0 15px; }
-            .brand-logo { padding: 15px 25px; }
-            .video-container { padding: 20px; }
-            .channel-section { 
-                grid-template-columns: 1fr; 
-                gap: 20px; 
-                text-align: center; 
-                padding: 20px; 
-            }
-            .channel-info { 
-                flex-direction: column; 
-                text-align: center; 
-                gap: 15px; 
-            }
-            .channel-actions { 
-                flex-direction: row; 
-                justify-content: center; 
-                gap: 15px;
-            }
-            .practice-question-header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-            .solution-content { padding: 20px; }
-            
-            /* Mobile notification fix */
-            .notification {
-                top: 15px;
-                right: 15px;
-                left: 15px;
-                padding: 14px 20px;
-                font-size: 0.9rem;
-                border-radius: 16px;
-            }
-            
-            /* Ensure modals don't interfere */
-            .modal {
-                padding: 20px;
-            }
-            
-            /* Option text wrapping for mobile */
-            .option {
-                padding: 20px 24px;
-                font-size: 1.1rem;
-                line-height: 1.4;
-            }
-            
-            /* Question text responsive */
-            .question-text {
-                font-size: 1.2rem;
-                line-height: 1.5;
-            }
-            
-            .practice-question-text {
-                font-size: 1.1rem;
-                line-height: 1.5;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container { padding: 12px; }
-            .hero { padding: 35px 0; }
-            .quiz-section { padding: 25px 15px; }
-            .practice-section { padding: 25px 15px; }
-            .youtube-section { padding: 25px 15px; }
-            .question { padding: 20px 15px; }
-            .practice-question { padding: 18px 12px; }
-            .question-header { flex-direction: column; gap: 12px; text-align: center; }
-            .brand-header { padding: 20px 0 10px; }
-            .brand-logo { padding: 12px 20px; }
-            .video-container { padding: 15px; }
-            .channel-section { padding: 15px; }
-            .channel-actions { 
-                flex-direction: column; 
-                gap: 12px; 
-            }
-            .subscribe-btn, .visit-channel-btn {
-                padding: 12px 18px;
-                font-size: 0.9rem;
-            }
-            .solution-toggle {
-                padding: 12px 18px;
-                font-size: 0.9rem;
-                gap: 8px;
-            }
-            .solution-content { 
-                padding: 15px; 
-            }
-            .equation {
-                font-size: 0.95rem;
-                padding: 12px;
-            }
-            
-            /* Ultra mobile notification */
-            .notification {
-                top: 10px;
-                right: 10px;
-                left: 10px;
-                padding: 12px 16px;
-                font-size: 0.85rem;
-                border-radius: 14px;
-                max-width: none;
-            }
-            
-            /* Smaller modal for mobile */
-            .modal-content {
-                padding: 25px 15px;
-                margin: 10px;
-                border-radius: 24px;
-            }
-            
-            .modal-title {
-                font-size: 2rem;
-            }
-            
-            /* Smaller options on mobile */
-            .option {
-                padding: 16px 20px;
-                font-size: 1rem;
-                border-radius: 20px;
-            }
-            
-            /* Adjust question icons for mobile */
-            .question-icon,
-            .practice-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-            
-            /* Mobile image adjustments */
-            .question-image {
-                max-height: 200px;
-                padding: 8px;
-            }
-            
-            .option-image {
-                max-height: 60px;
-                max-width: 80px;
-                margin-right: 10px;
-            }
-            
-            .solution-image {
-                max-height: 250px;
-                padding: 10px;
-            }
-        }
-
-        /* Ultra small screens */
-        @media (max-width: 360px) {
-            .notification {
-                font-size: 0.8rem;
-                padding: 10px 14px;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .option {
-                padding: 14px 16px;
-                font-size: 0.95rem;
-            }
         }
 
         /* Loading Animation */
         .loading {
             display: inline-block;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border: 3px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             border-top-color: #fff;
@@ -1917,6 +1868,139 @@
 
         @keyframes spin {
             to { transform: rotate(360deg); }
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 60px 0 40px;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .quiz-section,
+            .practice-section,
+            .youtube-section,
+            .testimonials-section,
+            .social-section {
+                padding: 30px 20px;
+            }
+            
+            .question,
+            .practice-question {
+                padding: 25px 15px;
+            }
+            
+            .question-header,
+            .practice-question-header {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+            
+            .channel-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .channel-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                text-align: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .testimonial-card {
+                min-width: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 12px 15px;
+            }
+            
+            .hero {
+                padding: 40px 0 30px;
+            }
+            
+            .quiz-section,
+            .practice-section,
+            .youtube-section,
+            .testimonials-section,
+            .social-section {
+                padding: 25px 15px;
+            }
+            
+            .question,
+            .practice-question {
+                padding: 20px 12px;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+                margin: 15px;
+            }
+            
+            .modal-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .question-icon,
+            .practice-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: confetti-fall 3s linear forwards;
+            z-index: 10002;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -1936,427 +2020,559 @@
     <!-- Particles -->
     <div class="particles" id="particles"></div>
 
-    <div class="container">
-        <!-- Brand Header -->
-        <div class="brand-header">
-            <div class="brand-logo">
-                <span class="brand-name">Simplified<span class="brand-accent">Minds</span></span>
-                <span class="brand-tagline">Empowering Young Minds</span>
-            </div>
-        </div>
-
-        <!-- Enhanced Hero Section -->
-        <section class="hero">
-            <div class="hero-badge">🚀 Your Journey to Excellence Starts Here</div>
-            <h1 class="hero-title">SSLC TOPPERS</h1>
-            <h2 class="hero-subtitle">Master Every Subject, Excel Every Day</h2>
-            <p class="hero-description">
-                Join thousands of ambitious students on their path to academic excellence. 
-                Challenge yourself, compete with friends, and become the scholar you're meant to be.
-            </p>
+    <!-- Enhanced Header -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-graduation-cap logo-icon"></i>
+                <span class="logo-text">SimplifiedMinds</span>
+            </a>
             
-            <!-- Progress Bar -->
-            <div class="progress-container">
-                <div class="progress-bar" id="heroProgress"></div>
-            </div>
-        </section>
-
-        <!-- Enhanced Live Stats -->
-        <section class="live-stats">
-            <div class="stat">
-                <div class="live-indicator"></div>
-                <span class="stat-number" id="dailyQuizzes">365</span>
-                <div class="stat-label">Daily Quizzes</div>
-            </div>
-            <div class="stat">
-                <div class="live-indicator"></div>
-                <span class="stat-number" id="totalStudents">25.8K</span>
-                <div class="stat-label">Active Students</div>
-            </div>
-            <div class="stat">
-                <div class="live-indicator"></div>
-                <span class="stat-number" id="liveCounter">0</span>
-                <div class="stat-label">Quiz Takers Today</div>
-            </div>
-        </section>
-
-        <!-- Enhanced Quiz Section -->
-        <section class="quiz-section">
-            <div class="quiz-header">
-                <h2 class="quiz-title">Today's Challenge</h2>
-                <p class="quiz-subtitle">Ready to test your knowledge and climb the leaderboard?</p>
-                <div class="motivation-text">
-                    💡 Success is the sum of small efforts repeated day in and day out. Take today's quiz and move one step closer to your dreams!
-                </div>
-            </div>
-
-            <div id="quiz-content">
-                <!-- Question 1 -->
-                <div class="question">
-                    <div class="question-header">
-                        <div class="question-icon physics-icon">⚡</div>
-                        <div class="question-meta">
-                            <div class="question-number">Question 1 of 2</div>
-                            <div class="question-subject">Physics</div>
-                        </div>
-                    </div>
-                    <div class="question-text">
-                        What is the SI unit of electric current shown in the circuit diagram below?
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Simple_circuit.svg/400px-Simple_circuit.svg.png" alt="Simple electric circuit" class="question-image">
-                        <div class="image-caption">Figure 1: Simple electric circuit with battery, resistor and ammeter</div>
-                    </div>
-                    <div class="options">
-                        <div class="option" data-question="1" data-answer="a">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Ammeter_symbol.svg/60px-Ammeter_symbol.svg.png" alt="Ampere symbol" class="option-image">
-                            A) Ampere (A)
-                        </div>
-                        <div class="option" data-question="1" data-answer="b">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Voltmeter_symbol.svg/60px-Voltmeter_symbol.svg.png" alt="Volt symbol" class="option-image">
-                            B) Volt (V)
-                        </div>
-                        <div class="option" data-question="1" data-answer="c">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Resistor_symbol_America.svg/60px-Resistor_symbol_America.svg.png" alt="Ohm symbol" class="option-image">
-                            C) Ohm (Ω)
-                        </div>
-                        <div class="option" data-question="1" data-answer="d">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Wattmeter_symbol.svg/60px-Wattmeter_symbol.svg.png" alt="Watt symbol" class="option-image">
-                            D) Watt (W)
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 2 -->
-                <div class="question">
-                    <div class="question-header">
-                        <div class="question-icon math-icon">∫</div>
-                        <div class="question-meta">
-                            <div class="question-number">Question 2 of 2</div>
-                            <div class="question-subject">Mathematics</div>
-                        </div>
-                    </div>
-                    <div class="question-text">
-                        Based on the logarithmic graph shown below, if log₂(x) = 3, what is the value of x?
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Binary_logarithm_plot_with_ticks.svg/400px-Binary_logarithm_plot_with_ticks.svg.png" alt="Logarithmic graph" class="question-image">
-                        <div class="image-caption">Figure 2: Graph of y = log₂(x) showing the relationship between x and y</div>
-                    </div>
-                    <div class="options">
-                        <div class="option" data-question="2" data-answer="a">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/6_Dice.svg/80px-6_Dice.svg.png" alt="Number 6" class="option-image">
-                            A) 6
-                        </div>
-                        <div class="option" data-question="2" data-answer="b">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/8_dots.svg/80px-8_dots.svg.png" alt="Number 8" class="option-image">
-                            B) 8
-                        </div>
-                        <div class="option" data-question="2" data-answer="c">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/9_dots.svg/80px-9_dots.svg.png" alt="Number 9" class="option-image">
-                            C) 9
-                        </div>
-                        <div class="option" data-question="2" data-answer="d">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/12_dots.svg/80px-12_dots.svg.png" alt="Number 12" class="option-image">
-                            D) 12
-                        </div>
-                    </div>
-                </div>
-
-                <div class="submit-section">
-                    <button class="submit-btn" id="submitBtn" disabled>
-                        <i class="fas fa-paper-plane"></i>
-                        Submit Your Answers
-                    </button>
-                    <div id="result"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quick Practice Questions Section -->
-        <section class="practice-section">
-            <div class="practice-header">
-                <h2 class="practice-title">⚡ Quick Practice Questions</h2>
-                <p class="practice-subtitle">Boost your knowledge with these important 1-2 mark questions</p>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#quiz-section" class="nav-link">Daily Quiz</a>
+                <a href="#practice-section" class="nav-link">Practice</a>
+                <a href="#youtube-section" class="nav-link">Learn</a>
+                <a href="#leaderboard-section" class="nav-link">Leaderboard</a>
             </div>
             
-            <div class="practice-questions">
-                <!-- Practice Question 1 -->
-                <div class="practice-question">
-                    <div class="practice-question-header">
-                        <div class="practice-icon physics-practice">⚡</div>
-                        <div class="practice-meta">
-                            <span class="practice-marks">1 Mark</span>
-                            <span class="practice-subject">Physics</span>
+            <div class="header-actions">
+                <div class="live-indicator">
+                    <div class="live-dot"></div>
+                    <span>Live Quiz</span>
+                </div>
+                <a href="#" class="btn btn-outline">Login</a>
+                <a href="#" class="btn btn-primary">Join Free</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <!-- Enhanced Hero Section -->
+            <section class="hero">
+                <div class="hero-badge" id="home">🚀 Your Journey to SSLC Excellence Starts Here</div>
+                <h1 class="hero-title">
+                    <span class="hero-title-main">SSLC TOPPERS</span>
+                    <span class="hero-title-sub">Master Every Subject, Excel Every Day</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Join thousands of ambitious students on their path to academic excellence. 
+                    Challenge yourself daily, compete with friends, and become the scholar you're meant to be.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="#quiz-section" class="btn btn-primary">
+                        <i class="fas fa-play"></i> Take Today's Quiz
+                    </a>
+                    <a href="#practice-section" class="btn btn-outline">
+                        <i class="fas fa-book-open"></i> Practice Questions
+                    </a>
+                </div>
+            </section>
+
+            <!-- Enhanced Live Stats -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="live-pulse"></div>
+                        <span class="stat-number" id="dailyQuizzes">365</span>
+                        <div class="stat-label">Daily Quizzes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="live-pulse"></div>
+                        <span class="stat-number" id="totalStudents">25.8K</span>
+                        <div class="stat-label">Active Students</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="live-pulse"></div>
+                        <span class="stat-number" id="liveCounter">0</span>
+                        <div class="stat-label">Quiz Takers Today</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="live-pulse"></div>
+                        <span class="stat-number">98%</span>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Enhanced Quiz Section -->
+            <section class="quiz-section" id="quiz-section">
+                <div class="section-header">
+                    <h2 class="section-title">Today's Challenge</h2>
+                    <p class="section-subtitle">Ready to test your knowledge and climb the leaderboard?</p>
+                    <div class="motivation-quote">
+                        💡 Success is the sum of small efforts repeated day in and day out. Take today's quiz and move one step closer to your dreams!
+                    </div>
+                </div>
+
+                <div id="quiz-content">
+                    <!-- Question 1 -->
+                    <div class="question">
+                        <div class="question-header">
+                            <div class="question-icon physics-icon">⚡</div>
+                            <div class="question-meta">
+                                <div class="question-number">Question 1 of 2</div>
+                                <div class="question-subject">Physics</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="practice-question-text">
-                        Based on the circuit diagram shown below, define electric current and state its SI unit.
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Electric_current_flow.svg/400px-Electric_current_flow.svg.png" alt="Electric current flow in circuit" class="question-image">
-                        <div class="image-caption">Figure: Electric current flow in a simple circuit with conventional current direction</div>
-                    </div>
-                    <button class="solution-toggle" onclick="toggleSolution('solution1')">
-                        <i class="fas fa-lightbulb"></i>
-                        <span>View Solution</span>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
-                    </button>
-                    <div class="solution-dropdown" id="solution1">
-                        <div class="solution-content">
-                            <h4>Solution:</h4>
-                            <p><strong>Electric Current:</strong> Electric current is defined as the rate of flow of electric charge through a conductor.</p>
-                            <p><strong>Formula:</strong> I = Q/t</p>
-                            <p>Where: I = Current, Q = Charge, t = Time</p>
-                            
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Current_notation.svg/300px-Current_notation.svg.png" alt="Current flow diagram" class="solution-image">
-                            <div class="image-caption">Diagram showing conventional current flow from positive to negative terminal</div>
-                            
-                            <p><strong>SI Unit:</strong> Ampere (A)</p>
-                            <div class="solution-tip">
-                                <i class="fas fa-star"></i>
-                                <span>Remember: 1 Ampere = 1 Coulomb/second</span>
+                        <div class="question-text">
+                            What is the SI unit of electric current shown in the circuit diagram below?
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Electric_current_flow.svg/400px-Electric_current_flow.svg.png" alt="Simple electric circuit" class="question-image">
+                            <div class="image-caption">Figure 1: Simple electric circuit with battery, resistor and ammeter</div>
+                        </div>
+                        <div class="options">
+                            <div class="option" data-question="1" data-answer="a">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Ammeter_symbol.svg/60px-Ammeter_symbol.svg.png" alt="Ampere symbol" class="option-image">
+                                A) Ampere (A)
+                            </div>
+                            <div class="option" data-question="1" data-answer="b">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Voltmeter_symbol.svg/60px-Voltmeter_symbol.svg.png" alt="Volt symbol" class="option-image">
+                                B) Volt (V)
+                            </div>
+                            <div class="option" data-question="1" data-answer="c">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Resistor_symbol_America.svg/60px-Resistor_symbol_America.svg.png" alt="Ohm symbol" class="option-image">
+                                C) Ohm (Ω)
+                            </div>
+                            <div class="option" data-question="1" data-answer="d">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Wattmeter_symbol.svg/60px-Wattmeter_symbol.svg.png" alt="Watt symbol" class="option-image">
+                                D) Watt (W)
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Practice Question 2 -->
-                <div class="practice-question">
-                    <div class="practice-question-header">
-                        <div class="practice-icon math-practice">∫</div>
-                        <div class="practice-meta">
-                            <span class="practice-marks">2 Marks</span>
-                            <span class="practice-subject">Mathematics</span>
+                    <!-- Question 2 -->
+                    <div class="question">
+                        <div class="question-header">
+                            <div class="question-icon math-icon">∫</div>
+                            <div class="question-meta">
+                                <div class="question-number">Question 2 of 2</div>
+                                <div class="question-subject">Mathematics</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="practice-question-text">
-                        Using the logarithmic properties shown in the graph below, solve: If log₂(x) = 5, find the value of x. Also, verify your answer.
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logarithm_plots.png/400px-Logarithm_plots.png" alt="Logarithmic functions graph" class="question-image">
-                        <div class="image-caption">Figure: Comparison of different logarithmic functions including log₂(x)</div>
-                    </div>
-                    <button class="solution-toggle" onclick="toggleSolution('solution2')">
-                        <i class="fas fa-lightbulb"></i>
-                        <span>View Solution</span>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
-                    </button>
-                    <div class="solution-dropdown" id="solution2">
-                        <div class="solution-content">
-                            <h4>Solution:</h4>
-                            <p><strong>Given:</strong> log₂(x) = 5</p>
-                            <p><strong>Step 1:</strong> Convert to exponential form</p>
-                            <p>If log₂(x) = 5, then x = 2⁵</p>
-                            
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Powers_of_2.svg/400px-Powers_of_2.svg.png" alt="Powers of 2 diagram" class="solution-image">
-                            <div class="image-caption">Visual representation of powers of 2: 2¹, 2², 2³, 2⁴, 2⁵</div>
-                            
-                            <p><strong>Step 2:</strong> Calculate the value</p>
-                            <p>x = 2⁵ = 2 × 2 × 2 × 2 × 2 = 32</p>
-                            <p><strong>Step 3:</strong> Verification</p>
-                            <p>Check: log₂(32) = log₂(2⁵) = 5 ✓</p>
-                            <p><strong>Answer:</strong> x = 32</p>
-                            <div class="solution-tip">
-                                <i class="fas fa-star"></i>
-                                <span>Key concept: log_a(x) = n means x = aⁿ</span>
+                        <div class="question-text">
+                            Based on the logarithmic graph shown below, if log₂(x) = 3, what is the value of x?
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Binary_logarithm_plot_with_ticks.svg/400px-Binary_logarithm_plot_with_ticks.svg.png" alt="Logarithmic graph" class="question-image">
+                            <div class="image-caption">Figure 2: Graph of y = log₂(x) showing the relationship between x and y</div>
+                        </div>
+                        <div class="options">
+                            <div class="option" data-question="2" data-answer="a">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/6_Dice.svg/80px-6_Dice.svg.png" alt="Number 6" class="option-image">
+                                A) 6
+                            </div>
+                            <div class="option" data-question="2" data-answer="b">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/8_dots.svg/80px-8_dots.svg.png" alt="Number 8" class="option-image">
+                                B) 8
+                            </div>
+                            <div class="option" data-question="2" data-answer="c">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/9_dots.svg/80px-9_dots.svg.png" alt="Number 9" class="option-image">
+                                C) 9
+                            </div>
+                            <div class="option" data-question="2" data-answer="d">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/12_dots.svg/80px-12_dots.svg.png" alt="Number 12" class="option-image">
+                                D) 12
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Practice Question 3 -->
-                <div class="practice-question">
-                    <div class="practice-question-header">
-                        <div class="practice-icon chemistry-practice">⚗️</div>
-                        <div class="practice-meta">
-                            <span class="practice-marks">1 Mark</span>
-                            <span class="practice-subject">Chemistry</span>
+                    <div class="submit-section">
+                        <button class="submit-btn" id="submitBtn" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Your Answers
+                        </button>
+                        <div id="result"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Enhanced Practice Questions Section -->
+            <section class="practice-section" id="practice-section">
+                <div class="section-header">
+                    <h2 class="section-title">⚡ Quick Practice Questions</h2>
+                    <p class="section-subtitle">Boost your knowledge with these important 1-2 mark questions</p>
+                </div>
+                
+                <div class="practice-questions">
+                    <!-- Practice Question 1 -->
+                    <div class="practice-question">
+                        <div class="practice-question-header">
+                            <div class="practice-icon physics-icon">⚡</div>
+                            <div class="practice-meta">
+                                <span class="practice-marks">1 Mark</span>
+                                <span class="practice-subject">Physics</span>
+                            </div>
+                        </div>
+                        <div class="practice-question-text">
+                            Based on the circuit diagram shown below, define electric current and state its SI unit.
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Electric_current_flow.svg/400px-Electric_current_flow.svg.png" alt="Electric current flow in circuit" class="question-image">
+                            <div class="image-caption">Figure: Electric current flow in a simple circuit with conventional current direction</div>
+                        </div>
+                        <button class="solution-toggle" onclick="toggleSolution('solution1')">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>View Solution</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <div class="solution-dropdown" id="solution1">
+                            <div class="solution-content">
+                                <h4><i class="fas fa-lightbulb"></i> Solution:</h4>
+                                <p><strong>Electric Current:</strong> Electric current is defined as the rate of flow of electric charge through a conductor.</p>
+                                <p><strong>Formula:</strong> I = Q/t</p>
+                                <p>Where: I = Current, Q = Charge, t = Time</p>
+                                
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Current_notation.svg/300px-Current_notation.svg.png" alt="Current flow diagram" class="solution-image">
+                                <div class="image-caption">Diagram showing conventional current flow from positive to negative terminal</div>
+                                
+                                <p><strong>SI Unit:</strong> Ampere (A)</p>
+                                <div class="solution-tip">
+                                    <i class="fas fa-star"></i>
+                                    <span>Remember: 1 Ampere = 1 Coulomb/second</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="practice-question-text">
-                        Observe the molecular structure shown below. What is the molecular formula of this compound? Draw its Lewis structure.
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Methane-3D-balls.png/300px-Methane-3D-balls.png" alt="Methane 3D structure" class="question-image">
-                        <div class="image-caption">Figure: 3D ball-and-stick model of the simplest hydrocarbon molecule</div>
+
+                    <!-- Practice Question 2 -->
+                    <div class="practice-question">
+                        <div class="practice-question-header">
+                            <div class="practice-icon math-icon">∫</div>
+                            <div class="practice-meta">
+                                <span class="practice-marks">2 Marks</span>
+                                <span class="practice-subject">Mathematics</span>
+                            </div>
+                        </div>
+                        <div class="practice-question-text">
+                            Using the logarithmic properties shown in the graph below, solve: If log₂(x) = 5, find the value of x. Also, verify your answer.
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logarithm_plots.png/400px-Logarithm_plots.png" alt="Logarithmic functions graph" class="question-image">
+                            <div class="image-caption">Figure: Comparison of different logarithmic functions including log₂(x)</div>
+                        </div>
+                        <button class="solution-toggle" onclick="toggleSolution('solution2')">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>View Solution</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <div class="solution-dropdown" id="solution2">
+                            <div class="solution-content">
+                                <h4><i class="fas fa-lightbulb"></i> Solution:</h4>
+                                <p><strong>Given:</strong> log₂(x) = 5</p>
+                                <p><strong>Step 1:</strong> Convert to exponential form</p>
+                                <p>If log₂(x) = 5, then x = 2⁵</p>
+                                
+                                <div class="equation">
+                                    x = 2⁵ = 2 × 2 × 2 × 2 × 2 = 32
+                                </div>
+                                
+                                <p><strong>Step 2:</strong> Verification</p>
+                                <p>Check: log₂(32) = log₂(2⁵) = 5 ✓</p>
+                                <p><strong>Answer:</strong> x = 32</p>
+                                <div class="solution-tip">
+                                    <i class="fas fa-star"></i>
+                                    <span>Key concept: log_a(x) = n means x = aⁿ</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <button class="solution-toggle" onclick="toggleSolution('solution3')">
-                        <i class="fas fa-lightbulb"></i>
-                        <span>View Solution</span>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
-                    </button>
-                    <div class="solution-dropdown" id="solution3">
-                        <div class="solution-content">
-                            <h4>Solution:</h4>
-                            <p><strong>Molecular Formula:</strong> CH₄ (Methane)</p>
-                            
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Methane-2D-dimensions.svg/300px-Methane-2D-dimensions.svg.png" alt="Methane 2D structure" class="solution-image">
-                            <div class="image-caption">2D Lewis structure of methane showing bond angles and lengths</div>
-                            
-                            <p><strong>Lewis Structure:</strong></p>
-                            <div class="structure-diagram">
-                                <pre>
+
+                    <!-- Practice Question 3 -->
+                    <div class="practice-question">
+                        <div class="practice-question-header">
+                            <div class="practice-icon chemistry-icon">⚗️</div>
+                            <div class="practice-meta">
+                                <span class="practice-marks">1 Mark</span>
+                                <span class="practice-subject">Chemistry</span>
+                            </div>
+                        </div>
+                        <div class="practice-question-text">
+                            Observe the molecular structure shown below. What is the molecular formula of this compound? Draw its Lewis structure.
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Methane-3D-balls.png/300px-Methane-3D-balls.png" alt="Methane 3D structure" class="question-image">
+                            <div class="image-caption">Figure: 3D ball-and-stick model of the simplest hydrocarbon molecule</div>
+                        </div>
+                        <button class="solution-toggle" onclick="toggleSolution('solution3')">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>View Solution</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <div class="solution-dropdown" id="solution3">
+                            <div class="solution-content">
+                                <h4><i class="fas fa-lightbulb"></i> Solution:</h4>
+                                <p><strong>Molecular Formula:</strong> CH₄ (Methane)</p>
+                                
+                                <p><strong>Lewis Structure:</strong></p>
+                                <div class="structure-diagram">
+                                    <pre>
     H
     |
 H—C—H    (Bond angle: 109.5°)
     |
     H
-                                </pre>
+                                    </pre>
+                                </div>
+                                
+                                <p><strong>Details:</strong></p>
+                                <ul>
+                                    <li>1 Carbon atom bonded to 4 Hydrogen atoms</li>
+                                    <li>Tetrahedral geometry with 109.5° bond angles</li>
+                                    <li>Simplest alkane (saturated hydrocarbon)</li>
+                                    <li>sp³ hybridization of carbon</li>
+                                </ul>
+                                <div class="solution-tip">
+                                    <i class="fas fa-star"></i>
+                                    <span>Remember: Methane is the simplest member of the alkane family (CₙH₂ₙ₊₂)</span>
+                                </div>
                             </div>
-                            
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Methane-tetrahedral-3D-balls.png/250px-Methane-tetrahedral-3D-balls.png" alt="Methane tetrahedral structure" class="solution-image">
-                            <div class="image-caption">Tetrahedral geometry of methane molecule showing sp³ hybridization</div>
-                            
-                            <p><strong>Details:</strong></p>
-                            <ul>
-                                <li>1 Carbon atom bonded to 4 Hydrogen atoms</li>
-                                <li>Tetrahedral geometry with 109.5° bond angles</li>
-                                <li>Simplest alkane (saturated hydrocarbon)</li>
-                                <li>Also known as natural gas</li>
-                                <li>sp³ hybridization of carbon</li>
-                            </ul>
-                            <div class="solution-tip">
-                                <i class="fas fa-star"></i>
-                                <span>Remember: Methane is the simplest member of the alkane family (CₙH₂ₙ₊₂)</span>
+                        </div>
+                    </div>
+
+                    <!-- Practice Question 4 -->
+                    <div class="practice-question">
+                        <div class="practice-question-header">
+                            <div class="practice-icon biology-icon">🧬</div>
+                            <div class="practice-meta">
+                                <span class="practice-marks">2 Marks</span>
+                                <span class="practice-subject">Biology</span>
+                            </div>
+                        </div>
+                        <div class="practice-question-text">
+                            Study the leaf cross-section diagram below. Explain the process of photosynthesis and write the overall chemical equation.
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Leaf_tissue_structure.svg/400px-Leaf_tissue_structure.svg.png" alt="Leaf cross-section structure" class="question-image">
+                            <div class="image-caption">Figure: Cross-section of a leaf showing chloroplast-containing cells where photosynthesis occurs</div>
+                        </div>
+                        <button class="solution-toggle" onclick="toggleSolution('solution4')">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>View Solution</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <div class="solution-dropdown" id="solution4">
+                            <div class="solution-content">
+                                <h4><i class="fas fa-lightbulb"></i> Solution:</h4>
+                                <p><strong>Photosynthesis:</strong> The process by which green plants convert carbon dioxide and water into glucose using sunlight and chlorophyll.</p>
+                                
+                                <p><strong>Chemical Equation:</strong></p>
+                                <div class="equation">
+                                    6CO₂ + 6H₂O + Light Energy → C₆H₁₂O₆ + 6O₂
+                                </div>
+                                
+                                <p><strong>Process Details:</strong></p>
+                                <ul>
+                                    <li><strong>Reactants:</strong> Carbon dioxide (CO₂), Water (H₂O), Light energy</li>
+                                    <li><strong>Products:</strong> Glucose (C₆H₁₂O₆), Oxygen (O₂)</li>
+                                    <li><strong>Location:</strong> Chloroplasts (mainly in mesophyll cells of leaves)</li>
+                                    <li><strong>Catalyst:</strong> Chlorophyll pigment</li>
+                                    <li><strong>Two stages:</strong> Light reactions (thylakoids) and Calvin cycle (stroma)</li>
+                                </ul>
+                                
+                                <div class="solution-tip">
+                                    <i class="fas fa-star"></i>
+                                    <span>Remember: Light reaction produces ATP & NADPH, Calvin cycle uses them to make glucose</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Practice Question 4 -->
-                <div class="practice-question">
-                    <div class="practice-question-header">
-                        <div class="practice-icon biology-practice">🧬</div>
-                        <div class="practice-meta">
-                            <span class="practice-marks">2 Marks</span>
-                            <span class="practice-subject">Biology</span>
-                        </div>
-                    </div>
-                    <div class="practice-question-text">
-                        Study the leaf cross-section diagram below. Explain the process of photosynthesis and write the overall chemical equation.
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Leaf_tissue_structure.svg/400px-Leaf_tissue_structure.svg.png" alt="Leaf cross-section structure" class="question-image">
-                        <div class="image-caption">Figure: Cross-section of a leaf showing chloroplast-containing cells where photosynthesis occurs</div>
-                    </div>
-                    <button class="solution-toggle" onclick="toggleSolution('solution4')">
-                        <i class="fas fa-lightbulb"></i>
-                        <span>View Solution</span>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
-                    </button>
-                    <div class="solution-dropdown" id="solution4">
-                        <div class="solution-content">
-                            <h4>Solution:</h4>
-                            <p><strong>Photosynthesis:</strong> The process by which green plants convert carbon dioxide and water into glucose using sunlight and chlorophyll.</p>
-                            
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Photosynthesis_overview.svg/400px-Photosynthesis_overview.svg.png" alt="Photosynthesis process diagram" class="solution-image">
-                            <div class="image-caption">Overview of photosynthesis showing light reactions and Calvin cycle in chloroplasts</div>
-                            
-                            <p><strong>Chemical Equation:</strong></p>
-                            <div class="equation">
-                                6CO₂ + 6H₂O + Light Energy → C₆H₁₂O₆ + 6O₂
-                            </div>
-                            
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Chloroplast_structure.svg/350px-Chloroplast_structure.svg.png" alt="Chloroplast structure" class="solution-image">
-                            <div class="image-caption">Internal structure of chloroplast showing thylakoids and stroma where different stages occur</div>
-                            
-                            <p><strong>Process Details:</strong></p>
-                            <ul>
-                                <li><strong>Reactants:</strong> Carbon dioxide (CO₂), Water (H₂O), Light energy</li>
-                                <li><strong>Products:</strong> Glucose (C₆H₁₂O₆), Oxygen (O₂)</li>
-                                <li><strong>Location:</strong> Chloroplasts (mainly in mesophyll cells of leaves)</li>
-                                <li><strong>Catalyst:</strong> Chlorophyll pigment</li>
-                                <li><strong>Two stages:</strong> Light reactions (thylakoids) and Calvin cycle (stroma)</li>
-                            </ul>
-                            
-                            <div class="solution-tip">
-                                <i class="fas fa-star"></i>
-                                <span>Remember: Light reaction produces ATP & NADPH, Calvin cycle uses them to make glucose</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- YouTube Learning Section -->
-        <section class="youtube-section">
-            <div class="youtube-header">
-                <h2 class="youtube-title">📚 Learn With Us</h2>
-                <p class="youtube-subtitle">Master concepts with our expert explanations and join our learning community</p>
-            </div>
-            
-            <div class="youtube-content">
-                <div class="video-container">
-                    <div class="video-wrapper">
-                        <!-- Replace YOUR_VIDEO_ID with actual YouTube video ID -->
-                        <iframe 
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&showinfo=0&modestbranding=1" 
-                            title="SSLC Physics Explained" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3 class="video-title">Master SSLC Physics - Electric Current Explained</h3>
-                        <p class="video-description">
-                            🔬 Understand the fundamental concepts of electric current, resistance, and voltage with our expert explanations. Perfect preparation for your SSLC exams!
-                        </p>
-                    </div>
+            <!-- Enhanced YouTube Learning Section -->
+            <section class="youtube-section" id="youtube-section">
+                <div class="section-header">
+                    <h2 class="section-title">📚 Learn With Our Experts</h2>
+                    <p class="section-subtitle">Master concepts with our expert explanations and join our learning community</p>
                 </div>
                 
-                <div class="channel-section">
-                    <div class="channel-info">
-                        <div class="channel-avatar">
-                            <i class="fab fa-youtube"></i>
+                <div class="youtube-content">
+                    <div class="video-container">
+                        <div class="video-wrapper">
+                            <iframe 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&showinfo=0&modestbranding=1" 
+                                title="SSLC Physics Explained" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
                         </div>
-                        <div class="channel-details">
-                            <h4 class="channel-name">SimplifiedMinds Academy</h4>
-                            <p class="channel-stats">50K+ subscribers • 500+ videos</p>
-                            <p class="channel-description">Your ultimate destination for SSLC exam preparation with expert teachers and comprehensive explanations.</p>
+                        <div class="video-info">
+                            <h3 class="video-title">Master SSLC Physics - Electric Current Explained</h3>
+                            <p class="video-description">
+                                🔬 Understand the fundamental concepts of electric current, resistance, and voltage with our expert explanations. Perfect preparation for your SSLC exams!
+                            </p>
                         </div>
                     </div>
                     
-                    <div class="channel-actions">
-                        <!-- Replace YOUR_CHANNEL_ID with actual YouTube channel ID -->
-                        <a href="https://www.youtube.com/channel/UCyour_channel_id?sub_confirmation=1" target="_blank" class="subscribe-btn">
-                            <i class="fab fa-youtube"></i>
-                            Subscribe Now
-                        </a>
-                        <a href="https://www.youtube.com/channel/UCyour_channel_id" target="_blank" class="visit-channel-btn">
-                            <i class="fas fa-external-link-alt"></i>
-                            Visit Channel
-                        </a>
+                    <div class="channel-section">
+                        <div class="channel-info">
+                            <div class="channel-avatar">
+                                <i class="fab fa-youtube"></i>
+                            </div>
+                            <div class="channel-details">
+                                <h4 class="channel-name">SimplifiedMinds Academy</h4>
+                                <p class="channel-stats">50K+ subscribers • 500+ videos</p>
+                                <p class="channel-description">Your ultimate destination for SSLC exam preparation with expert teachers and comprehensive explanations.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="channel-actions">
+                            <a href="https://www.youtube.com/channel/UCyour_channel_id?sub_confirmation=1" target="_blank" class="subscribe-btn">
+                                <i class="fab fa-youtube"></i>
+                                Subscribe Now
+                            </a>
+                            <a href="https://www.youtube.com/channel/UCyour_channel_id" target="_blank" class="visit-channel-btn">
+                                <i class="fas fa-external-link-alt"></i>
+                                Visit Channel
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Enhanced Social Section -->
-        <section class="social-section">
-            <div class="social-header">
-                <h2 class="social-title">🌟 Share Your Achievement</h2>
-                <p class="social-subtitle">Challenge your friends and build a community of learners</p>
+            <!-- Enhanced Testimonials Section -->
+            <section class="testimonials-section">
+                <div class="section-header">
+                    <h2 class="section-title">🌟 Student Success Stories</h2>
+                    <p class="section-subtitle">Hear from students who transformed their learning with SimplifiedMinds</p>
+                </div>
+                
+                <div class="testimonial-slider">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            "Before SimplifiedMinds, I struggled with physics concepts. The daily quiz system and practice questions helped me improve from 65% to 92% in just 3 months. The explanations are crystal clear!"
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Student" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Priya Sharma</h4>
+                                <p>SSLC Student, Bangalore</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            "The daily challenges keep me motivated to study consistently. I love competing with my friends on the leaderboard. Mathematics has become my favorite subject now!"
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Student" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Arjun Kumar</h4>
+                                <p>SSLC Student, Mysore</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            "The practice questions with detailed solutions saved my board exams. I could understand complex chemistry concepts easily. Thank you SimplifiedMinds team!"
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Student" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Sneha Reddy</h4>
+                                <p>SSLC Graduate, Hubli</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Enhanced Social Section -->
+            <section class="social-section" id="leaderboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">🌟 Share Your Achievement</h2>
+                    <p class="section-subtitle">Challenge your friends and build a community of learners</p>
+                </div>
+                
+                <div class="social-buttons">
+                    <button class="social-btn challenge-btn" onclick="challengeFriend()">
+                        <i class="fas fa-users"></i>
+                        Challenge Friends
+                    </button>
+                    <a href="#" class="social-btn whatsapp-btn" id="whatsappShare">
+                        <i class="fab fa-whatsapp"></i>
+                        Share on WhatsApp
+                    </a>
+                    <a href="#" class="social-btn telegram-btn" id="telegramShare">
+                        <i class="fab fa-telegram"></i>
+                        Share on Telegram
+                    </a>
+                </div>
+
+                <!-- Enhanced Leaderboard -->
+                <div class="leaderboard">
+                    <div class="section-header">
+                        <h3 class="section-title">🏆 Today's Champions</h3>
+                    </div>
+                    <div class="leaderboard-list" id="leaderboardList">
+                        <div style="text-align: center; color: var(--text-secondary); padding: 20px;">
+                            Be the first to take today's quiz and claim the top spot! 🚀
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Enhanced Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <i class="fas fa-graduation-cap footer-logo-icon"></i>
+                        <span class="footer-logo-text">SimplifiedMinds</span>
+                    </div>
+                    <p class="footer-description">
+                        Empowering SSLC students with daily challenges, comprehensive practice questions, and expert guidance to achieve academic excellence.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-heading">Subjects</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Physics</a></li>
+                        <li><a href="#">Mathematics</a></li>
+                        <li><a href="#">Chemistry</a></li>
+                        <li><a href="#">Biology</a></li>
+                        <li><a href="#">Social Science</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Daily Quizzes</a></li>
+                        <li><a href="#">Practice Tests</a></li>
+                        <li><a href="#">Video Lessons</a></li>
+                        <li><a href="#">Study Materials</a></li>
+                        <li><a href="#">Previous Papers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-heading">Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
             </div>
             
-            <div class="social-buttons">
-                <button class="social-btn challenge-btn" onclick="challengeFriend()">
-                    <i class="fas fa-users"></i>
-                    Challenge Friends
-                </button>
-                <a href="#" class="social-btn whatsapp-btn" id="whatsappShare">
-                    <i class="fab fa-whatsapp"></i>
-                    Share on WhatsApp
-                </a>
-                <a href="#" class="social-btn telegram-btn" id="telegramShare">
-                    <i class="fab fa-telegram"></i>
-                    Share on Telegram
-                </a>
-            </div>
-
-            <!-- Enhanced Leaderboard -->
-            <div class="leaderboard">
-                <div class="leaderboard-header">
-                    <h3 class="leaderboard-title">🏆 Today's Champions</h3>
-                </div>
-                <div class="leaderboard-list" id="leaderboardList">
-                    <div style="text-align: center; color: rgba(255, 255, 255, 0.7); padding: 20px;">
-                        Be the first to take today's quiz and claim the top spot! 🚀
-                    </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2024 SimplifiedMinds. All rights reserved. Empowering young minds to achieve excellence.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </footer>
 
     <!-- Enhanced Name Modal -->
     <div class="modal" id="nameModal">
@@ -2365,8 +2581,8 @@ H—C—H    (Bond angle: 109.5°)
             <p class="modal-subtitle">Enter your name to join the leaderboard and track your progress</p>
             <input type="text" id="nameInput" class="name-input" placeholder="Enter your name (e.g., Arjun K.)" maxlength="20">
             <div class="modal-buttons">
-                <button class="modal-btn btn-primary" onclick="saveName()">Join Community</button>
-                <button class="modal-btn btn-secondary" onclick="skipName()">Continue Anonymously</button>
+                <button class="modal-btn btn-primary-modal" onclick="saveName()">Join Community</button>
+                <button class="modal-btn btn-secondary-modal" onclick="skipName()">Continue Anonymously</button>
             </div>
         </div>
     </div>
@@ -2574,24 +2790,17 @@ H—C—H    (Bond angle: 109.5°)
             setInterval(addParticle, 2000);
         }
 
-        // Enhanced progress bar animation
-        function animateProgressBar() {
-            const progressBar = document.getElementById('heroProgress');
-            let progress = 0;
+        // Enhanced header scroll effect
+        function initializeHeaderEffect() {
+            const header = document.getElementById('header');
             
-            const interval = setInterval(() => {
-                progress += Math.random() * 2;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        progress = 0;
-                        progressBar.style.width = '0%';
-                        setTimeout(animateProgressBar, 1000);
-                    }, 2000);
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
                 }
-                progressBar.style.width = progress + '%';
-            }, 100);
+            });
         }
 
         // ENHANCED QUIZ FUNCTIONALITY
@@ -2619,18 +2828,12 @@ H—C—H    (Bond angle: 109.5°)
                         this.style.transform = '';
                     }, 300);
                     
-                    // Sound effect simulation (visual feedback)
-                    this.style.background = 'rgba(0, 255, 136, 0.3)';
-                    setTimeout(() => {
-                        this.style.background = '';
-                    }, 200);
-                    
                     // Enable submit button if all questions answered
                     if (Object.keys(selectedAnswers).length === 2) {
                         const submitBtn = document.getElementById('submitBtn');
                         submitBtn.disabled = false;
                         submitBtn.style.transform = 'scale(1.1)';
-                        submitBtn.style.boxShadow = '0 0 30px rgba(102, 126, 234, 0.6)';
+                        submitBtn.style.boxShadow = '0 0 30px rgba(251, 191, 36, 0.6)';
                         setTimeout(() => {
                             submitBtn.style.transform = '';
                             submitBtn.style.boxShadow = '';
@@ -2689,9 +2892,9 @@ H—C—H    (Bond angle: 109.5°)
 
             // Initialize everything with enhanced startup
             initializeFirebase();
+            initializeHeaderEffect();
             updateSocialLinks();
             createParticles();
-            animateProgressBar();
             userStartTime = Date.now();
             
             // Add Enter key functionality
@@ -2709,6 +2912,20 @@ H—C—H    (Bond angle: 109.5°)
                         skipName();
                     }
                 }
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
             });
         });
 
@@ -2749,7 +2966,7 @@ H—C—H    (Bond angle: 109.5°)
 
         // Enhanced confetti animation
         function createEnhancedConfetti() {
-            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#667eea', '#764ba2'];
+            const colors = ['#dc2626', '#fbbf24', '#8b5cf6', '#10b981', '#ef4444', '#f59e0b'];
             
             for (let i = 0; i < 100; i++) {
                 setTimeout(() => {
@@ -2764,7 +2981,7 @@ H—C—H    (Bond angle: 109.5°)
                     
                     setTimeout(() => {
                         confetti.remove();
-                    }, 4000);
+                    }, 3000);
                 }, i * 30);
             }
         }
@@ -2791,8 +3008,8 @@ H—C—H    (Bond angle: 109.5°)
             const inputName = nameInput.value.trim();
             
             if (inputName.length < 2) {
-                nameInput.style.borderColor = '#ff6b6b';
-                nameInput.style.boxShadow = '0 0 20px rgba(255, 107, 107, 0.4)';
+                nameInput.style.borderColor = '#ef4444';
+                nameInput.style.boxShadow = '0 0 20px rgba(239, 68, 68, 0.4)';
                 nameInput.placeholder = 'Please enter at least 2 characters';
                 return;
             }
@@ -2873,14 +3090,8 @@ Daily Science & Math Challenge 📚`;
             existingNotifications.forEach(notification => notification.remove());
             
             const notification = document.createElement('div');
-            notification.className = 'notification';
+            notification.className = `notification ${type}`;
             
-            let bgColor = 'rgba(0, 255, 136, 0.9)';
-            if (type === 'error') bgColor = 'rgba(255, 107, 107, 0.9)';
-            if (type === 'info') bgColor = 'rgba(79, 172, 254, 0.9)';
-            if (type === 'success') bgColor = 'rgba(0, 255, 136, 0.9)';
-            
-            notification.style.background = bgColor;
             notification.innerHTML = `
                 <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
                     <span>${message}</span>
@@ -2919,7 +3130,7 @@ Daily Science & Math Challenge 📚`;
                 buttonText.textContent = 'View Solution';
                 
                 // Button animation
-                button.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
+                button.style.background = 'linear-gradient(135deg, #dc2626, #fbbf24)';
                 
             } else {
                 // Show solution
@@ -2928,7 +3139,7 @@ Daily Science & Math Challenge 📚`;
                 buttonText.textContent = 'Hide Solution';
                 
                 // Button animation
-                button.style.background = 'linear-gradient(135deg, #00ff88, #38f9d7)';
+                button.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
                 
                 // Scroll to solution with smooth animation
                 setTimeout(() => {
@@ -2963,77 +3174,46 @@ Daily Science & Math Challenge 📚`;
         `;
         document.head.appendChild(style);
 
-        console.log('🌟 SSLC Toppers - Enhanced Version - Inspiring Academic Excellence! 🚀');
+        console.log('🌟 SimplifiedMinds - SSLC Toppers Enhanced - Inspiring Academic Excellence! 🚀');
 
-        /*
-        🖼️ COMPLETE EXAMPLES OF QUESTIONS WITH IMAGES:
+// Update active navigation link based on scroll position
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
 
-        1️⃣ **PHYSICS MCQ WITH CIRCUIT DIAGRAM:**
-        ✅ Question shows actual circuit diagram
-        ✅ Options have electrical symbols as images
-        ✅ Solution includes current flow diagram
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+}
 
-        2️⃣ **MATHEMATICS MCQ WITH GRAPH:**
-        ✅ Question shows logarithmic graph
-        ✅ Options use visual number representations
-        ✅ Solution includes powers of 2 diagram
+// Listen for scroll events
+window.addEventListener('scroll', updateActiveNavLink);
 
-        3️⃣ **CHEMISTRY PRACTICE WITH MOLECULAR MODELS:**
-        ✅ Question shows 3D molecular structure
-        ✅ Solution includes multiple molecular diagrams
-        ✅ 2D Lewis structure + 3D tetrahedral model
-
-        4️⃣ **BIOLOGY PRACTICE WITH BIOLOGICAL DIAGRAMS:**
-        ✅ Question shows leaf cross-section
-        ✅ Solution includes photosynthesis process diagram
-        ✅ Chloroplast structure with detailed labeling
-
-        📝 **MORE EXAMPLE QUESTION TYPES YOU CAN CREATE:**
-
-        🔬 **PHYSICS EXAMPLES:**
-        - Ray diagrams for optics
-        - Wave interference patterns
-        - Magnetic field lines
-        - Electronic circuit symbols
-        - Pendulum motion diagrams
-
-        ⚗️ **CHEMISTRY EXAMPLES:**
-        - Periodic table sections
-        - Chemical apparatus diagrams
-        - Molecular orbital diagrams
-        - pH indicator color charts
-        - Crystal structure models
-
-        🧬 **BIOLOGY EXAMPLES:**
-        - Cell organelle diagrams
-        - Human organ systems
-        - Plant anatomy sections
-        - Microscopic images
-        - Evolutionary trees
-
-        📐 **MATHEMATICS EXAMPLES:**
-        - Geometric shapes and theorems
-        - Function graphs and plots
-        - Statistical charts and graphs
-        - Trigonometric unit circles
-        - Coordinate geometry diagrams
-
-        🌐 **RELIABLE IMAGE SOURCES:**
-        • Wikimedia Commons (educational, free)
-        • NASA Image Gallery (space/science)
-        • NIH Image Gallery (biology/medicine)
-        • Khan Academy resources
-        • OpenStax textbook images
-        • Your own diagrams/photos
-
-        💡 **PRO TIPS FOR BETTER QUESTIONS:**
-        • Use high-contrast images for better visibility
-        • Include descriptive captions for context
-        • Ensure images are relevant to the question
-        • Test images on mobile devices
-        • Use consistent image styling
-        • Always provide alt text for accessibility
-        */
+// Handle click events for smooth scrolling (already in your code)
+document.querySelectorAll('.nav-link[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
     </script>
 </body>
 </html>
