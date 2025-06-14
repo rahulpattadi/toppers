@@ -244,32 +244,33 @@
             letter-spacing: -0.02em;
         }
 
-        /* Mobile Menu Button */
+        /* FIXED: Mobile Menu Button - Always visible on mobile */
         .mobile-menu-btn {
             display: none;
-            background: var(--glass-bg);
+            background: var(--primary-gradient);
             backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
+            border: none;
             border-radius: var(--radius);
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             cursor: pointer;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
             position: relative;
             z-index: 1001;
+            box-shadow: var(--shadow-soft);
         }
 
         .mobile-menu-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
             transform: scale(1.05);
+            box-shadow: var(--shadow-medium);
         }
 
         .hamburger {
-            width: 20px;
+            width: 22px;
             height: 2px;
-            background: var(--text-primary);
+            background: white;
             position: relative;
             transition: var(--transition);
         }
@@ -278,18 +279,18 @@
         .hamburger::after {
             content: '';
             position: absolute;
-            width: 20px;
+            width: 22px;
             height: 2px;
-            background: var(--text-primary);
+            background: white;
             transition: var(--transition);
         }
 
         .hamburger::before {
-            top: -6px;
+            top: -7px;
         }
 
         .hamburger::after {
-            top: 6px;
+            top: 7px;
         }
 
         .mobile-menu-btn.active .hamburger {
@@ -375,25 +376,29 @@
             justify-content: center;
             align-items: center;
             height: 100%;
-            gap: 30px;
+            gap: 25px;
             padding-top: 80px;
         }
 
         .mobile-nav-link {
             color: var(--text-primary);
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            padding: 15px 30px;
+            padding: 15px 40px;
             border-radius: var(--radius);
             transition: var(--transition);
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            width: 250px;
+            width: 280px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .mobile-nav-link::before {
@@ -422,20 +427,20 @@
 
         .mobile-nav-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 25px;
+            right: 25px;
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 50%;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             color: var(--text-primary);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             transition: var(--transition);
         }
 
@@ -1183,6 +1188,7 @@
             transform: rotate(180deg);
         }
 
+        /* FIXED: Solution dropdown - Better mobile responsiveness */
         .solution-dropdown {
             max-height: 0;
             overflow: hidden;
@@ -1191,7 +1197,7 @@
         }
 
         .solution-dropdown.show {
-            max-height: 1000px;
+            max-height: 2000px; /* Increased for mobile */
             opacity: 1;
         }
 
@@ -1202,6 +1208,8 @@
             padding: 25px;
             border: 1px solid var(--glass-border);
             margin-top: 10px;
+            word-wrap: break-word; /* Better text wrapping */
+            overflow-wrap: break-word;
         }
 
         .solution-content h4 {
@@ -1219,6 +1227,7 @@
             color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 12px;
+            word-wrap: break-word;
         }
 
         .solution-content strong {
@@ -1235,6 +1244,7 @@
             color: var(--text-secondary);
             margin-bottom: 8px;
             line-height: 1.5;
+            word-wrap: break-word;
         }
 
         .equation {
@@ -1249,6 +1259,7 @@
             color: var(--primary-yellow);
             margin: 12px 0;
             letter-spacing: 1px;
+            word-wrap: break-word;
         }
 
         .structure-diagram {
@@ -1257,6 +1268,7 @@
             padding: 15px;
             margin: 12px 0;
             border: 1px solid var(--glass-border);
+            overflow-x: auto; /* Allow horizontal scroll for diagrams */
         }
 
         .structure-diagram pre {
@@ -1266,6 +1278,7 @@
             line-height: 1.3;
             text-align: center;
             margin: 0;
+            white-space: pre-wrap; /* Better wrapping */
         }
 
         .solution-tip {
@@ -1277,17 +1290,20 @@
             align-items: center;
             gap: 10px;
             margin-top: 15px;
+            flex-wrap: wrap; /* Better mobile wrapping */
         }
 
         .solution-tip i {
             color: var(--primary-yellow);
             font-size: 1rem;
+            flex-shrink: 0;
         }
 
         .solution-tip span {
             color: var(--text-primary);
             font-weight: 600;
             font-size: 0.9rem;
+            word-wrap: break-word;
         }
 
         /* YouTube Section - Enhanced */
@@ -1478,7 +1494,7 @@
             box-shadow: var(--shadow-medium);
         }
 
-        /* Testimonials Section */
+        /* FIXED: Testimonials Section with Navigation Dots */
         .testimonials-section {
             background: var(--glass-bg);
             backdrop-filter: blur(30px);
@@ -1501,6 +1517,10 @@
             background: var(--primary-gradient);
         }
 
+        .testimonial-container {
+            position: relative;
+        }
+
         .testimonial-slider {
             display: flex;
             gap: 25px;
@@ -1508,6 +1528,7 @@
             scroll-snap-type: x mandatory;
             padding-bottom: 15px;
             scrollbar-width: none;
+            scroll-behavior: smooth;
         }
 
         .testimonial-slider::-webkit-scrollbar {
@@ -1562,6 +1583,39 @@
         .author-info p {
             font-size: 0.85rem;
             color: var(--text-light);
+        }
+
+        /* FIXED: Testimonial Navigation Dots */
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .testimonial-dot.active {
+            background: var(--primary-yellow);
+            transform: scale(1.2);
+        }
+
+        .testimonial-nav-hint {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
         }
 
         /* Social Section - Enhanced */
@@ -2048,7 +2102,7 @@
             }
         }
 
-        /* Enhanced Mobile Responsive Design */
+        /* ENHANCED MOBILE RESPONSIVE DESIGN */
         @media (max-width: 1024px) {
             .footer-content {
                 grid-template-columns: 1fr 1fr;
@@ -2071,14 +2125,15 @@
             }
         }
 
+        /* CRITICAL MOBILE FIXES */
         @media (max-width: 768px) {
-            /* Mobile Navigation */
+            /* FIXED: Show mobile menu button and hide desktop nav */
             .mobile-menu-btn {
-                display: flex;
+                display: flex !important;
             }
             
             .nav-links {
-                display: none;
+                display: none !important;
             }
             
             .header-actions {
@@ -2151,6 +2206,26 @@
                 width: 50px;
                 height: 50px;
                 font-size: 1.3rem;
+            }
+            
+            /* FIXED: Better solution content mobile responsiveness */
+            .solution-content {
+                padding: 20px 15px;
+                font-size: 0.95rem;
+            }
+            
+            .solution-content h4 {
+                font-size: 1.1rem;
+            }
+            
+            .equation {
+                font-size: 1rem;
+                padding: 12px;
+            }
+            
+            .structure-diagram {
+                padding: 12px;
+                font-size: 0.9rem;
             }
             
             .footer-content {
@@ -2284,6 +2359,13 @@
             .player-score {
                 font-size: 0.9rem;
             }
+            
+            /* FIXED: Mobile navigation links */
+            .mobile-nav-link {
+                width: 260px;
+                font-size: 1.2rem;
+                padding: 12px 30px;
+            }
         }
 
         @media (max-width: 320px) {
@@ -2306,6 +2388,11 @@
             
             .section-title {
                 font-size: 1.5rem;
+            }
+            
+            .mobile-nav-link {
+                width: 240px;
+                font-size: 1.1rem;
             }
         }
 
@@ -2331,7 +2418,7 @@
     <!-- Particles -->
     <div class="particles" id="particles"></div>
 
-    <!-- Enhanced Header with Mobile Support -->
+    <!-- FIXED: Enhanced Header with Visible Mobile Support -->
     <header class="header" id="header">
         <nav class="navbar">
             <a href="#" class="logo">
@@ -2355,7 +2442,7 @@
                 <a href="#" class="btn btn-outline">Login</a>
                 <a href="#" class="btn btn-primary">Join Free</a>
                 
-                <!-- Mobile Menu Button -->
+                <!-- FIXED: Mobile Menu Button -->
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <div class="hamburger"></div>
                 </button>
@@ -2363,7 +2450,7 @@
         </nav>
     </header>
 
-    <!-- Mobile Navigation Overlay -->
+    <!-- FIXED: Mobile Navigation Overlay -->
     <div class="mobile-nav-overlay" id="mobileNavOverlay">
         <div class="mobile-nav-close" id="mobileNavClose">
             <i class="fas fa-times"></i>
@@ -2624,7 +2711,8 @@
                         </div>
                         <div class="practice-question-text">
                             Observe the molecular structure shown below. What is the molecular formula of this compound? Draw its Lewis structure.
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Methane-3D-balls.png/300px-Methane-3D-balls.png" alt="Methane 3D structure" class="question-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/<!-- Continuing from Practice Question 3 -->
+5/58/Methane-3D-balls.png/300px-Methane-3D-balls.png" alt="Methane 3D structure" class="question-image">
                             <div class="image-caption">Figure: 3D ball-and-stick model of the simplest hydrocarbon molecule</div>
                         </div>
                         <button class="solution-toggle" onclick="toggleSolution('solution3')">
@@ -2673,8 +2761,7 @@ H—C—H    (Bond angle: 109.5°)
                             </div>
                         </div>
                         <div class="practice-question-text">
-                            Study the leaf cross-section diagram below. Explain the process of photosynthesis <!-- Continuing from the Biology Practice Question -->
-                            and write the overall chemical equation.
+                            Study the leaf cross-section diagram below. Explain the process of photosynthesis and write the overall chemical equation.
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Leaf_tissue_structure.svg/400px-Leaf_tissue_structure.svg.png" alt="Leaf cross-section structure" class="question-image">
                             <div class="image-caption">Figure: Cross-section of a leaf showing chloroplast-containing cells where photosynthesis occurs</div>
                         </div>
@@ -2764,51 +2851,65 @@ H—C—H    (Bond angle: 109.5°)
                 </div>
             </section>
 
-            <!-- Enhanced Testimonials Section -->
+            <!-- FIXED: Enhanced Testimonials Section with Navigation -->
             <section class="testimonials-section">
                 <div class="section-header">
                     <h2 class="section-title">🌟 Student Success Stories</h2>
                     <p class="section-subtitle">Hear from students who transformed their learning with SimplifiedMinds</p>
                 </div>
                 
-                <div class="testimonial-slider">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">
-                            "Before SimplifiedMinds, I struggled with physics concepts. The daily quiz system and practice questions helped me improve from 65% to 92% in just 3 months. The explanations are crystal clear!"
-                        </p>
-                        <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Student" class="author-avatar">
-                            <div class="author-info">
-                                <h4>Priya Sharma</h4>
-                                <p>SSLC Student, Bangalore</p>
+                <div class="testimonial-container">
+                    <div class="testimonial-slider" id="testimonialSlider">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">
+                                "Before SimplifiedMinds, I struggled with physics concepts. The daily quiz system and practice questions helped me improve from 65% to 92% in just 3 months. The explanations are crystal clear!"
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Student" class="author-avatar">
+                                <div class="author-info">
+                                    <h4>Priya Sharma</h4>
+                                    <p>SSLC Student, Bangalore</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">
+                                "The daily challenges keep me motivated to study consistently. I love competing with my friends on the leaderboard. Mathematics has become my favorite subject now!"
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Student" class="author-avatar">
+                                <div class="author-info">
+                                    <h4>Arjun Kumar</h4>
+                                    <p>SSLC Student, Mysore</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">
+                                "The practice questions with detailed solutions saved my board exams. I could understand complex chemistry concepts easily. Thank you SimplifiedMinds team!"
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Student" class="author-avatar">
+                                <div class="author-info">
+                                    <h4>Sneha Reddy</h4>
+                                    <p>SSLC Graduate, Hubli</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">
-                            "The daily challenges keep me motivated to study consistently. I love competing with my friends on the leaderboard. Mathematics has become my favorite subject now!"
-                        </p>
-                        <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Student" class="author-avatar">
-                            <div class="author-info">
-                                <h4>Arjun Kumar</h4>
-                                <p>SSLC Student, Mysore</p>
-                            </div>
-                        </div>
+                    <!-- FIXED: Navigation dots for testimonials -->
+                    <div class="testimonial-dots" id="testimonialDots">
+                        <div class="testimonial-dot active" data-slide="0"></div>
+                        <div class="testimonial-dot" data-slide="1"></div>
+                        <div class="testimonial-dot" data-slide="2"></div>
                     </div>
                     
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">
-                            "The practice questions with detailed solutions saved my board exams. I could understand complex chemistry concepts easily. Thank you SimplifiedMinds team!"
-                        </p>
-                        <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Student" class="author-avatar">
-                            <div class="author-info">
-                                <h4>Sneha Reddy</h4>
-                                <p>SSLC Graduate, Hubli</p>
-                            </div>
-                        </div>
+                    <div class="testimonial-nav-hint">
+                        <i class="fas fa-hand-point-left"></i>
+                        Swipe to see more success stories
                     </div>
                 </div>
             </section>
@@ -2929,7 +3030,7 @@ H—C—H    (Bond angle: 109.5°)
     </div>
 
     <script>
-        // 🔥 FIREBASE CONFIGURATION (keeping original Firebase setup intact)
+        // 🔥 FIREBASE CONFIGURATION
         const firebaseConfig = {
             apiKey: "AIzaSyA8lD-OvRp7QXst2p1EgJVfJ27JwMsRqew",
             authDomain: "csolutions-88ca8.firebaseapp.com",
@@ -2959,15 +3060,25 @@ H—C—H    (Bond angle: 109.5°)
         let userStartTime = Date.now();
         let userName = null;
 
-        // 🔥 MOBILE NAVIGATION FUNCTIONALITY
+        // 🔥 FIXED: MOBILE NAVIGATION FUNCTIONALITY
         function initializeMobileNavigation() {
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileNavOverlay = document.getElementById('mobileNavOverlay');
             const mobileNavClose = document.getElementById('mobileNavClose');
             const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
+            console.log('🔧 Initializing mobile navigation...');
+            console.log('Mobile menu button:', mobileMenuBtn);
+
+            if (!mobileMenuBtn) {
+                console.error('❌ Mobile menu button not found!');
+                return;
+            }
+
             // Open mobile menu
-            mobileMenuBtn.addEventListener('click', function() {
+            mobileMenuBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('📱 Mobile menu button clicked');
                 mobileMenuBtn.classList.toggle('active');
                 if (mobileNavOverlay.classList.contains('show')) {
                     closeMobileNav();
@@ -2977,7 +3088,9 @@ H—C—H    (Bond angle: 109.5°)
             });
 
             // Close mobile menu
-            mobileNavClose.addEventListener('click', closeMobileNav);
+            if (mobileNavClose) {
+                mobileNavClose.addEventListener('click', closeMobileNav);
+            }
 
             // Close menu when clicking on overlay
             mobileNavOverlay.addEventListener('click', function(e) {
@@ -2989,6 +3102,7 @@ H—C—H    (Bond angle: 109.5°)
             // Close menu when clicking on nav links
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
+                    console.log('📱 Mobile nav link clicked:', this.getAttribute('href'));
                     closeMobileNav();
                     
                     // Update active states
@@ -3014,6 +3128,7 @@ H—C—H    (Bond angle: 109.5°)
             });
 
             function openMobileNav() {
+                console.log('📱 Opening mobile nav');
                 mobileNavOverlay.style.display = 'flex';
                 setTimeout(() => {
                     mobileNavOverlay.classList.add('show');
@@ -3022,6 +3137,7 @@ H—C—H    (Bond angle: 109.5°)
             }
 
             function closeMobileNav() {
+                console.log('📱 Closing mobile nav');
                 mobileNavOverlay.classList.remove('show');
                 mobileMenuBtn.classList.remove('active');
                 setTimeout(() => {
@@ -3029,11 +3145,67 @@ H—C—H    (Bond angle: 109.5°)
                 }, 300);
                 document.body.style.overflow = '';
             }
+
+            console.log('✅ Mobile navigation initialized successfully');
         }
 
-        // 🔥 FIREBASE REAL-TIME FUNCTIONS (keeping original Firebase logic)
+        // 🔥 FIXED: TESTIMONIAL NAVIGATION
+        function initializeTestimonialNavigation() {
+            const slider = document.getElementById('testimonialSlider');
+            const dots = document.querySelectorAll('.testimonial-dot');
+            const cards = document.querySelectorAll('.testimonial-card');
+            
+            if (!slider || dots.length === 0) return;
 
-        // Initialize today's data structure if it doesn't exist
+            let currentSlide = 0;
+            const totalSlides = cards.length;
+
+            // Add click functionality to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
+
+            function goToSlide(slideIndex) {
+                if (slideIndex < 0 || slideIndex >= totalSlides) return;
+                
+                currentSlide = slideIndex;
+                
+                // Calculate scroll position
+                const cardWidth = cards[0].offsetWidth;
+                const gap = 25; // Gap between cards
+                const scrollPosition = (cardWidth + gap) * currentSlide;
+                
+                // Smooth scroll to position
+                slider.scrollTo({
+                    left: scrollPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Update active dot
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[currentSlide].classList.add('active');
+            }
+
+            // Handle scroll events to update dots
+            slider.addEventListener('scroll', () => {
+                const cardWidth = cards[0].offsetWidth;
+                const gap = 25;
+                const scrollLeft = slider.scrollLeft;
+                const slideIndex = Math.round(scrollLeft / (cardWidth + gap));
+                
+                if (slideIndex !== currentSlide && slideIndex >= 0 && slideIndex < totalSlides) {
+                    currentSlide = slideIndex;
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[currentSlide].classList.add('active');
+                }
+            });
+
+            console.log('✅ Testimonial navigation initialized');
+        }
+
+        // 🔥 FIREBASE REAL-TIME FUNCTIONS
         function initializeDailyData() {
             const todayRef = database.ref(`dailyStats/${today}`);
             
@@ -3052,19 +3224,16 @@ H—C—H    (Bond angle: 109.5°)
             });
         }
 
-        // Update live counter in real-time
         function initializeLiveCounter() {
             const liveCounterRef = database.ref(`dailyStats/${today}/quizTakers`);
             
             liveCounterRef.on('value', (snapshot) => {
                 const count = snapshot.val() || 0;
                 animateNumber(document.getElementById('liveCounter'), count);
-                
                 console.log('📊 Live counter updated:', count);
             });
         }
 
-        // Enhanced number animation
         function animateNumber(element, targetValue) {
             const currentValue = parseInt(element.textContent.replace(/,/g, '')) || 0;
             const increment = Math.ceil((targetValue - currentValue) / 20);
@@ -3081,7 +3250,6 @@ H—C—H    (Bond angle: 109.5°)
             }
         }
 
-        // Update leaderboard in real-time
         function initializeLeaderboard() {
             const leaderboardRef = database.ref(`leaderboard/${today}`);
             
@@ -3132,11 +3300,9 @@ H—C—H    (Bond angle: 109.5°)
             return `${mins}:${secs.toString().padStart(2, '0')}`;
         }
 
-        // Update daily statistics with security checks
         function updateDailyStats(score, completionTime, playerName) {
             console.log('📝 Updating Firebase with:', { score, completionTime, playerName });
             
-            // Validate data before sending
             if (typeof score !== 'number' || score < 0 || score > 2) {
                 console.error('Invalid score:', score);
                 return;
@@ -3148,21 +3314,17 @@ H—C—H    (Bond angle: 109.5°)
             }
             
             const updates = {};
-            
-            // Increment quiz takers (protected by security rules)
             updates[`dailyStats/${today}/quizTakers`] = firebase.database.ServerValue.increment(1);
             
-            // Add to leaderboard with timestamp validation
             const userId = 'user_' + Date.now();
             updates[`leaderboard/${today}/${userId}`] = {
                 score: score,
                 completionTime: completionTime,
                 timestamp: firebase.database.ServerValue.TIMESTAMP,
-                name: (playerName || 'Anonymous').substring(0, 30), // Limit name length
-                verified: false // Mark as unverified for admin review
+                name: (playerName || 'Anonymous').substring(0, 30),
+                verified: false
             };
             
-            // Apply updates with error handling
             database.ref().update(updates).then(() => {
                 console.log('🔥 Firebase updated successfully!');
                 showNotification('Your score has been recorded! 🎉', 'success');
@@ -3172,18 +3334,14 @@ H—C—H    (Bond angle: 109.5°)
             });
         }
 
-        // Initialize Firebase features
         function initializeFirebase() {
             console.log('🔥 Initializing Firebase...');
-            
             initializeDailyData();
             initializeLiveCounter();
             initializeLeaderboard();
-            
             console.log('✅ Firebase initialized successfully');
         }
 
-        // Enhanced particle system
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             
@@ -3203,7 +3361,6 @@ H—C—H    (Bond angle: 109.5°)
             setInterval(addParticle, 2000);
         }
 
-        // Enhanced header scroll effect
         function initializeHeaderEffect() {
             const header = document.getElementById('header');
             
@@ -3216,9 +3373,11 @@ H—C—H    (Bond angle: 109.5°)
             });
         }
 
-        // ENHANCED QUIZ FUNCTIONALITY
+        // QUIZ FUNCTIONALITY
         document.addEventListener('DOMContentLoaded', function() {
-            // Handle option selection with enhanced animations
+            console.log('🚀 DOM Content Loaded - Initializing everything...');
+
+            // Handle option selection
             document.querySelectorAll('.option').forEach(option => {
                 option.addEventListener('click', function() {
                     if (quizSubmitted) return;
@@ -3226,22 +3385,18 @@ H—C—H    (Bond angle: 109.5°)
                     const question = this.dataset.question;
                     const answer = this.dataset.answer;
                     
-                    // Remove previous selection
                     document.querySelectorAll(`[data-question="${question}"]`).forEach(opt => {
                         opt.classList.remove('selected');
                     });
                     
-                    // Select current option with enhanced animation
                     this.classList.add('selected');
                     selectedAnswers[question] = answer;
                     
-                    // Enhanced selection animation
                     this.style.transform = 'scale(1.05)';
                     setTimeout(() => {
                         this.style.transform = '';
                     }, 300);
                     
-                    // Enable submit button if all questions answered
                     if (Object.keys(selectedAnswers).length === 2) {
                         const submitBtn = document.getElementById('submitBtn');
                         submitBtn.disabled = false;
@@ -3255,7 +3410,7 @@ H—C—H    (Bond angle: 109.5°)
                 });
             });
 
-            // Handle quiz submission with enhanced feedback
+            // Handle quiz submission
             document.getElementById('submitBtn').addEventListener('click', function() {
                 if (quizSubmitted) return;
                 
@@ -3264,12 +3419,9 @@ H—C—H    (Bond angle: 109.5°)
                 this.disabled = true;
                 this.innerHTML = '<div class="loading"></div> Processing...';
                 
-                // Calculate completion time
                 const completionTime = Math.floor((Date.now() - userStartTime) / 1000);
-                
                 let score = 0;
                 
-                // Enhanced answer checking with staggered animations
                 for (let question in correctAnswers) {
                     const userAnswer = selectedAnswers[question];
                     const correctAnswer = correctAnswers[question];
@@ -3292,21 +3444,20 @@ H—C—H    (Bond angle: 109.5°)
                     }
                 }
                 
-                // Update submit button
                 setTimeout(() => {
                     this.innerHTML = '<i class="fas fa-check"></i> Submitted Successfully!';
                 }, 1000);
                 
-                // Show result with enhanced delay
                 setTimeout(() => {
                     showResults(score, completionTime);
                 }, 2000);
             });
 
-            // Initialize everything with enhanced startup
+            // Initialize everything
             initializeFirebase();
             initializeHeaderEffect();
             initializeMobileNavigation();
+            initializeTestimonialNavigation();
             updateSocialLinks();
             createParticles();
             userStartTime = Date.now();
@@ -3315,16 +3466,6 @@ H—C—H    (Bond angle: 109.5°)
             document.getElementById('nameInput').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     saveName();
-                }
-            });
-
-            // Add escape key to close modal
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    const modal = document.getElementById('nameModal');
-                    if (modal.classList.contains('show')) {
-                        skipName();
-                    }
                 }
             });
 
@@ -3341,6 +3482,8 @@ H—C—H    (Bond angle: 109.5°)
                     }
                 });
             });
+
+            console.log('✅ All initialization complete!');
         });
 
         function showResults(score, completionTime) {
@@ -3369,16 +3512,13 @@ H—C—H    (Bond angle: 109.5°)
                 <div style="font-size: 1.1rem; opacity: 0.9; line-height: 1.5;">${motivationText}</div>
             `;
             
-            // Show name modal after result
             setTimeout(() => {
                 showNameModal(score, completionTime);
             }, 2500);
             
-            // Update social sharing
             updateSocialLinksWithScore(score, percentage);
         }
 
-        // Enhanced confetti animation
         function createEnhancedConfetti() {
             const colors = ['#dc2626', '#fbbf24', '#8b5cf6', '#10b981', '#ef4444', '#f59e0b'];
             
@@ -3400,7 +3540,7 @@ H—C—H    (Bond angle: 109.5°)
             }
         }
 
-        // NAME MODAL FUNCTIONS (keeping original logic)
+        // NAME MODAL FUNCTIONS
         let pendingScore, pendingTime;
 
         function showNameModal(score, completionTime) {
@@ -3445,7 +3585,7 @@ H—C—H    (Bond angle: 109.5°)
             showNotification('Score recorded! Join with your name anytime! 😊', 'info');
         }
 
-        // Enhanced Social Sharing Functions
+        // Social Sharing Functions
         function challengeFriend() {
             const message = `🌟 I just challenged myself with today's SSLC Toppers quiz! 
 
@@ -3497,9 +3637,7 @@ Daily Science & Math Challenge 📚`;
             document.getElementById('telegramShare').href = `https://t.me/share/url?url=${url}&text=${telegramMessage}`;
         }
 
-        // Enhanced notification system with mobile-friendly positioning
         function showNotification(message, type = 'info') {
-            // Remove any existing notifications first
             const existingNotifications = document.querySelectorAll('.notification');
             existingNotifications.forEach(notification => notification.remove());
             
@@ -3514,12 +3652,10 @@ Daily Science & Math Challenge 📚`;
             
             document.body.appendChild(notification);
             
-            // Show notification
             setTimeout(() => {
                 notification.classList.add('show');
             }, 100);
             
-            // Hide and remove notification
             setTimeout(() => {
                 notification.classList.remove('show');
                 setTimeout(() => {
@@ -3530,7 +3666,7 @@ Daily Science & Math Challenge 📚`;
             }, 4000);
         }
 
-        // Toggle solution dropdown with enhanced animation
+        // Toggle solution dropdown
         function toggleSolution(solutionId) {
             const dropdown = document.getElementById(solutionId);
             const button = dropdown.previousElementSibling;
@@ -3538,24 +3674,16 @@ Daily Science & Math Challenge 📚`;
             const buttonText = button.querySelector('span');
             
             if (dropdown.classList.contains('show')) {
-                // Hide solution
                 dropdown.classList.remove('show');
                 button.classList.remove('active');
                 buttonText.textContent = 'View Solution';
-                
-                // Button animation
                 button.style.background = 'linear-gradient(135deg, #dc2626, #fbbf24)';
-                
             } else {
-                // Show solution
                 dropdown.classList.add('show');
                 button.classList.add('active');
                 buttonText.textContent = 'Hide Solution';
-                
-                // Button animation
                 button.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
                 
-                // Scroll to solution with smooth animation
                 setTimeout(() => {
                     dropdown.scrollIntoView({ 
                         behavior: 'smooth', 
@@ -3563,7 +3691,6 @@ Daily Science & Math Challenge 📚`;
                     });
                 }, 300);
                 
-                // Add a subtle pulse effect to the solution content
                 const solutionContent = dropdown.querySelector('.solution-content');
                 solutionContent.style.animation = 'none';
                 setTimeout(() => {
@@ -3572,7 +3699,7 @@ Daily Science & Math Challenge 📚`;
             }
         }
 
-        // Add solution reveal animation to CSS dynamically
+        // Add solution reveal animation
         const style = document.createElement('style');
         style.textContent = `
             @keyframes solutionReveal {
@@ -3603,7 +3730,6 @@ Daily Science & Math Challenge 📚`;
                 }
             });
 
-            // Update desktop nav links
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
@@ -3611,7 +3737,6 @@ Daily Science & Math Challenge 📚`;
                 }
             });
 
-            // Update mobile nav links
             mobileNavLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
@@ -3620,10 +3745,9 @@ Daily Science & Math Challenge 📚`;
             });
         }
 
-        // Listen for scroll events
         window.addEventListener('scroll', updateActiveNavLink);
 
-        console.log('🌟 SimplifiedMinds - SSLC Toppers Enhanced Mobile-Friendly - Inspiring Academic Excellence! 🚀');
+        console.log('🌟 SimplifiedMinds - SSLC Toppers Enhanced Mobile-Friendly - All Issues Fixed! 🚀');
     </script>
 </body>
 </html>
