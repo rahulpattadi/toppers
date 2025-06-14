@@ -180,7 +180,7 @@
             }
         }
 
-        /* Enhanced Header */
+        /* Enhanced Header with Mobile Support */
         .header {
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(25px);
@@ -194,7 +194,7 @@
         }
 
         .header.scrolled {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.8);
             box-shadow: var(--shadow-medium);
         }
 
@@ -244,6 +244,69 @@
             letter-spacing: -0.02em;
         }
 
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .hamburger {
+            width: 20px;
+            height: 2px;
+            background: var(--text-primary);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .hamburger::before {
+            top: -6px;
+        }
+
+        .hamburger::after {
+            top: 6px;
+        }
+
+        .mobile-menu-btn.active .hamburger {
+            background: transparent;
+        }
+
+        .mobile-menu-btn.active .hamburger::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .mobile-menu-btn.active .hamburger::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+
+        /* Navigation Links */
         .nav-links {
             display: flex;
             gap: 35px;
@@ -287,6 +350,100 @@
             to { width: 100%; }
         }
 
+        /* Mobile Navigation Overlay */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .mobile-nav-overlay.show {
+            opacity: 1;
+        }
+
+        .mobile-nav-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            gap: 30px;
+            padding-top: 80px;
+        }
+
+        .mobile-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            width: 250px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mobile-nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .mobile-nav-link:hover::before,
+        .mobile-nav-link.active::before {
+            left: 0;
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .mobile-nav-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
         .header-actions {
             display: flex;
             gap: 15px;
@@ -314,142 +471,6 @@
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
-
-/* Mobile Menu Button */
-.mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-primary);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: var(--transition);
-    padding: 8px;
-    border-radius: 8px;
-}
-
-.mobile-menu-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--primary-yellow);
-}
-
-/* Mobile Navigation */
-.mobile-nav {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 280px;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(30px);
-    border-right: 1px solid var(--glass-border);
-    z-index: 10001;
-    transition: left 0.3s ease;
-    padding: 20px 0;
-    overflow-y: auto;
-}
-
-.mobile-nav.active {
-    left: 0;
-}
-
-.mobile-nav-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 10000;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.mobile-nav-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.mobile-nav-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px 20px;
-    border-bottom: 1px solid var(--glass-border);
-    margin-bottom: 20px;
-}
-
-.mobile-nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-}
-
-.mobile-nav-logo .logo-icon {
-    font-size: 1.8rem;
-}
-
-.mobile-nav-logo .logo-text {
-    font-size: 1.3rem;
-}
-
-.mobile-nav-close {
-    background: none;
-    border: none;
-    color: var(--text-primary);
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 8px;
-    transition: var(--transition);
-}
-
-.mobile-nav-close:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--primary-yellow);
-}
-
-.mobile-nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-}
-
-.mobile-nav-link {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px 20px;
-    text-decoration: none;
-    color: var(--text-primary);
-    font-weight: 500;
-    transition: var(--transition);
-    border-left: 3px solid transparent;
-}
-
-.mobile-nav-link:hover,
-.mobile-nav-link.active {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--primary-yellow);
-    border-left-color: var(--primary-yellow);
-}
-
-.mobile-nav-link i {
-    width: 20px;
-    text-align: center;
-    font-size: 1.1rem;
-}
-
-.mobile-header-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    border-top: 1px solid var(--glass-border);
-    margin-top: 20px;
-}
 
         .btn {
             padding: 10px 20px;
@@ -871,6 +892,9 @@
             color: var(--text-primary);
             position: relative;
             overflow: hidden;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
         }
 
         .option::before {
@@ -2006,158 +2030,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Enhanced Responsive Design */
-        /* Enhanced Responsive Design */
-@media (max-width: 1024px) {
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    /* Show mobile menu button and hide desktop nav */
-    .mobile-menu-btn {
-        display: block !important;
-    }
-    
-    .nav-links,
-    .header-actions {
-        display: none !important;
-    }
-
-    .navbar {
-        padding: 12px 20px;
-    }
-
-    .logo-icon {
-        font-size: 1.8rem;
-    }
-
-    .logo-text {
-        font-size: 1.4rem;
-    }
-    
-    .hero {
-        padding: 60px 0 40px;
-    }
-    
-    .hero-actions {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .quiz-section {
-        padding: 30px 20px;
-    }
-    
-    .question {
-        padding: 25px 15px;
-    }
-    
-    .question-header {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-    }
-
-    .question-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.3rem;
-    }
-
-    .modal-buttons {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .option {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .option-image {
-        align-self: center;
-        float: none;
-        margin: 0 0 10px 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .navbar {
-        padding: 12px 15px;
-    }
-    
-    .hero {
-        padding: 40px 0 30px;
-    }
-
-    .hero-badge {
-        font-size: 0.85rem;
-        padding: 10px 20px;
-    }
-    
-    .quiz-section {
-        padding: 25px 15px;
-    }
-    
-    .question {
-        padding: 20px 12px;
-    }
-    
-    .modal-content {
-        padding: 30px 20px;
-        margin: 15px;
-    }
-    
-    .question-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
-    }
-
-    .submit-btn {
-        padding: 15px 30px;
-        font-size: 1rem;
-    }
-
-    .mobile-nav {
-        width: 100%;
-        left: -100%;
-    }
-
-    .mobile-nav.active {
-        left: 0;
-    }
-}
-
-/* Touch improvements for mobile */
-@media (hover: none) and (pointer: coarse) {
-    .option:hover {
-        transform: none;
-        background: var(--glass-bg);
-        border-color: var(--glass-border);
-    }
-
-    .stat-card:hover {
-        transform: none;
-    }
-
-    .question:hover {
-        transform: none;
-    }
-
-    .btn:hover {
-        transform: none;
-    }
-}
-
         /* Confetti Animation */
         .confetti {
             position: fixed;
@@ -2174,6 +2046,272 @@
                 transform: translateY(100vh) rotate(720deg);
                 opacity: 0;
             }
+        }
+
+        /* Enhanced Mobile Responsive Design */
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            
+            .channel-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .channel-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .testimonial-card {
+                min-width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Mobile Navigation */
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .header-actions {
+                gap: 10px;
+            }
+            
+            .live-indicator {
+                display: none;
+            }
+            
+            .btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .logo-icon {
+                font-size: 1.8rem;
+            }
+            
+            .navbar {
+                padding: 12px 15px;
+            }
+            
+            /* Content Adjustments */
+            .main-content {
+                margin-top: 70px;
+            }
+            
+            .hero {
+                padding: 40px 0 30px;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .quiz-section,
+            .practice-section,
+            .youtube-section,
+            .testimonials-section,
+            .social-section {
+                padding: 25px 15px;
+                margin-bottom: 40px;
+            }
+            
+            .question,
+            .practice-question {
+                padding: 20px 15px;
+            }
+            
+            .question-header,
+            .practice-question-header {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+            
+            .question-icon,
+            .practice-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                text-align: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .testimonial-card {
+                min-width: 280px;
+            }
+            
+            .modal-content {
+                padding: 25px 20px;
+                margin: 15px;
+            }
+            
+            .modal-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .hero-badge {
+                font-size: 0.85rem;
+                padding: 10px 20px;
+            }
+            
+            .submit-btn {
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+            
+            .social-buttons {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            /* Better touch targets */
+            .option {
+                min-height: 70px;
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+            
+            .solution-toggle {
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .question-text,
+            .practice-question-text {
+                font-size: 1rem;
+            }
+            
+            .option {
+                padding: 12px 15px;
+                font-size: 0.95rem;
+            }
+            
+            .question-icon,
+            .practice-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+            
+            .quiz-section,
+            .practice-section,
+            .youtube-section,
+            .testimonials-section,
+            .social-section {
+                padding: 20px 12px;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .notification {
+                left: 15px;
+                right: 15px;
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .modal-title {
+                font-size: 1.6rem;
+            }
+            
+            .name-input {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+            
+            .leaderboard-item {
+                padding: 15px;
+                gap: 15px;
+            }
+            
+            .rank {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .player-name {
+                font-size: 1rem;
+            }
+            
+            .player-score {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .hero-actions {
+                gap: 12px;
+            }
+            
+            .btn {
+                padding: 10px 15px;
+                font-size: 0.8rem;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Mobile Navigation Show Class */
+        .mobile-nav-overlay.show {
+            display: flex;
         }
     </style>
 </head>
@@ -2193,55 +2331,7 @@
     <!-- Particles -->
     <div class="particles" id="particles"></div>
 
-<!-- Mobile Navigation Overlay -->
-<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="closeMobileNav()"></div>
-
-<!-- Mobile Navigation -->
-<div class="mobile-nav" id="mobileNav">
-    <div class="mobile-nav-header">
-        <a href="#" class="mobile-nav-logo">
-            <i class="fas fa-graduation-cap logo-icon"></i>
-            <span class="logo-text">SimplifiedMinds</span>
-        </a>
-        <button class="mobile-nav-close" onclick="closeMobileNav()">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-    
-    <div class="mobile-nav-links">
-        <a href="#home" class="mobile-nav-link active" onclick="closeMobileNav()">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="#quiz-section" class="mobile-nav-link" onclick="closeMobileNav()">
-            <i class="fas fa-brain"></i>
-            <span>Daily Quiz</span>
-        </a>
-        <a href="#practice-section" class="mobile-nav-link" onclick="closeMobileNav()">
-            <i class="fas fa-dumbbell"></i>
-            <span>Practice</span>
-        </a>
-        <a href="#youtube-section" class="mobile-nav-link" onclick="closeMobileNav()">
-            <i class="fas fa-play-circle"></i>
-            <span>Learn</span>
-        </a>
-        <a href="#leaderboard-section" class="mobile-nav-link" onclick="closeMobileNav()">
-            <i class="fas fa-trophy"></i>
-            <span>Leaderboard</span>
-        </a>
-    </div>
-
-    <div class="mobile-header-actions">
-        <div class="live-indicator">
-            <div class="live-dot"></div>
-            <span>Live Quiz</span>
-        </div>
-        <a href="#" class="btn btn-outline">Login</a>
-        <a href="#" class="btn btn-primary">Join Free</a>
-    </div>
-</div>
-
-    <!-- Enhanced Header -->
+    <!-- Enhanced Header with Mobile Support -->
     <header class="header" id="header">
         <nav class="navbar">
             <a href="#" class="logo">
@@ -2264,14 +2354,38 @@
                 </div>
                 <a href="#" class="btn btn-outline">Login</a>
                 <a href="#" class="btn btn-primary">Join Free</a>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <div class="hamburger"></div>
+                </button>
             </div>
-
-<!-- ➕ ADD THIS MOBILE MENU BUTTON -->
-        <button class="mobile-menu-btn" onclick="openMobileNav()">
-            <i class="fas fa-bars"></i>
-        </button>
         </nav>
     </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <div class="mobile-nav-close" id="mobileNavClose">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="mobile-nav-content">
+            <a href="#home" class="mobile-nav-link active">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="#quiz-section" class="mobile-nav-link">
+                <i class="fas fa-brain"></i> Daily Quiz
+            </a>
+            <a href="#practice-section" class="mobile-nav-link">
+                <i class="fas fa-book-open"></i> Practice
+            </a>
+            <a href="#youtube-section" class="mobile-nav-link">
+                <i class="fas fa-play"></i> Learn
+            </a>
+            <a href="#leaderboard-section" class="mobile-nav-link">
+                <i class="fas fa-trophy"></i> Leaderboard
+            </a>
+        </div>
+    </div>
 
     <div class="main-content">
         <div class="container">
@@ -2559,7 +2673,8 @@ H—C—H    (Bond angle: 109.5°)
                             </div>
                         </div>
                         <div class="practice-question-text">
-                            Study the leaf cross-section diagram below. Explain the process of photosynthesis and write the overall chemical equation.
+                            Study the leaf cross-section diagram below. Explain the process of photosynthesis <!-- Continuing from the Biology Practice Question -->
+                            and write the overall chemical equation.
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Leaf_tissue_structure.svg/400px-Leaf_tissue_structure.svg.png" alt="Leaf cross-section structure" class="question-image">
                             <div class="image-caption">Figure: Cross-section of a leaf showing chloroplast-containing cells where photosynthesis occurs</div>
                         </div>
@@ -2825,22 +2940,7 @@ H—C—H    (Bond angle: 109.5°)
             appId: "1:826388660484:web:a83e02d17ee348f841d051",
             measurementId: "G-M84783CE7W"
         };
-// ➕ ADD: Mobile Navigation Functions
-function openMobileNav() {
-    const mobileNav = document.getElementById('mobileNav');
-    const mobileOverlay = document.getElementById('mobileNavOverlay');
-    mobileNav.classList.add('active');
-    mobileOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-}
 
-function closeMobileNav() {
-    const mobileNav = document.getElementById('mobileNav');
-    const mobileOverlay = document.getElementById('mobileNavOverlay');
-    mobileNav.classList.remove('active');
-    mobileOverlay.classList.remove('active');
-    document.body.style.overflow = ''; // Restore scrolling
-}
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
@@ -2858,6 +2958,78 @@ function closeMobileNav() {
         let quizSubmitted = false;
         let userStartTime = Date.now();
         let userName = null;
+
+        // 🔥 MOBILE NAVIGATION FUNCTIONALITY
+        function initializeMobileNavigation() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+            const mobileNavClose = document.getElementById('mobileNavClose');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            // Open mobile menu
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenuBtn.classList.toggle('active');
+                if (mobileNavOverlay.classList.contains('show')) {
+                    closeMobileNav();
+                } else {
+                    openMobileNav();
+                }
+            });
+
+            // Close mobile menu
+            mobileNavClose.addEventListener('click', closeMobileNav);
+
+            // Close menu when clicking on overlay
+            mobileNavOverlay.addEventListener('click', function(e) {
+                if (e.target === mobileNavOverlay) {
+                    closeMobileNav();
+                }
+            });
+
+            // Close menu when clicking on nav links
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    closeMobileNav();
+                    
+                    // Update active states
+                    mobileNavLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update desktop nav active states too
+                    const href = this.getAttribute('href');
+                    document.querySelectorAll('.nav-link').forEach(l => {
+                        l.classList.remove('active');
+                        if (l.getAttribute('href') === href) {
+                            l.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            // Close menu with escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileNavOverlay.classList.contains('show')) {
+                    closeMobileNav();
+                }
+            });
+
+            function openMobileNav() {
+                mobileNavOverlay.style.display = 'flex';
+                setTimeout(() => {
+                    mobileNavOverlay.classList.add('show');
+                }, 10);
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileNav() {
+                mobileNavOverlay.classList.remove('show');
+                mobileMenuBtn.classList.remove('active');
+                setTimeout(() => {
+                    mobileNavOverlay.style.display = 'none';
+                }, 300);
+                document.body.style.overflow = '';
+            }
+        }
 
         // 🔥 FIREBASE REAL-TIME FUNCTIONS (keeping original Firebase logic)
 
@@ -3134,6 +3306,7 @@ function closeMobileNav() {
             // Initialize everything with enhanced startup
             initializeFirebase();
             initializeHeaderEffect();
+            initializeMobileNavigation();
             updateSocialLinks();
             createParticles();
             userStartTime = Date.now();
@@ -3147,17 +3320,13 @@ function closeMobileNav() {
 
             // Add escape key to close modal
             document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        const modal = document.getElementById('nameModal');
-        if (modal.classList.contains('show')) {
-            skipName();
-        }
-        // ➕ ADD: Close mobile nav on escape
-        if (document.getElementById('mobileNav').classList.contains('active')) {
-            closeMobileNav();
-        }
-    }
-});
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('nameModal');
+                    if (modal.classList.contains('show')) {
+                        skipName();
+                    }
+                }
+            });
 
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -3419,47 +3588,42 @@ Daily Science & Math Challenge 📚`;
         `;
         document.head.appendChild(style);
 
-        console.log('🌟 SimplifiedMinds - SSLC Toppers Enhanced - Inspiring Academic Excellence! 🚀');
+        // Update active navigation link based on scroll position
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
 
-// Update active navigation link based on scroll position
-// 🔄 MODIFY: Update active navigation link based on scroll position
-function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link'); // ← Added mobile nav links
-    
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (scrollY >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
+            // Update desktop nav links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-}
-
-// Listen for scroll events
-window.addEventListener('scroll', updateActiveNavLink);
-
-// Handle click events for smooth scrolling (already in your code)
-document.querySelectorAll('.nav-link[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            // Update mobile nav links
+            mobileNavLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
             });
         }
-    });
-});
+
+        // Listen for scroll events
+        window.addEventListener('scroll', updateActiveNavLink);
+
+        console.log('🌟 SimplifiedMinds - SSLC Toppers Enhanced Mobile-Friendly - Inspiring Academic Excellence! 🚀');
     </script>
 </body>
 </html>
