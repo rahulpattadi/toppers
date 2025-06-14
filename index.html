@@ -315,6 +315,142 @@
             animation: pulse 2s infinite;
         }
 
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-yellow);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(30px);
+    border-right: 1px solid var(--glass-border);
+    z-index: 10001;
+    transition: left 0.3s ease;
+    padding: 20px 0;
+    overflow-y: auto;
+}
+
+.mobile-nav.active {
+    left: 0;
+}
+
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 20px;
+    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 20px;
+}
+
+.mobile-nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.mobile-nav-logo .logo-icon {
+    font-size: 1.8rem;
+}
+
+.mobile-nav-logo .logo-text {
+    font-size: 1.3rem;
+}
+
+.mobile-nav-close {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.mobile-nav-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-yellow);
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: var(--transition);
+    border-left: 3px solid transparent;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-yellow);
+    border-left-color: var(--primary-yellow);
+}
+
+.mobile-nav-link i {
+    width: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.mobile-header-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-top: 1px solid var(--glass-border);
+    margin-top: 20px;
+}
+
         .btn {
             padding: 10px 20px;
             border-radius: var(--radius);
@@ -1871,119 +2007,156 @@
         }
 
         /* Enhanced Responsive Design */
-        @media (max-width: 1024px) {
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 30px;
-            }
-        }
+        /* Enhanced Responsive Design */
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero {
-                padding: 60px 0 40px;
-            }
-            
-            .hero-actions {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .quiz-section,
-            .practice-section,
-            .youtube-section,
-            .testimonials-section,
-            .social-section {
-                padding: 30px 20px;
-            }
-            
-            .question,
-            .practice-question {
-                padding: 25px 15px;
-            }
-            
-            .question-header,
-            .practice-question-header {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
-            
-            .channel-section {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                text-align: center;
-            }
-            
-            .channel-info {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 25px;
-                text-align: center;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-            
-            .testimonial-card {
-                min-width: 280px;
-            }
-        }
+@media (max-width: 768px) {
+    /* Show mobile menu button and hide desktop nav */
+    .mobile-menu-btn {
+        display: block !important;
+    }
+    
+    .nav-links,
+    .header-actions {
+        display: none !important;
+    }
 
-        @media (max-width: 480px) {
-            .navbar {
-                padding: 12px 15px;
-            }
-            
-            .hero {
-                padding: 40px 0 30px;
-            }
-            
-            .quiz-section,
-            .practice-section,
-            .youtube-section,
-            .testimonials-section,
-            .social-section {
-                padding: 25px 15px;
-            }
-            
-            .question,
-            .practice-question {
-                padding: 20px 12px;
-            }
-            
-            .modal-content {
-                padding: 30px 20px;
-                margin: 15px;
-            }
-            
-            .modal-buttons {
-                flex-direction: column;
-                gap: 12px;
-            }
-            
-            .question-icon,
-            .practice-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-            }
-        }
+    .navbar {
+        padding: 12px 20px;
+    }
+
+    .logo-icon {
+        font-size: 1.8rem;
+    }
+
+    .logo-text {
+        font-size: 1.4rem;
+    }
+    
+    .hero {
+        padding: 60px 0 40px;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .quiz-section {
+        padding: 30px 20px;
+    }
+    
+    .question {
+        padding: 25px 15px;
+    }
+    
+    .question-header {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .question-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .option {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .option-image {
+        align-self: center;
+        float: none;
+        margin: 0 0 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 12px 15px;
+    }
+    
+    .hero {
+        padding: 40px 0 30px;
+    }
+
+    .hero-badge {
+        font-size: 0.85rem;
+        padding: 10px 20px;
+    }
+    
+    .quiz-section {
+        padding: 25px 15px;
+    }
+    
+    .question {
+        padding: 20px 12px;
+    }
+    
+    .modal-content {
+        padding: 30px 20px;
+        margin: 15px;
+    }
+    
+    .question-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+
+    .submit-btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+
+    .mobile-nav {
+        width: 100%;
+        left: -100%;
+    }
+
+    .mobile-nav.active {
+        left: 0;
+    }
+}
+
+/* Touch improvements for mobile */
+@media (hover: none) and (pointer: coarse) {
+    .option:hover {
+        transform: none;
+        background: var(--glass-bg);
+        border-color: var(--glass-border);
+    }
+
+    .stat-card:hover {
+        transform: none;
+    }
+
+    .question:hover {
+        transform: none;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+}
 
         /* Confetti Animation */
         .confetti {
@@ -2020,6 +2193,54 @@
     <!-- Particles -->
     <div class="particles" id="particles"></div>
 
+<!-- Mobile Navigation Overlay -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="closeMobileNav()"></div>
+
+<!-- Mobile Navigation -->
+<div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+        <a href="#" class="mobile-nav-logo">
+            <i class="fas fa-graduation-cap logo-icon"></i>
+            <span class="logo-text">SimplifiedMinds</span>
+        </a>
+        <button class="mobile-nav-close" onclick="closeMobileNav()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    
+    <div class="mobile-nav-links">
+        <a href="#home" class="mobile-nav-link active" onclick="closeMobileNav()">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#quiz-section" class="mobile-nav-link" onclick="closeMobileNav()">
+            <i class="fas fa-brain"></i>
+            <span>Daily Quiz</span>
+        </a>
+        <a href="#practice-section" class="mobile-nav-link" onclick="closeMobileNav()">
+            <i class="fas fa-dumbbell"></i>
+            <span>Practice</span>
+        </a>
+        <a href="#youtube-section" class="mobile-nav-link" onclick="closeMobileNav()">
+            <i class="fas fa-play-circle"></i>
+            <span>Learn</span>
+        </a>
+        <a href="#leaderboard-section" class="mobile-nav-link" onclick="closeMobileNav()">
+            <i class="fas fa-trophy"></i>
+            <span>Leaderboard</span>
+        </a>
+    </div>
+
+    <div class="mobile-header-actions">
+        <div class="live-indicator">
+            <div class="live-dot"></div>
+            <span>Live Quiz</span>
+        </div>
+        <a href="#" class="btn btn-outline">Login</a>
+        <a href="#" class="btn btn-primary">Join Free</a>
+    </div>
+</div>
+
     <!-- Enhanced Header -->
     <header class="header" id="header">
         <nav class="navbar">
@@ -2044,6 +2265,11 @@
                 <a href="#" class="btn btn-outline">Login</a>
                 <a href="#" class="btn btn-primary">Join Free</a>
             </div>
+
+<!-- ➕ ADD THIS MOBILE MENU BUTTON -->
+        <button class="mobile-menu-btn" onclick="openMobileNav()">
+            <i class="fas fa-bars"></i>
+        </button>
         </nav>
     </header>
 
@@ -2599,7 +2825,22 @@ H—C—H    (Bond angle: 109.5°)
             appId: "1:826388660484:web:a83e02d17ee348f841d051",
             measurementId: "G-M84783CE7W"
         };
+// ➕ ADD: Mobile Navigation Functions
+function openMobileNav() {
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileOverlay = document.getElementById('mobileNavOverlay');
+    mobileNav.classList.add('active');
+    mobileOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
 
+function closeMobileNav() {
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileOverlay = document.getElementById('mobileNavOverlay');
+    mobileNav.classList.remove('active');
+    mobileOverlay.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+}
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
@@ -2906,13 +3147,17 @@ H—C—H    (Bond angle: 109.5°)
 
             // Add escape key to close modal
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    const modal = document.getElementById('nameModal');
-                    if (modal.classList.contains('show')) {
-                        skipName();
-                    }
-                }
-            });
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('nameModal');
+        if (modal.classList.contains('show')) {
+            skipName();
+        }
+        // ➕ ADD: Close mobile nav on escape
+        if (document.getElementById('mobileNav').classList.contains('active')) {
+            closeMobileNav();
+        }
+    }
+});
 
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -3177,9 +3422,10 @@ Daily Science & Math Challenge 📚`;
         console.log('🌟 SimplifiedMinds - SSLC Toppers Enhanced - Inspiring Academic Excellence! 🚀');
 
 // Update active navigation link based on scroll position
+// 🔄 MODIFY: Update active navigation link based on scroll position
 function updateActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link'); // ← Added mobile nav links
     
     let current = '';
     sections.forEach(section => {
