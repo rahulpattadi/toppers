@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Current Solutions - SimplifiedMinds SSLC</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <meta property="og:title" content="Electric Current Solutions - SimplifiedMinds SSLC">
+    <meta property="og:description" content="⚡ Master Electric Current concepts with step-by-step solutions! Complete SSLC Physics chapter with examples, formulas, and practice questions.">
+    <meta property="og:image" content="https://sslctoppers.com/icon.png">
+    <meta property="og:url" content="https://sslctoppers.com/electric-current">
+    <meta property="og:type" content="website">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            /* Professional Blue-Teal Theme */
+            --primary-blue: #2563eb;
+            --primary-teal: #0891b2;
+            --blue-light: #3b82f6;
+            --teal-light: #06b6d4;
+            --blue-dark: #1d4ed8;
+            --teal-dark: #0e7490;
+            
+            /* Secondary Colors */
+            --primary-gradient: linear-gradient(135deg, #2563eb 0%, #0891b2 100%);
+            --secondary-gradient: linear-gradient(135deg, #0891b2 0%, #2563eb 100%);
+            --success-gradient: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            --accent-gradient: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            --warning-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            --dark-gradient: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            
+            /* Glass Effect */
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --text-light: rgba(255, 255, 255, 0.6);
+            --text-dark: #1f2937;
+            
+            /* Effects */
+            --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --shadow-strong: 0 16px 48px rgba(0, 0, 0, 0.2);
+            --radius: 12px;
+            --radius-large: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 15%, #16213e 30%, #0f3460 45%, #533483 60%, #16213e 75%, #0e1a2e 90%, #000000 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Enhanced Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+            border-radius: 50%;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) { 
+            width: 120px; height: 120px; left: 10%; 
+            animation-delay: 0s; 
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.3), rgba(8, 145, 178, 0.3));
+        }
+        .shape:nth-child(2) { 
+            width: 80px; height: 80px; left: 80%; 
+            animation-delay: 2s; 
+            background: linear-gradient(45deg, rgba(8, 145, 178, 0.3), rgba(37, 99, 235, 0.3));
+        }
+        .shape:nth-child(3) { 
+            width: 160px; height: 160px; left: 60%; 
+            animation-delay: 4s; 
+            background: linear-gradient(45deg, rgba(124, 58, 237, 0.3), rgba(168, 85, 247, 0.3));
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(100vh) scale(0) rotate(0deg); 
+                opacity: 0; 
+            }
+            5% { 
+                transform: translateY(95vh) scale(1) rotate(45deg); 
+                opacity: 1; 
+            }
+            95% { 
+                transform: translateY(-5vh) scale(1) rotate(315deg); 
+                opacity: 1; 
+            }
+            100% { 
+                transform: translateY(-10vh) scale(0) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .navbar {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            font-size: 2.2rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-teal) 50%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: var(--primary-gradient);
+            backdrop-filter: blur(20px);
+            border: none;
+            border-radius: var(--radius);
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1001;
+            box-shadow: var(--shadow-soft);
+            flex-shrink: 0;
+        }
+
+        .hamburger {
+            width: 22px;
+            height: 2px;
+            background: white;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 2px;
+            background: white;
+            transition: var(--transition);
+        }
+
+        .hamburger::before { top: -7px; }
+        .hamburger::after { top: 7px; }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-yellow);
+        }
+
+        .nav-link.active {
+            color: var(--primary-yellow);
+            font-weight: 600;
+        }
+
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 8px 14px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #34d399;
+            white-space: nowrap;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1); 
+                box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+            }
+            50% { 
+                opacity: 0.7; 
+                transform: scale(1.4); 
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.8);
+            }
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            backdrop-filter: blur(20px);
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: 40px 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(251, 191, 36, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: var(--text-primary);
+            box-shadow: var(--shadow-soft);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-title-main {
+            background: linear-gradient(45deg, #fff, #f8f9fa, #fff, #e9ecef);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleShine 4s ease-in-out infinite;
+            display: block;
+        }
+
+        @keyframes titleShine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-weight: 500;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 30px 0;
+            margin-bottom: 50px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            animation: fadeInUp 1.6s ease-out;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-large);
+            padding: 25px 20px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .stat-number {
+            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* Questions Section */
+        .questions-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-large);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-strong);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .questions-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ef4444, #f59e0b, #8b5cf6, #10b981);
+            background-size: 400% 100%;
+            animation: rainbow 4s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        /* Search Box */
+        .search-container {
+            margin-bottom: 30px;
+            position: relative;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid var(--glass-border);
+            border-radius: 25px;
+            font-size: 16px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            color: var(--text-primary);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-box:focus {
+            border-color: var(--primary-teal);
+            box-shadow: 0 0 20px rgba(8, 145, 178, 0.3);
+        }
+
+        .search-box::placeholder {
+            color: var(--text-light);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        /* Question Cards */
+        .question-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-large);
+            margin-bottom: 25px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .question-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .question-header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .question-number {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .question-text {
+            flex: 1;
+            margin: 0 20px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .question-card.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .solution-content {
+            padding: 25px;
+            display: none;
+            background: rgba(248, 250, 252, 0.05);
+            border-top: 3px solid #4CAF50;
+        }
+
+        .solution-content.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+                padding: 0 25px;
+            }
+            to {
+                opacity: 1;
+                max-height: 2000px;
+                padding: 25px;
+            }
+        }
+
+        .solution-label {
+            background: #4CAF50;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .formula {
+            background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.2));
+            border: 1px solid rgba(33, 150, 243, 0.3);
+            padding: 15px;
+            border-radius: var(--radius);
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: #64b5f6;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .calculation {
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.1), rgba(156, 39, 176, 0.2));
+            border: 1px solid rgba(156, 39, 176, 0.3);
+            padding: 15px;
+            border-radius: var(--radius);
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            color: #ba68c8;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(251, 191, 36, 0.3), rgba(220, 38, 38, 0.3));
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .solution-content p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .solution-content strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .solution-content ul {
+            margin: 15px 0 15px 20px;
+        }
+
+        .solution-content li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .circuit-placeholder {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border: 2px dashed var(--glass-border);
+            border-radius: var(--radius);
+            padding: 30px;
+            text-align: center;
+            margin: 15px 0;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .topic-tag {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-gradient);
+            color: white;
+            padding: 50px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-icon {
+            font-size: 1.8rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary-red);
+            transform: translateY(-2px);
+        }
+
+        .footer-heading {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex !important;
+            }
+            
+            .nav-links {
+                display: none !important;
+            }
+            
+            .navbar {
+                padding: 12px 15px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .main-content {
+                margin-top: 70px;
+            }
+            
+            .hero {
+                padding: 40px 0 30px;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .live-indicator span {
+                display: none;
+            }
+            
+            .live-indicator {
+                padding: 6px;
+                width: 28px;
+                height: 28px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .questions-section {
+                padding: 25px 15px;
+                margin-bottom: 30px;
+            }
+            
+            .question-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 15px;
+            }
+            
+            .question-text {
+                margin: 0;
+                font-size: 1rem;
+            }
+            
+            .solution-content {
+                padding: 20px 15px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                text-align: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .question-text {
+                font-size: 0.95rem;
+            }
+            
+            .questions-section {
+                padding: 20px 12px;
+            }
+            
+            .container {
+                padding: 0 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <a href="/" class="logo">
+                <i class="fas fa-graduation-cap logo-icon"></i>
+                <span class="logo-text">SimplifiedMinds</span>
+            </a>
+            
+            <!-- Navigation links removed as requested -->
+            
+            <div class="header-actions">
+                <div class="live-indicator">
+                    <div class="live-dot"></div>
+                    <span>Physics</span>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <div class="hamburger"></div>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-badge">⚡ SSLC Physics Chapter Solutions</div>
+                <h1 class="hero-title">
+                    <span class="hero-title-main">Electric Current</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Master electric current concepts with comprehensive solutions, step-by-step explanations, and interactive examples
+                </p>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">25+</span>
+                        <div class="stat-label">Practice Questions</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <div class="stat-label">SSLC Syllabus</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">⭐</span>
+                        <div class="stat-label">Expert Solutions</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">📱</span>
+                        <div class="stat-label">Mobile Friendly</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Questions Section -->
+            <section class="questions-section">
+                <div class="section-header">
+                    <h2 class="section-title">⚡ Electric Current - Complete Solutions</h2>
+                    <p class="section-subtitle">Click on any question to reveal the detailed solution with step-by-step explanations</p>
+                    
+                    <div class="topic-tag">Current & Charge</div>
+                    <div class="topic-tag">Ohm's Law</div>
+                    <div class="topic-tag">Resistance</div>
+                    <div class="topic-tag">Circuit Analysis</div>
+                </div>
+
+                <div class="search-container">
+                    <input type="text" class="search-box" placeholder="Search questions or concepts..." id="searchBox">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+
+                <div class="questions-container" id="questionsContainer">
+                    
+                    <!-- Question 1 -->
+                    <div class="question-card" data-keywords="equation relationship electrical units ampere coulomb">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q1</span>
+                            <span class="question-text">Which of the following equation shows the correct relationship between electrical units?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p>The correct relationship between electrical units is:</p>
+                            <div class="formula">
+                                <strong>1 A = 1 C/s</strong>
+                            </div>
+                            <p><strong>Explanation:</strong> This equation defines electric current (Ampere) as the rate of flow of electric charge (Coulomb) per unit time (second).</p>
+                            <p>The relationship shows that <span class="highlight">1 Ampere equals 1 Coulomb per second</span>, which is the fundamental definition of electric current.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question-card" data-keywords="coulomb second ampere physical quantity">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q2</span>
+                            <span class="question-text">By what name is the physical quantity coulomb/second called?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p>The physical quantity <span class="highlight">coulomb/second</span> is called <span class="highlight">Ampere</span>.</p>
+                            <div class="formula">
+                                Coulomb/Second = Ampere (A)
+                            </div>
+                            <p><strong>Key Point:</strong> Ampere is the SI unit of electric current, representing the flow of one coulomb of charge per second.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question-card" data-keywords="flow charge electric current definition">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q3</span>
+                            <span class="question-text">What is the flow of charge called?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p>The flow of charge is called <span class="highlight">Electric Current</span>.</p>
+                            <div class="formula">
+                                Electric Current = Flow of Electric Charge
+                            </div>
+                            <p><strong>Definition:</strong> Electric current is the rate of flow of electric charges through a conductor or any medium.</p>
+                            <p>It is measured in Amperes (A) and represents how much charge flows past a point in a circuit per unit time.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="question-card" data-keywords="switch light electrons wire travel">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q4</span>
+                            <span class="question-text">What travels through the wires when you switch on a light?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p>When you switch on a light, <span class="highlight">Electrons</span> travel through the wires.</p>
+                            <div class="formula">
+                                Electric Current in Wires = Flow of Electrons
+                            </div>
+                            <p><strong>Explanation:</strong> In metallic conductors (like copper wires), electric current is carried by the movement of free electrons from the negative terminal to the positive terminal of the power source.</p>
+                            <p>These electrons carry electrical energy that powers the light bulb.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="question-card" data-keywords="particles electric current metallic conductor electrons">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q5</span>
+                            <span class="question-text">Which particles constitute the electric current in a metallic conductor?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p>In a metallic conductor, <span class="highlight">Electrons</span> constitute the electric current.</p>
+                            <div class="formula">
+                                Metallic Conductor Current = Electron Flow
+                            </div>
+                            <p><strong>Key Points:</strong></p>
+                            <ul>
+                                <li>Metals have free electrons that can move easily through the crystal lattice</li>
+                                <li>These free electrons carry negative charge</li>
+                                <li>When a potential difference is applied, electrons drift from negative to positive terminal</li>
+                                <li>This drift of electrons constitutes electric current in metals</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="question-card" data-keywords="conventional current direction electrons flow circuit">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q6</span>
+                            <span class="question-text">In which direction does conventional current flow around a circuit? In which direction do electrons flow?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p><strong>(a) Conventional Current Direction:</strong></p>
+                            <p>Conventional current flows from the <span class="highlight">positive terminal</span> of a battery to the <span class="highlight">negative terminal</span> through the external circuit.</p>
+                            
+                            <p><strong>(b) Electron Flow Direction:</strong></p>
+                            <p>Electrons flow from the <span class="highlight">negative terminal</span> to the <span class="highlight">positive terminal</span> of the battery (opposite to conventional current).</p>
+                            
+                            <div class="formula">
+                                Conventional Current: (+) → (-)<br>
+                                Electron Flow: (-) → (+)
+                            </div>
+                            
+                            <p><strong>Important Note:</strong> Conventional current direction was established before the discovery of electrons. Though electrons actually flow in the opposite direction, we still use conventional current direction for circuit analysis.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="question-card" data-keywords="unit electric current ampere SI">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q7</span>
+                            <span class="question-text">What is the unit of electric current?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p>The unit of electric current is <span class="highlight">Ampere</span> (symbol: A).</p>
+                            <div class="formula">
+                                Electric Current Unit = Ampere (A)
+                            </div>
+                            <p><strong>Definition:</strong> One ampere is the current that flows when one coulomb of charge passes through any cross-section of a conductor in one second.</p>
+                            <p>Ampere is one of the seven fundamental SI base units.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="question-card" data-keywords="milliamperes microamperes conversion ampere">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q8</span>
+                            <span class="question-text">(a) How many milliamperes are there in 1 ampere? (b) How many microamperes are there in 1 ampere?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p><strong>(a) Milliamperes in 1 Ampere:</strong></p>
+                            <div class="formula">
+                                1 Ampere = 10³ milliamperes = 1000 mA
+                            </div>
+                            
+                            <p><strong>(b) Microamperes in 1 Ampere:</strong></p>
+                            <div class="formula">
+                                1 Ampere = 10⁶ microamperes = 1,000,000 μA
+                            </div>
+                            
+                            <p><strong>Unit Conversions:</strong></p>
+                            <ul>
+                                <li>1 A = 1000 mA (milliamperes)</li>
+                                <li>1 A = 1,000,000 μA (microamperes)</li>
+                                <li>1 mA = 1000 μA</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Question 9 -->
+                    <div class="question-card" data-keywords="ammeter voltmeter series parallel connection">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q9</span>
+                            <span class="question-text">Which of the two is connected in series: ammeter or voltmeter?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p><span class="highlight">Ammeter</span> is connected in series.</p>
+                            <div class="formula">
+                                Ammeter → Series Connection<br>
+                                Voltmeter → Parallel Connection
+                            </div>
+                            <p><strong>Reason:</strong> An ammeter measures the current flowing through a circuit component, so it must be connected in series to allow the same current to flow through it as flows through the component being measured.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 10 -->
+                    <div class="question-card" data-keywords="ammeter voltmeter connection comparison circuit">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q10</span>
+                            <span class="question-text">Compare how an ammeter and a voltmeter are connected in a circuit.</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p><strong>Ammeter Connection:</strong></p>
+                            <p>An ammeter is connected <span class="highlight">in series</span> in a circuit.</p>
+                            
+                            <p><strong>Voltmeter Connection:</strong></p>
+                            <p>A voltmeter is connected <span class="highlight">in parallel</span> in a circuit.</p>
+                            
+                            <div class="formula">
+                                Ammeter: Series Connection<br>
+                                Voltmeter: Parallel Connection
+                            </div>
+                            
+                            <div class="circuit-placeholder">
+                                📊 Circuit Diagram:<br>
+                                [Battery] —— [Ammeter] —— [Resistor] ——<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Voltmeter]<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                                ————————————————————
+                            </div>
+                            
+                            <p><strong>Key Differences:</strong></p>
+                            <ul>
+                                <li><strong>Ammeter:</strong> Series connection ensures same current flows through it</li>
+                                <li><strong>Voltmeter:</strong> Parallel connection measures potential difference across component</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Question 11 -->
+                    <div class="question-card" data-keywords="circuit symbols variable resistance closed plug key">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q11</span>
+                            <span class="question-text">What do the following symbols mean in circuit diagrams? (i) Variable resistance symbol (ii) Closed plug key symbol</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p><strong>(i) First Symbol:</strong> <span class="highlight">Variable Resistance</span></p>
+                            <p>This symbol represents a resistor whose resistance can be varied or adjusted.</p>
+                            
+                            <p><strong>(ii) Second Symbol:</strong> <span class="highlight">Closed Plug Key</span></p>
+                            <p>This symbol represents a switch in the closed position, allowing current to flow through the circuit.</p>
+                            
+                            <div class="formula">
+                                Symbol (i) = Variable Resistance<br>
+                                Symbol (ii) = Closed Switch/Key
+                            </div>
+                            
+                            <p><strong>Usage:</strong></p>
+                            <ul>
+                                <li><strong>Variable Resistance:</strong> Used to control current in circuits</li>
+                                <li><strong>Closed Key:</strong> Completes the circuit for current flow</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Question 12 -->
+                    <div class="question-card" data-keywords="10 coulomb charge current calculation 1 second">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q12</span>
+                            <span class="question-text">If 10 C of charge pass a point in a circuit in 1 s, what current is flowing?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p><strong>Given:</strong></p>
+                            <ul>
+                                <li>Charge (Q) = 10 C</li>
+                                <li>Time (t) = 1 s</li>
+                                <li>Current (I) = ?</li>
+                            </ul>
+                            
+                            <div class="formula">
+                                <strong>Formula: I = Q/t</strong>
+                            </div>
+                            
+                            <div class="calculation">
+                                <strong>Calculation:</strong><br>
+                                I = Q/t<br>
+                                I = 10 C / 1 s<br>
+                                <span class="highlight">I = 10 A</span>
+                            </div>
+                            
+                            <p><strong>Answer:</strong> The current flowing is <span class="highlight">10 Amperes</span>.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 13 -->
+                    <div class="question-card" data-keywords="5 ampere current 20 seconds charge calculation">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q13</span>
+                            <span class="question-text">A current of 5 A flows around a circuit for 20 s. How much charge flows past a point in the circuit in this time?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p><strong>Given:</strong></p>
+                            <ul>
+                                <li>Current (I) = 5 A</li>
+                                <li>Time (t) = 20 s</li>
+                                <li>Charge (Q) = ?</li>
+                            </ul>
+                            
+                            <div class="formula">
+                                <strong>Formula: Q = I × t</strong>
+                            </div>
+                            
+                            <div class="calculation">
+                                <strong>Calculation:</strong><br>
+                                Q = I × t<br>
+                                Q = 5 A × 20 s<br>
+                                <span class="highlight">Q = 100 C</span>
+                            </div>
+                            
+                            <p><strong>Answer:</strong> <span class="highlight">100 Coulombs</span> of charge flows past a point in the circuit.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 14 -->
+                    <div class="question-card" data-keywords="current circuit charge 10 coulomb 50 seconds">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q14</span>
+                            <span class="question-text">What is the current in a circuit if the charge passing each point is 10 C in 50 s?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p><strong>Given:</strong></p>
+                            <ul>
+                                <li>Charge (Q) = 10 C</li>
+                                <li>Time (t) = 50 s</li>
+                                <li>Current (I) = ?</li>
+                            </ul>
+                            
+                            <div class="formula">
+                                <strong>Formula: I = Q/t</strong>
+                            </div>
+                            
+                            <div class="calculation">
+                                <strong>Calculation:</strong><br>
+                                I = Q/t<br>
+                                I = 10 C / 50 s<br>
+                                <span class="highlight">I = 0.2 A</span>
+                            </div>
+                            
+                            <p><strong>Answer:</strong> The current in the circuit is <span class="highlight">0.2 Amperes</span>.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 15 -->
+                    <div class="question-card" data-keywords="potential difference device bulb energy transfer calculation">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q15</span>
+                            <span class="question-text">(a) Name a device which helps to maintain potential difference across a conductor (say, a bulb). If a potential difference of 20 V causes a current of 3 A to flow for 1 minute, how much energy is transferred?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p><strong>(a) Device:</strong></p>
+                            <p>A <span class="highlight">Cell or Battery</span> helps to maintain potential difference across a conductor.</p>
+                            
+                            <p><strong>(b) Energy Calculation:</strong></p>
+                            <p><strong>Given:</strong></p>
+                            <ul>
+                                <li>Potential difference (V) = 20 V</li>
+                                <li>Current (I) = 3 A</li>
+                                <li>Time (t) = 1 minute = 60 s</li>
+                                <li>Energy (W) = ?</li>
+                            </ul>
+                            
+                            <div class="formula">
+                                <strong>Formula: W = V × I × t</strong>
+                            </div>
+                            
+                            <div class="calculation">
+                                <strong>Calculation:</strong><br>
+                                W = V × I × t<br>
+                                W = 20 V × 3 A × 60 s<br>
+                                <span class="highlight">W = 3600 J</span>
+                            </div>
+                            
+                            <p><strong>Answer:</strong> <span class="highlight">3600 Joules</span> of energy is transferred.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 16 -->
+                    <div class="question-card" data-keywords="electric current definition potential difference unit define ampere">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q16</span>
+                            <span class="question-text">What is an electric current? What makes an electric current flow in a wire? Define the unit of electric current (or Define ampere).</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p><strong>(a) Electric Current:</strong></p>
+                            <p>An electric current is a <span class="highlight">flow of electric charges (electrons) through a conductor</span>.</p>
+                            
+                            <p><strong>(b) What makes current flow:</strong></p>
+                            <p><span class="highlight">Potential difference</span> between the ends of the wire makes electric current flow in the wire.</p>
+                            
+                            <p><strong>(c) Definition of Ampere:</strong></p>
+                            <p>When <span class="highlight">1 coulomb of charge flows through any cross-section of a conductor in 1 second</span>, the electric current flowing through it is said to be <span class="highlight">1 ampere</span>.</p>
+                            
+                            <div class="formula">
+                                1 Ampere = 1 Coulomb / 1 Second<br>
+                                1 A = 1 C/s
+                            </div>
+                            
+                            <p><strong>Key Points:</strong></p>
+                            <ul>
+                                <li>Current flows due to potential difference</li>
+                                <li>Ampere is the SI unit of current</li>
+                                <li>Current is rate of charge flow</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Question 17 -->
+                    <div class="question-card" data-keywords="ammeter measurement series connection diagram">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q17</span>
+                            <span class="question-text">What is an ammeter? How is it connected in a circuit? Draw a diagram to illustrate your answer.</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p><strong>Ammeter:</strong></p>
+                            <p>An ammeter is a <span class="highlight">device used for the measurement of electric current</span>.</p>
+                            
+                            <p><strong>Connection:</strong></p>
+                            <p>It is always connected <span class="highlight">in series</span> with the circuit in which the current is to be measured.</p>
+                            
+                            <div class="circuit-placeholder">
+                                📊 Circuit Diagram with Ammeter:<br><br>
+                                [+] Battery [-] ——— [A] ——— [Resistor] ———<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                                ——————————————————————————————————————<br><br>
+                                Where [A] = Ammeter (connected in series)
+                            </div>
+                            
+                            <p><strong>Important:</strong> The ammeter must have very low resistance so it doesn't affect the current being measured.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 18 -->
+                    <div class="question-card" data-keywords="formula electric charge time current radio calculation">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q18</span>
+                            <span class="question-text">(a) Write down the formula which relates electric charge, time and electric current. (b) A radio set draws a current of 0.36 A for 15 minutes. Calculate the amount of electric charge that flows through the circuit.</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p><strong>(a) Formula:</strong></p>
+                            <div class="formula">
+                                <strong>Q = I × t</strong><br>
+                                Where: Q = Charge, I = Current, t = Time
+                            </div>
+                            
+                            <p><strong>(b) Calculation:</strong></p>
+                            <p><strong>Given:</strong></p>
+                            <ul>
+                                <li>Current (I) = 0.36 A</li>
+                                <li>Time (t) = 15 minutes = 15 × 60 = 900 seconds</li>
+                                <li>Charge (Q) = ?</li>
+                            </ul>
+                            
+                            <div class="calculation">
+                                <strong>Calculation:</strong><br>
+                                Q = I × t<br>
+                                Q = 0.36 A × 900 s<br>
+                                <span class="highlight">Q = 324 C</span>
+                            </div>
+                            
+                            <p><strong>Answer:</strong> <span class="highlight">324 Coulombs</span> of electric charge flows through the circuit.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 19 -->
+                    <div class="question-card" data-keywords="resistance ammeter voltmeter small large why">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q19</span>
+                            <span class="question-text">Why should the resistance of: (a) an ammeter be very small? (b) a voltmeter be very large?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p><strong>(a) Ammeter - Very Small Resistance:</strong></p>
+                            <p>The resistance of an ammeter should be <span class="highlight">very small</span> so that it may not change the value of the current flowing in the circuit.</p>
+                            
+                            <p><strong>(b) Voltmeter - Very Large Resistance:</strong></p>
+                            <p>The resistance of a voltmeter should be <span class="highlight">very large</span> so that it takes a negligible current from the circuit.</p>
+                            
+                            <div class="formula">
+                                Ideal Ammeter: R = 0 Ω (practically very small)<br>
+                                Ideal Voltmeter: R = ∞ Ω (practically very large)
+                            </div>
+                            
+                            <p><strong>Reasons:</strong></p>
+                            <ul>
+                                <li><strong>Ammeter:</strong> Low resistance prevents voltage drop across it</li>
+                                <li><strong>Voltmeter:</strong> High resistance prevents current drain from circuit</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Question 20 -->
+                    <div class="question-card" data-keywords="circuit symbols fixed variable resistance cell battery switch">
+                        <div class="question-header" onclick="toggleSolution(this)">
+                            <span class="question-number">Q20</span>
+                            <span class="question-text">Draw circuit symbols for (a) fixed resistance (b) variable resistance (c) a cell (d) a battery of three cells (e) an open switch (f) a closed switch.</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="solution-content">
+                            <span class="solution-label">💡 Solution</span>
+                            <p><strong>Circuit Symbols:</strong></p>
+                            
+                            <div class="circuit-placeholder">
+                                <strong>(a) Fixed Resistance:</strong> ——[░░░]——<br><br>
+                                <strong>(b) Variable Resistance:</strong> ——[░░░]——<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↗<br><br>
+                                <strong>(c) Cell:</strong> ——|+&nbsp;&nbsp;&nbsp;-|——<br><br>
+                                <strong>(d) Battery (3 cells):</strong> ——|+&nbsp;-|+&nbsp;-|+&nbsp;-|——<br><br>
+                                <strong>(e) Open Switch:</strong> ——•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•——<br><br>
+                                <strong>(f) Closed Switch:</strong> ——•——•——<br>
+                            </div>
+                            
+                            <p><strong>Key:</strong></p>
+                            <ul>
+                                <li>Fixed resistor: Rectangle with zigzag</li>
+                                <li>Variable resistor: Arrow across fixed resistor</li>
+                                <li>Cell: Long and short parallel lines</li>
+                                <li>Battery: Multiple cells in series</li>
+                                <li>Switches: Two contact points (open/closed)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <i class="fas fa-graduation-cap footer-logo-icon"></i>
+                        <span class="footer-logo-text">SimplifiedMinds</span>
+                    </div>
+                    <p class="footer-description">
+                        Empowering SSLC students with daily challenges, comprehensive practice questions, and expert guidance to achieve academic excellence.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/simplifiedminds" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/simplified_minds/" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@simplifiedmindssslc" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-heading">Subjects</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Physics</a></li>
+                        <li><a href="#">Mathematics</a></li>
+                        <li><a href="#">Chemistry</a></li>
+                        <li><a href="#">Biology</a></li>
+                        <li><a href="#">Social Science</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Daily Quizzes</a></li>
+                        <li><a href="#">Practice Tests</a></li>
+                        <li><a href="#">Video Lessons</a></li>
+                        <li><a href="#">Study Materials</a></li>
+                        <li><a href="#">Previous Papers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-heading">Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 SimplifiedMinds. All rights reserved. Empowering young minds to achieve excellence.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        function initializeHeaderEffect() {
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // Toggle solution functionality
+        function toggleSolution(header) {
+            const card = header.parentElement;
+            const solution = card.querySelector('.solution-content');
+            const isActive = card.classList.contains('active');
+            
+            // Close all other cards
+            document.querySelectorAll('.question-card').forEach(c => {
+                if (c !== card) {
+                    c.classList.remove('active');
+                    c.querySelector('.solution-content').classList.remove('show');
+                }
+            });
+            
+            // Toggle current card
+            if (isActive) {
+                card.classList.remove('active');
+                solution.classList.remove('show');
+            } else {
+                card.classList.add('active');
+                solution.classList.add('show');
+                
+                // Smooth scroll to solution
+                setTimeout(() => {
+                    solution.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'nearest' 
+                    });
+                }, 300);
+            }
+        }
+
+        // Search functionality
+        function initializeSearch() {
+            const searchBox = document.getElementById('searchBox');
+            const cards = document.querySelectorAll('.question-card');
+            
+            searchBox.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                
+                cards.forEach(card => {
+                    const keywords = card.dataset.keywords.toLowerCase();
+                    const questionText = card.querySelector('.question-text').textContent.toLowerCase();
+                    const solutionText = card.querySelector('.solution-content').textContent.toLowerCase();
+                    
+                    if (keywords.includes(searchTerm) || 
+                        questionText.includes(searchTerm) || 
+                        solutionText.includes(searchTerm) ||
+                        searchTerm === '') {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeInUp 0.5s ease';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show "no results" message if no cards are visible
+                const visibleCards = Array.from(cards).filter(card => card.style.display !== 'none');
+                if (visibleCards.length === 0 && searchTerm !== '') {
+                    showSearchMessage('No questions found. Try different keywords.');
+                } else {
+                    hideSearchMessage();
+                }
+            });
+        }
+
+        function showSearchMessage(message) {
+            const existingMessage = document.getElementById('searchMessage');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.id = 'searchMessage';
+            messageDiv.style.cssText = `
+                text-align: center;
+                padding: 40px;
+                color: var(--text-secondary);
+                font-size: 1.1rem;
+                background: var(--glass-bg);
+                border-radius: var(--radius);
+                margin: 20px 0;
+                border: 1px solid var(--glass-border);
+            `;
+            messageDiv.innerHTML = `
+                <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 15px; opacity: 0.5;"></i><br>
+                ${message}
+            `;
+            
+            document.getElementById('questionsContainer').appendChild(messageDiv);
+        }
+
+        function hideSearchMessage() {
+            const existingMessage = document.getElementById('searchMessage');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+        }
+
+        // Add entrance animations
+        function addEntranceAnimations() {
+            const cards = document.querySelectorAll('.question-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        function initializeSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🌟 SimplifiedMinds - Electric Current Solutions Loaded!');
+            
+            initializeHeaderEffect();
+            initializeSearch();
+            initializeSmoothScrolling();
+            addEntranceAnimations();
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    // Close all open solutions
+                    document.querySelectorAll('.question-card.active').forEach(card => {
+                        card.classList.remove('active');
+                        card.querySelector('.solution-content').classList.remove('show');
+                    });
+                }
+            });
+            
+            console.log('✅ All features initialized successfully!');
+        });
+    </script>
+</body>
+</html>
