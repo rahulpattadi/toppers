@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemical Reactions - Class 10 Science | Interactive Learning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --success: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --warning: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --white: #ffffff;
+            --shadow: 0 20px 40px rgba(0,0,0,0.1);
+            --border-radius: 20px;
+            
+            /* Reactant and Product Colors */
+            --reactant-color: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            --reactant-light: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            --product-color: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            --product-light: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Color Legend */
+        .color-legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-weight: 500;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .legend-reactant { background: var(--reactant-color); }
+        .legend-product { background: var(--product-color); }
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 10px;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .nav-tab {
+            padding: 15px 25px;
+            margin: 0 5px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-weight: 500;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-tab.active,
+        .nav-tab:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-tab:hover::before {
+            left: 100%;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 5px;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: var(--success);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 1s ease;
+        }
+
+        /* Main Content */
+        .content {
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .card-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        /* Enhanced Chemical Equations */
+        .chemical-equation {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #dee2e6;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .chemical-equation::before {
+            content: '⚗️';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 2rem;
+            opacity: 0.1;
+        }
+
+        /* Reactants and Products */
+        .reactant {
+            display: inline-block;
+            padding: 8px 15px;
+            background: var(--reactant-color);
+            color: white;
+            border-radius: 25px;
+            margin: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reactant::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .reactant:hover::before {
+            left: 100%;
+        }
+
+        .product {
+            display: inline-block;
+            padding: 8px 15px;
+            background: var(--product-color);
+            color: white;
+            border-radius: 25px;
+            margin: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0, 184, 148, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .product:hover::before {
+            left: 100%;
+        }
+
+        .reactant:hover, .product:hover {
+            transform: scale(1.05) translateY(-2px);
+            animation: none;
+        }
+
+        /* Enhanced Arrow */
+        .reaction-arrow {
+            display: inline-block;
+            font-size: 1.5rem;
+            color: #6c5ce7;
+            margin: 0 15px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        /* Heat/Energy indicators */
+        .energy-indicator {
+            font-size: 0.9rem;
+            color: #e17055;
+            font-weight: 500;
+            display: block;
+            margin: 5px 0;
+        }
+
+        .heat { color: #d63031; }
+        .light { color: #fdcb6e; }
+        .electricity { color: #0984e3; }
+
+        /* Reaction Cards */
+        .reaction-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #007bff;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reaction-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,123,255,0.2);
+        }
+
+        .reaction-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #007bff, #0056b3);
+            transition: width 0.3s ease;
+        }
+
+        .reaction-card:hover::before {
+            width: 100%;
+            opacity: 0.05;
+        }
+
+        .reaction-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .reaction-title i {
+            margin-right: 10px;
+            color: #007bff;
+        }
+
+        /* Interactive Elements */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            background: var(--success);
+            color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-section::before {
+            content: '🧪';
+            position: absolute;
+            font-size: 10rem;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .quiz-btn {
+            background: white;
+            color: #43e97b;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quiz-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Important Questions */
+        .question-item {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #f093fb;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .question-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(240,147,251,0.3);
+        }
+
+        .question-number {
+            background: var(--secondary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            float: left;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        /* Social Share */
+        .share-section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .share-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 10px;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .share-btn.facebook { background: #3b5998; }
+        .share-btn.twitter { background: #1da1f2; }
+        .share-btn.whatsapp { background: #25d366; }
+        .share-btn.telegram { background: #0088cc; }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .nav-tab {
+                margin: 5px 0;
+            }
+            
+            .card-body {
+                padding: 20px;
+            }
+            
+            .reaction-card {
+                padding: 20px;
+            }
+
+            .color-legend {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .chemical-equation {
+                font-size: 1rem;
+                padding: 15px;
+            }
+
+            .reactant, .product {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+            }
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Enhanced tooltips for better learning */
+        .tooltip {
+            position: relative;
+            cursor: help;
+        }
+
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+
+            <h1>🧪 Chemical Reactions</h1>
+            <p class="subtitle">Interactive Learning for Class 10 SSLC Science</p>
+            
+            <!-- Color Legend -->
+            <div class="color-legend">
+                <div class="legend-item">
+                    <div class="legend-color legend-reactant"></div>
+                    <span>Reactants</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color legend-product"></div>
+                    <span>Products</span>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('combination')">
+                <i class="fas fa-plus-circle"></i> Combination
+            </button>
+            <button class="nav-tab" onclick="showTab('decomposition')">
+                <i class="fas fa-minus-circle"></i> Decomposition
+            </button>
+            <a href="https://sslctoppers.com/" ><button class="nav-tab" href="https://sslctoppers.com/">
+                <i class="fas fa-brain"></i> Quiz            </button></a>
+        </nav>
+
+        <main class="content">
+            <!-- Combination Reactions Tab -->
+            <div id="combination" class="tab-content active">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-atom"></i> Combination Reactions</h2>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 1.1rem; margin-bottom: 25px; color: var(--dark);">
+                            A reaction in which two or more reactants combine to form a single product.
+                        </p>
+                        
+                        <div class="chemical-equation">
+                            <span class="reactant tooltip" data-tooltip="First reactant">A</span> 
+                            <span class="tooltip" data-tooltip="Plus sign indicates addition">+</span> 
+                            <span class="reactant tooltip" data-tooltip="Second reactant">B</span> 
+                            <span class="reaction-arrow">→</span> 
+                            <span class="product tooltip" data-tooltip="Single product formed">C</span>
+                        </div>
+
+                        <div class="reaction-card">
+                            <div class="reaction-title">
+                                <i class="fas fa-fire"></i>
+                                Burning of Coal
+                            </div>
+                            <div class="chemical-equation">
+                                <span class="reactant">C(s)</span> 
+                                <span>+</span> 
+                                <span class="reactant">O₂(g)</span> 
+                                <span class="reaction-arrow">→</span> 
+                                <span class="product">CO₂(g)</span>
+                            </div>
+                        </div>
+
+                        <div class="reaction-card">
+                            <div class="reaction-title">
+                                <i class="fas fa-tint"></i>
+                                Formation of Water
+                            </div>
+                            <div class="chemical-equation">
+                                <span class="reactant">2H₂(g)</span> 
+                                <span>+</span> 
+                                <span class="reactant">O₂(g)</span> 
+                                <span class="reaction-arrow">→</span> 
+                                <span class="product">2H₂O(l)</span>
+                            </div>
+                        </div>
+
+                        <div class="reaction-card">
+                            <div class="reaction-title">
+                                <i class="fas fa-flask"></i>
+                                Quick Lime + Water → Slaked Lime
+                            </div>
+                            <div class="chemical-equation">
+                                <span class="reactant">CaO(s)</span> 
+                                <span>+</span> 
+                                <span class="reactant">H₂O(l)</span> 
+                                <span class="reaction-arrow">→</span> 
+                                <span class="product">Ca(OH)₂(aq)</span>
+                            </div>
+                        </div>
+
+                        <div class="card" style="margin-top: 30px;">
+                            <div class="card-header" style="background: var(--warning);">
+                                <h3><i class="fas fa-thermometer-half"></i> Exothermic Reactions</h3>
+                            </div>
+                            <div class="card-body">
+                                <p>Reactions in which heat is released along with the formation of products.</p>
+                                
+                                <div class="reaction-card">
+                                    <div class="reaction-title">
+                                        <i class="fas fa-fire"></i>
+                                        Burning of Natural Gas
+                                    </div>
+                                    <div class="chemical-equation">
+                                        <span class="reactant">CH₄(g)</span> 
+                                        <span>+</span> 
+                                        <span class="reactant">2O₂(g)</span> 
+                                        <span class="reaction-arrow">→</span> 
+                                        <span class="product">CO₂(g)</span> 
+                                        <span>+</span> 
+                                        <span class="product">2H₂O(g)</span>
+                                        <span class="energy-indicator heat">+ Heat</span>
+                                    </div>
+                                </div>
+
+                                <div class="reaction-card">
+                                    <div class="reaction-title">
+                                        <i class="fas fa-lungs"></i>
+                                        Respiration (Exothermic Reaction)
+                                    </div>
+                                    <div class="chemical-equation">
+                                        <span class="reactant">C₆H₁₂O₆(aq)</span> 
+                                        <span>+</span> 
+                                        <span class="reactant">6O₂(g)</span> 
+                                        <span class="reaction-arrow">→</span> 
+                                        <span class="product">6CO₂(g)</span> 
+                                        <span>+</span> 
+                                        <span class="product">6H₂O(l)</span>
+                                        <span class="energy-indicator heat">+ Energy</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decomposition Reactions Tab -->
+            <div id="decomposition" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-cut"></i> Decomposition Reactions</h2>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 1.1rem; margin-bottom: 25px; color: var(--dark);">
+                            A reaction in which a compound splits into two or more simple substances.
+                        </p>
+                        
+                        <div class="chemical-equation">
+                            <span class="reactant tooltip" data-tooltip="Single reactant compound">A</span> 
+                            <span class="reaction-arrow">→</span> 
+                            <span class="product tooltip" data-tooltip="First product">B</span> 
+                            <span>+</span> 
+                            <span class="product tooltip" data-tooltip="Second product">C</span>
+                        </div>
+
+                        <div class="card" style="margin: 30px 0;">
+                            <div class="card-header" style="background: var(--accent);">
+                                <h3><i class="fas fa-temperature-high"></i> Thermal Decomposition</h3>
+                            </div>
+                            <div class="card-body">
+                                <p>When decomposition is carried out by heating.</p>
+                                
+                                <div class="reaction-card">
+                                    <div class="reaction-title">
+                                        <i class="fas fa-atom"></i>
+                                        Ferrous Sulphate Decomposition
+                                    </div>
+                                    <div class="chemical-equation">
+                                        <span class="reactant">2FeSO₄(s)</span>
+                                        <span class="energy-indicator heat">🔥 Heat</span>
+                                        <span class="reaction-arrow">→</span> 
+                                        <span class="product">Fe₂O₃(s)</span> 
+                                        <span>+</span> 
+                                        <span class="product">SO₂(g)</span> 
+                                        <span>+</span> 
+                                        <span class="product">SO₃(g)</span>
+                                    </div>
+                                    <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">
+                                        <span style="color: green;">Green colour</span> → <span style="color: #8B4513;">Red-brown colour</span>
+                                    </p>
+                                </div>
+
+                                <div class="reaction-card">
+                                    <div class="reaction-title">
+                                        <i class="fas fa-mountain"></i>
+                                        Limestone Decomposition
+                                    </div>
+                                    <div class="chemical-equation">
+                                        <span class="reactant">CaCO₃(s)</span>
+                                        <span class="energy-indicator heat">🔥 Heat</span>
+                                        <span class="reaction-arrow">→</span> 
+                                        <span class="product">CaO(s)</span> 
+                                        <span>+</span> 
+                                        <span class="product">CO₂(g)</span>
+                                    </div>
+                                </div>
+
+                                <div class="reaction-card">
+                                    <div class="reaction-title">
+                                        <i class="fas fa-vial"></i>
+                                        Lead Nitrate Decomposition
+                                    </div>
+                                    <div class="chemical-equation">
+                                        <span class="reactant">2Pb(NO₃)₂(s)</span>
+                                        <span class="energy-indicator heat">🔥 Heat</span>
+                                        <span class="reaction-arrow">→</span> 
+                                        <span class="product">2PbO(s)</span> 
+                                        <span>+</span> 
+                                        <span class="product">4NO₂(g)</span> 
+                                        <span>+</span> 
+                                        <span class="product">O₂(g)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" style="margin: 30px 0;">
+                            <div class="card-header" style="background: var(--secondary);">
+                                <h3><i class="fas fa-bolt"></i> Electrolytic Decomposition</h3>
+                            </div>
+                            <div class="card-body">
+                                <p>When decomposition is carried out by passing electricity.</p>
+                                
+                                <div class="reaction-card">
+                                    <div class="reaction-title">
+                                        <i class="fas fa-tint"></i>
+                                        Water Electrolysis
+                                    </div>
+                                    <div class="chemical-equation">
+                                        <span class="reactant">2H₂O(l)</span>
+                                        <span class="energy-indicator electricity">⚡ Electric current</span>
+                                        <span class="reaction-arrow">→</span> 
+                                        <span class="product">2H₂(g)</span> 
+                                        <span>+</span> 
+                                        <span class="product">O₂(g)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" style="margin: 30px 0;">
+                            <div class="card-header" style="background: var(--warning);">
+                                <h3><i class="fas fa-sun"></i> Photolytic Decomposition</h3>
+                            </div>
+                            <div class="card-body">
+                                <p>When decomposition is carried out in presence of sunlight.</p>
+                                
+                                <div class="reaction-card">
+                                    <div class="reaction-title">
+                                        <i class="fas fa-camera"></i>
+                                        Silver Chloride Decomposition
+                                    </div>
+                                    <div class="chemical-equation">
+                                        <span class="reactant">2AgCl(s)</span>
+                                        <span class="energy-indicator light">☀️ Sunlight</span>
+                                        <span class="reaction-arrow">→</span> 
+                                        <span class="product">2Ag(s)</span> 
+                                        <span>+</span> 
+                                        <span class="product">Cl₂(g)</span>
+                                    </div>
+                                    <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">
+                                        Silver chloride turns grey on exposure to sunlight
+                                    </p>
+                                </div>
+
+                                <div class="reaction-card">
+                                    <div class="reaction-title">
+                                        <i class="fas fa-camera-retro"></i>
+                                        Silver Bromide Decomposition
+                                    </div>
+                                    <div class="chemical-equation">
+                                        <span class="reactant">2AgBr(s)</span>
+                                        <span class="energy-indicator light">☀️ Sunlight</span>
+                                        <span class="reaction-arrow">→</span> 
+                                        <span class="product">2Ag(s)</span> 
+                                        <span>+</span> 
+                                        <span class="product">Br₂(g)</span>
+                                    </div>
+                                    <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">
+                                        📸 Used in black and white photography
+                                    </p>
+                                </div>
+
+                                <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 15px; padding: 20px; margin-top: 20px; border-left: 4px solid #ff9800;">
+                                    <h4 style="color: #e65100; margin-bottom: 10px;">🔥 Endothermic Reactions</h4>
+                                    <p style="color: #bf360c;">
+                                        Decomposition reactions are mostly endothermic in nature. Energy in the form of heat, light or electricity is generally absorbed in these reactions.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Tab -->
+            <div id="quiz" class="tab-content">
+                <div class="quiz-section">
+                    <h2 style="margin-bottom: 20px; position: relative; z-index: 1;">🎯 Test Your Knowledge!</h2>
+                    <p style="margin-bottom: 30px; position: relative; z-index: 1;">
+                        Ready to challenge yourself? Take our interactive quiz and see how well you understand chemical reactions!
+                    </p>
+                    <button class="quiz-btn" onclick="goToQuiz()">
+                        <i class="fas fa-play"></i> Start Quiz Now
+                    </button>
+                    <button class="quiz-btn" onclick="shareLearning()">
+                        <i class="fas fa-share"></i> Share with Friends
+                    </button>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Your Learning Progress</h3>
+                    </div>
+                    <div class="card-body">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                            <div style="text-align: center; padding: 20px; background: var(--accent); border-radius: 15px; color: white;">
+                                <i class="fas fa-book-open" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                                <h4>Topics Covered</h4>
+                                <p style="font-size: 2rem; font-weight: bold;">2/4</p>
+                            </div>
+                            <div style="text-align: center; padding: 20px; background: var(--success); border-radius: 15px; color: white;">
+                                <i class="fas fa-trophy" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                                <h4>Quiz Score</h4>
+                                <p style="font-size: 2rem; font-weight: bold;">--</p>
+                            </div>
+                            <div style="text-align: center; padding: 20px; background: var(--warning); border-radius: 15px; color: white;">
+                                <i class="fas fa-clock" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                                <h4>Study Time</h4>
+                                <p style="font-size: 2rem; font-weight: bold;" id="studyTime">0m</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Important Questions Tab -->
+            <div id="questions" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-star"></i> Important Questions for Exams</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="question-item" onclick="showAnswer(1)">
+                            <div class="question-number">1</div>
+                            <div>
+                                <strong>What is a combination reaction? Give three examples with balanced chemical equations.</strong>
+                                <div id="answer1" style="display: none; margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 10px; color: #666;">
+                                    A combination reaction is one in which two or more reactants combine to form a single product.<br><br>
+                                    Examples:<br>
+                                    1. C(s) + O₂(g) → CO₂(g)<br>
+                                    2. 2H₂(g) + O₂(g) → 2H₂O(l)<br>
+                                    3. CaO(s) + H₂O(l) → Ca(OH)₂(aq)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-item" onclick="showAnswer(2)">
+                            <div class="question-number">2</div>
+                            <div>
+                                <strong>Explain the three types of decomposition reactions with examples.</strong>
+                                <div id="answer2" style="display: none; margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 10px; color: #666;">
+                                    <strong>1. Thermal Decomposition:</strong> Decomposition by heating<br>
+                                    Example: 2FeSO₄(s) → Fe₂O₃(s) + SO₂(g) + SO₃(g)<br><br>
+                                    <strong>2. Electrolytic Decomposition:</strong> Decomposition by electricity<br>
+                                    Example: 2H₂O(l) → 2H₂(g) + O₂(g)<br><br>
+                                    <strong>3. Photolytic Decomposition:</strong> Decomposition by sunlight<br>
+                                    Example: 2AgCl(s) → 2Ag(s) + Cl₂(g)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-item" onclick="showAnswer(3)">
+                            <div class="question-number">3</div>
+                            <div>
+                                <strong>What are exothermic and endothermic reactions? Give examples.</strong>
+                                <div id="answer3" style="display: none; margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 10px; color: #666;">
+                                    <strong>Exothermic Reactions:</strong> Reactions that release heat energy<br>
+                                    Example: CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g) + Heat<br><br>
+                                    <strong>Endothermic Reactions:</strong> Reactions that absorb heat energy<br>
+                                    Example: CaCO₃(s) + Heat → CaO(s) + CO₂(g)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-item" onclick="showAnswer(4)">
+                            <div class="question-number">4</div>
+                            <div>
+                                <strong>Why is respiration considered an exothermic reaction?</strong>
+                                <div id="answer4" style="display: none; margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 10px; color: #666;">
+                                    Respiration is considered exothermic because it releases energy in the form of heat. During respiration, glucose reacts with oxygen to produce carbon dioxide, water, and energy:<br><br>
+                                    C₆H₁₂O₆(aq) + 6O₂(g) → 6CO₂(g) + 6H₂O(l) + Energy<br><br>
+                                    This energy is used by our body for various metabolic activities.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-item" onclick="showAnswer(5)">
+                            <div class="question-number">5</div>
+                            <div>
+                                <strong>What happens when silver chloride is exposed to sunlight? Write the balanced equation.</strong>
+                                <div id="answer5" style="display: none; margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 10px; color: #666;">
+                                    When silver chloride is exposed to sunlight, it decomposes to form silver and chlorine gas. The silver formed appears grey in color.<br><br>
+                                    2AgCl(s) + Sunlight → 2Ag(s) + Cl₂(g)<br><br>
+                                    This reaction is used in black and white photography.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h3 style="color: white; margin-bottom: 20px;">📱 Share this amazing learning experience!</h3>
+            <p style="color: rgba(255,255,255,0.9); margin-bottom: 20px;">Help your friends ace their chemistry exam too!</p>
+            <a href="#" class="share-btn facebook" onclick="shareOnFacebook()">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a href="#" class="share-btn twitter" onclick="shareOnTwitter()">
+                <i class="fab fa-twitter"></i> Twitter
+            </a>
+            <a href="#" class="share-btn whatsapp" onclick="shareOnWhatsApp()">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="#" class="share-btn telegram" onclick="shareOnTelegram()">
+                <i class="fab fa-telegram"></i> Telegram
+            </a>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="fab" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i> Great job! Keep learning! 🎉
+    </div>
+
+    <script>
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            startStudyTimer();
+            animateProgressBar();
+            showWelcomeNotification();
+            addInteractiveEffects();
+        });
+
+        // Study timer
+        let startTime = Date.now();
+        let currentTab = 'combination';
+        let studyTimeInterval;
+
+        function startStudyTimer() {
+            studyTimeInterval = setInterval(() => {
+                const elapsed = Math.floor((Date.now() - startTime) / 60000);
+                document.getElementById('studyTime').textContent = elapsed + 'm';
+            }, 1000);
+        }
+
+        // Tab Navigation
+        function showTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Remove active class from all nav tabs
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Track tab change
+            currentTab = tabName;
+            updateProgress();
+            
+            // Show notification
+            if (tabName !== 'combination') {
+                showNotification(`Great! You're exploring ${tabName} reactions! 🧪`);
+            }
+        }
+
+        // Progress tracking
+        function updateProgress() {
+            const tabs = ['combination', 'decomposition', 'quiz', 'questions'];
+            const currentIndex = tabs.indexOf(currentTab);
+            const progress = ((currentIndex + 1) / tabs.length) * 100;
+            
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function animateProgressBar() {
+            setTimeout(() => {
+                document.getElementById('progressBar').style.width = '25%';
+            }, 1000);
+        }
+
+        // Show/Hide answers
+        function showAnswer(questionNumber) {
+            const answer = document.getElementById(`answer${questionNumber}`);
+            const isVisible = answer.style.display !== 'none';
+            
+            if (isVisible) {
+                answer.style.display = 'none';
+            } else {
+                answer.style.display = 'block';
+                answer.style.animation = 'bounceIn 0.6s ease-out';
+            }
+        }
+
+        // Quiz functionality
+        function goToQuiz() {
+            window.open('#', '_blank');
+            showNotification('🎯 Quiz launched! Good luck with your test!');
+        }
+
+        // Social sharing
+        function shareOnFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('🧪 Amazing interactive chemistry learning! Check out Chemical Reactions for Class 10 - it made learning so easy and fun!');
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`, '_blank');
+            showNotification('Thanks for sharing on Facebook! 🙌');
+        }
+
+        function shareOnTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('🧪 Just discovered this amazing chemistry learning app! Chemical Reactions made easy for Class 10 students 📚✨ #Chemistry #Learning #Education');
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+            showNotification('Thanks for sharing on Twitter! 🙌');
+        }
+
+        function shareOnWhatsApp() {
+            const text = encodeURIComponent('🧪 Hey! Found this super cool chemistry learning app for Class 10! Chemical Reactions explained with amazing visuals and interactive elements. Check it out: ' + window.location.href);
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+            showNotification('Thanks for sharing on WhatsApp! 🙌');
+        }
+
+        function shareOnTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('🧪 Amazing chemistry learning app! Chemical Reactions for Class 10 with interactive elements and beautiful UI!');
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+            showNotification('Thanks for sharing on Telegram! 🙌');
+        }
+
+        function shareLearning() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Chemical Reactions - Interactive Learning',
+                    text: '🧪 Check out this amazing chemistry learning app!',
+                    url: window.location.href
+                });
+            } else {
+                shareOnWhatsApp();
+            }
+        }
+
+        // Notifications
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        function showWelcomeNotification() {
+            setTimeout(() => {
+                showNotification('Welcome to Interactive Chemistry! 🎉');
+            }, 2000);
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Interactive effects
+        function addInteractiveEffects() {
+            // Add click effects to reactants and products
+            const reactants = document.querySelectorAll('.reactant');
+            const products = document.querySelectorAll('.product');
+            
+            reactants.forEach(reactant => {
+                reactant.addEventListener('click', function() {
+                    this.style.animation = 'bounceIn 0.6s ease-out';
+                    showNotification('Reactant clicked! These are the starting materials 🧪');
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 600);
+                });
+            });
+            
+            products.forEach(product => {
+                product.addEventListener('click', function() {
+                    this.style.animation = 'bounceIn 0.6s ease-out';
+                    showNotification('Product clicked! These are what\'s formed ✨');
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 600);
+                });
+            });
+
+            // Add hover sound effect (if audio is enabled)
+            const allMolecules = document.querySelectorAll('.reactant, .product');
+            allMolecules.forEach(molecule => {
+                molecule.addEventListener('mouseenter', function() {
+                    // Visual feedback only (no sound for web compatibility)
+                    this.style.transform = 'scale(1.05) translateY(-2px)';
+                });
+                
+                molecule.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
+        }
+
+        // Enhanced keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const tabs = ['combination', 'decomposition', 'quiz', 'questions'];
+                const currentIndex = tabs.indexOf(currentTab);
+                let newIndex;
+                
+                if (e.key === 'ArrowRight') {
+                    newIndex = (currentIndex + 1) % tabs.length;
+                } else {
+                    newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+                }
+                
+                // Simulate click on the new tab
+                const tabButtons = document.querySelectorAll('.nav-tab');
+                tabButtons[newIndex].click();
+            }
+        });
+
+        console.log('🧪 Enhanced Chemical Reactions App loaded successfully!');
+        console.log('🎨 New features: Color-coded reactants & products, enhanced UX!');
+        console.log('✨ Made with ❤️ for students');
+    </script>
+</body>
+</html>
