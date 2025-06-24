@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Current Solutions - SimplifiedMinds SSLC</title>
+    <link rel="icon" type="image/png" href="assets/images/icon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Meta Tags -->
+    <meta property="og:title" content="Electric Current Solutions - SimplifiedMinds SSLC">
+    <meta property="og:description" content="⚡ Master Electric Current concepts with step-by-step solutions! Complete SSLC Physics chapter with examples, formulas, and practice questions.">
+    <meta property="og:image" content="https://sslctoppers.com/icon.png">
+    <meta property="og:url" content="https://sslctoppers.com/electric-current">
+    <meta property="og:type" content="website">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+    <!-- Progress indicator -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Cosmic interactive background -->
+    <div class="cosmic-background">
+        <div id="particles" class="particles"></div>
+        <div class="glow"></div>
+        <div class="glow"></div>
+        <div class="glow"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="/" class="logo-link">
+                    <i class="ri-lightbulb-flash-line logo-icon"></i>
+                    <span class="logo-text">SimplifiedMinds</span>
+                </a>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Physics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Chemistry</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Math</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Biology</a>
+                    </li>
+                </ul>
+
+                <div class="header-actions">
+                    <div class="subject-badge">
+                        <span class="subject-icon">P</span>
+                        <span class="subject-name">Physics</span>
+                    </div>
+                    
+                    <!-- New: Theme Toggle -->
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="ri-sun-line"></i>
+                    </button>
+                    
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span class="hamburger" id="hamburger"></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile menu overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-badge">
+                    <i class="ri-flashlight-line hero-badge-icon"></i>
+                    <span>SSLC Physics</span>
+                </div>
+                <h1 class="hero-title">Master Electric Current Concepts</h1>
+                <p class="hero-subtitle">Comprehensive solutions, step-by-step examples, and practice questions to help you excel in your SSLC Physics examinations.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#questions" class="btn btn-primary">
+                        <i class="ri-book-open-line"></i>
+                        Start Learning
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="ri-download-2-line"></i>
+                        Download PDF
+                    </a>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="ri-question-line stat-icon"></i>
+                        <span class="stat-number" data-target="25">0</span>
+                        <span class="stat-label">Solved Questions</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="ri-book-2-line stat-icon"></i>
+                        <span class="stat-number" data-target="10">0</span>
+                        <span class="stat-label">Key Concepts</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="ri-award-line stat-icon"></i>
+                        <span class="stat-number" data-target="95">0</span>
+                        <span class="stat-label">Student Success Rate</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="ri-timer-line stat-icon"></i>
+                        <span class="stat-number" data-target="2">0</span>
+                        <span class="stat-label">Average Mastery Time (hrs)</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Questions Section -->
+            <section class="questions-section" id="questions">
+                <div class="section-header">
+                    <h2 class="section-title">Electric Current Solutions</h2>
+                    <p class="section-subtitle">Explore our comprehensive collection of solved problems with detailed explanations and formulas.</p>
+                </div>
+
+                <!-- Enhanced Search and Filter -->
+                <div class="search-filter-container">
+                    <div class="search-container">
+                        <i class="ri-search-line search-icon"></i>
+                        <input type="text" class="search-input" id="searchInput" placeholder="Search questions...">
+                        <button class="search-clear" id="searchClear">
+                            <i class="ri-close-line"></i>
+                        </button>
+                    </div>
+                    <select class="filter-dropdown" id="difficultyFilter">
+                        <option value="all">All Difficulty</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                    <select class="filter-dropdown" id="typeFilter">
+                        <option value="all">All Types</option>
+                        <option value="numerical">Numerical</option>
+                        <option value="conceptual">Conceptual</option>
+                        <option value="derivation">Derivation</option>
+                    </select>
+                </div>
+
+                <!-- Enhanced Tags -->
+                <div class="tags-container">
+                    <button class="tag active" data-tag="all">All Topics</button>
+                    <button class="tag" data-tag="ohms-law">Ohm's Law</button>
+                    <button class="tag" data-tag="resistivity">Resistivity</button>
+                    <button class="tag" data-tag="series-circuit">Series Circuits</button>
+                    <button class="tag" data-tag="parallel-circuit">Parallel Circuits</button>
+                    <button class="tag" data-tag="power">Electrical Power</button>
+                    <button class="tag" data-tag="heating-effect">Heating Effect</button>
+                </div>
+
+                <!-- Questions Container -->
+                <div class="questions-container" id="questionsContainer">
+                    <!-- Questions will be loaded dynamically -->
+                    <div class="loading-spinner" id="loadingSpinner">
+                        <div class="spinner"></div>
+                        <p>Loading questions...</p>
+                    </div>
+                </div>
+                
+                <!-- Enhanced Pagination -->
+                <div class="pagination" id="pagination">
+                    <button class="page-button prev" id="prevPage">
+                        <i class="ri-arrow-left-s-line"></i> Prev
+                    </button>
+                    <div class="page-numbers" id="pageNumbers">
+                        <!-- Page numbers will be generated dynamically -->
+                    </div>
+                    <button class="page-button next" id="nextPage">
+                        Next <i class="ri-arrow-right-s-line"></i>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-brand">
+                        <i class="ri-lightbulb-flash-line footer-logo-icon"></i>
+                        <span class="footer-logo-text">SimplifiedMinds</span>
+                    </div>
+                    <p class="footer-description">Helping SSLC students master concepts through simplified explanations, interactive learning materials, and comprehensive question banks.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-column">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Home</a></li>
+                        <li><a href="#" class="footer-link">About Us</a></li>
+                        <li><a href="#" class="footer-link">Courses</a></li>
+                        <li><a href="#" class="footer-link">Resources</a></li>
+                        <li><a href="#" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links-column">
+                    <h4 class="footer-heading">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Study Materials</a></li>
+                        <li><a href="#" class="footer-link">Formula Sheets</a></li>
+                        <li><a href="#" class="footer-link">Video Tutorials</a></li>
+                        <li><a href="#" class="footer-link">Mock Tests</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links-column">
+                    <h4 class="footer-heading">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Community</a></li>
+                        <li><a href="#" class="footer-link">Feedback</a></li>
+                        <li><a href="#" class="footer-link">Report an Issue</a></li>
+                        <li><a href="#" class="footer-link">Partner With Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 SimplifiedMinds. All rights reserved.</p>
+                
+                <div class="footer-policies">
+                    <a href="#" class="footer-policy-link">Privacy Policy</a>
+                    <a href="#" class="footer-policy-link">Terms of Service</a>
+                    <a href="#" class="footer-policy-link">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="ri-close-line"></i>
+            </button>
+            <img class="modal-image" id="modalImage" alt="Enlarged view">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

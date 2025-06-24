@@ -1,0 +1,541 @@
+{
+  "chapter": {
+    "id": "electric-current",
+    "title": "Electric Current",
+    "subject": "Physics",
+    "class": "SSLC",
+    "description": "Comprehensive solutions for Electric Current chapter with step-by-step explanations and formulas.",
+    "totalQuestions": 25,
+    "keyTopics": [
+      "Ohm's Law",
+      "Resistivity",
+      "Series Circuits", 
+      "Parallel Circuits",
+      "Electrical Power",
+      "Heating Effect"
+    ]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "text": "A conductor has a resistance of 5 Ω and a current of 2 A flows through it. What is the potential difference across the conductor?",
+      "difficulty": "easy",
+      "type": "numerical",
+      "tags": ["ohms-law"],
+      "solution": {
+        "approach": "Apply Ohm's Law to find potential difference",
+        "formula": "V = I × R",
+        "given": {
+          "resistance": "5 Ω",
+          "current": "2 A"
+        },
+        "steps": [
+          {
+            "number": 1,
+            "description": "According to Ohm's Law, the potential difference (V) across a conductor is directly proportional to the current (I) flowing through it, with the resistance (R) as the constant of proportionality.",
+            "equation": "V = I × R"
+          },
+          {
+            "number": 2,
+            "description": "Identify the given values",
+            "values": {
+              "Resistance (R)": "5 Ω",
+              "Current (I)": "2 A",
+              "Potential difference (V)": "?"
+            }
+          },
+          {
+            "number": 3,
+            "description": "Substitute the values in Ohm's Law equation",
+            "calculation": [
+              "V = I × R",
+              "V = 2 A × 5 Ω", 
+              "V = 10 V"
+            ]
+          }
+        ],
+        "answer": "10 V",
+        "explanation": "Therefore, the potential difference across the conductor is 10 volts."
+      },
+      "relatedTopics": ["Basic Circuits", "Voltage"],
+      "image": null,
+      "difficulty_explanation": "Basic application of Ohm's Law with simple multiplication"
+    },
+    {
+      "id": 2,
+      "text": "Calculate the resistivity of a material of a wire that has a resistance of 20 Ω, length 10 m, and cross-sectional area 2 × 10⁻⁶ m².",
+      "difficulty": "medium",
+      "type": "numerical", 
+      "tags": ["resistivity"],
+      "solution": {
+        "approach": "Use the resistivity formula to calculate material property",
+        "formula": "ρ = RA/L",
+        "given": {
+          "resistance": "20 Ω",
+          "length": "10 m",
+          "area": "2 × 10⁻⁶ m²"
+        },
+        "steps": [
+          {
+            "number": 1,
+            "description": "The resistivity (ρ) of a material is related to the resistance (R) of a wire, its length (L), and cross-sectional area (A)",
+            "equation": "R = ρL/A, which can be rearranged to: ρ = RA/L"
+          },
+          {
+            "number": 2,
+            "description": "Identify the given values",
+            "values": {
+              "Resistance (R)": "20 Ω",
+              "Length (L)": "10 m", 
+              "Cross-sectional area (A)": "2 × 10⁻⁶ m²"
+            }
+          },
+          {
+            "number": 3,
+            "description": "Substitute these values in the resistivity formula",
+            "calculation": [
+              "ρ = RA/L",
+              "ρ = 20 Ω × (2 × 10⁻⁶ m²) / 10 m",
+              "ρ = 20 Ω × 2 × 10⁻⁶ m² / 10 m",
+              "ρ = 4 × 10⁻⁶ Ω·m"
+            ]
+          }
+        ],
+        "answer": "4 × 10⁻⁶ Ω·m",
+        "explanation": "Therefore, the resistivity of the material is 4 × 10⁻⁶ Ω·m (or 4 μΩ·m)."
+      },
+      "relatedTopics": ["Material Properties", "Conductivity"],
+      "image": null,
+      "difficulty_explanation": "Requires understanding of resistivity concept and scientific notation"
+    },
+    {
+      "id": 3,
+      "text": "Three resistors of 2 Ω, 3 Ω, and 5 Ω are connected in series. Calculate the equivalent resistance of the circuit.",
+      "difficulty": "medium",
+      "type": "numerical",
+      "tags": ["series-circuit"],
+      "solution": {
+        "approach": "Apply series resistance formula where resistances add up",
+        "formula": "R_eq = R₁ + R₂ + R₃ + ... + R_n",
+        "given": {
+          "resistor1": "2 Ω",
+          "resistor2": "3 Ω", 
+          "resistor3": "5 Ω"
+        },
+        "steps": [
+          {
+            "number": 1,
+            "description": "When resistors are connected in series, the equivalent resistance is the sum of the individual resistances.",
+            "circuit_description": "Series Circuit: R₁ (2Ω) -- R₂ (3Ω) -- R₃ (5Ω)"
+          },
+          {
+            "number": 2,
+            "description": "Identify the given resistance values",
+            "values": {
+              "R₁": "2 Ω",
+              "R₂": "3 Ω",
+              "R₃": "5 Ω"
+            }
+          },
+          {
+            "number": 3,
+            "description": "Apply the series resistors formula",
+            "calculation": [
+              "R_eq = R₁ + R₂ + R₃",
+              "R_eq = 2 Ω + 3 Ω + 5 Ω",
+              "R_eq = 10 Ω"
+            ]
+          }
+        ],
+        "answer": "10 Ω",
+        "explanation": "Therefore, the equivalent resistance of the circuit is 10 Ω."
+      },
+      "relatedTopics": ["Circuit Analysis", "Equivalent Resistance"],
+      "image": "assets/images/series-circuit.png",
+      "difficulty_explanation": "Requires understanding of series circuit behavior"
+    },
+    {
+      "id": 4,
+      "text": "Three resistors of 4 Ω, 6 Ω, and 12 Ω are connected in parallel. Find the equivalent resistance of the combination.",
+      "difficulty": "hard",
+      "type": "numerical",
+      "tags": ["parallel-circuit"],
+      "solution": {
+        "approach": "Use parallel resistance formula with reciprocals",
+        "formula": "1/R_eq = 1/R₁ + 1/R₂ + 1/R₃ + ... + 1/R_n",
+        "given": {
+          "resistor1": "4 Ω",
+          "resistor2": "6 Ω",
+          "resistor3": "12 Ω"
+        },
+        "steps": [
+          {
+            "number": 1,
+            "description": "When resistors are connected in parallel, the reciprocal of the equivalent resistance is equal to the sum of the reciprocals of the individual resistances.",
+            "circuit_description": "Parallel Circuit: |-- R₁ (4Ω) --| |-- R₂ (6Ω) --| |-- R₃ (12Ω) --|"
+          },
+          {
+            "number": 2,
+            "description": "Identify the given resistance values",
+            "values": {
+              "R₁": "4 Ω",
+              "R₂": "6 Ω", 
+              "R₃": "12 Ω"
+            }
+          },
+          {
+            "number": 3,
+            "description": "Apply the formula for parallel resistors",
+            "calculation": [
+              "1/R_eq = 1/R₁ + 1/R₂ + 1/R₃",
+              "1/R_eq = 1/4 Ω + 1/6 Ω + 1/12 Ω",
+              "1/R_eq = 3/12 Ω + 2/12 Ω + 1/12 Ω",
+              "1/R_eq = 6/12 Ω = 1/2 Ω",
+              "R_eq = 2 Ω"
+            ]
+          }
+        ],
+        "answer": "2 Ω",
+        "explanation": "Therefore, the equivalent resistance of the parallel combination is 2 Ω."
+      },
+      "relatedTopics": ["Circuit Analysis", "Parallel Resistance"],
+      "image": "assets/images/parallel-circuit.png",
+      "difficulty_explanation": "Requires fraction operations and understanding of parallel circuit behavior"
+    },
+    {
+      "id": 5,
+      "text": "An electric bulb is rated at 60 W, 220 V. Find the current passing through it and its resistance.",
+      "difficulty": "medium",
+      "type": "numerical",
+      "tags": ["power"],
+      "solution": {
+        "approach": "Use power formulas to find current and resistance",
+        "formula": "P = VI and V = IR",
+        "given": {
+          "power": "60 W",
+          "voltage": "220 V"
+        },
+        "steps": [
+          {
+            "number": 1,
+            "description": "The power consumed by an electrical device is related to the voltage and current",
+            "equation": "Power (P) = Voltage (V) × Current (I)"
+          },
+          {
+            "number": 2,
+            "description": "Identify the given values and what we need to find",
+            "values": {
+              "Power (P)": "60 W",
+              "Voltage (V)": "220 V",
+              "Current (I)": "?",
+              "Resistance (R)": "?"
+            }
+          },
+          {
+            "number": 3,
+            "description": "Calculate the current using the power formula",
+            "calculation": [
+              "P = VI",
+              "I = P/V",
+              "I = 60 W / 220 V",
+              "I = 0.273 A (or 273 mA)"
+            ]
+          },
+          {
+            "number": 4,
+            "description": "Calculate the resistance using Ohm's law",
+            "calculation": [
+              "R = V/I",
+              "R = 220 V / 0.273 A",
+              "R = 806.6 Ω (approximately 807 Ω)"
+            ]
+          }
+        ],
+        "answer": "I = 0.273 A, R = 807 Ω",
+        "explanation": "Therefore, the current passing through the bulb is 0.273 A (or 273 mA) and its resistance is approximately 807 Ω."
+      },
+      "relatedTopics": ["Electrical Power", "Household Appliances"],
+      "image": null,
+      "difficulty_explanation": "Requires application of multiple formulas and understanding of electrical ratings"
+    },
+    {
+      "id": 6,
+      "text": "A current of 0.5 A is drawn by a filament of an electric bulb for 10 minutes. Find the amount of electric charge that flows through the circuit.",
+      "difficulty": "easy",
+      "type": "numerical",
+      "tags": ["current", "charge"],
+      "solution": {
+        "approach": "Use the relationship between current, charge and time",
+        "formula": "Q = I × t",
+        "given": {
+          "current": "0.5 A",
+          "time": "10 minutes = 600 seconds"
+        },
+        "steps": [
+          {
+            "number": 1,
+            "description": "Electric current is defined as the rate of flow of electric charge",
+            "equation": "I = Q/t, which can be rearranged to: Q = I × t"
+          },
+          {
+            "number": 2,
+            "description": "Convert time to standard units and identify given values",
+            "values": {
+              "Current (I)": "0.5 A",
+              "Time (t)": "10 minutes = 10 × 60 = 600 seconds"
+            }
+          },
+          {
+            "number": 3,
+            "description": "Calculate the charge using the formula",
+            "calculation": [
+              "Q = I × t",
+              "Q = 0.5 A × 600 s",
+              "Q = 300 C"
+            ]
+          }
+        ],
+        "answer": "300 C",
+        "explanation": "Therefore, the amount of electric charge that flows through the circuit is 300 coulombs."
+      },
+      "relatedTopics": ["Electric Charge", "Current Definition"],
+      "image": null,
+      "difficulty_explanation": "Basic application of current formula with unit conversion"
+    },
+    {
+      "id": 7,
+      "text": "The potential difference between the terminals of an electric heater is 60 V when it draws a current of 4 A from the source. What current will the heater draw if the potential difference is increased to 120 V?",
+      "difficulty": "medium",
+      "type": "numerical",
+      "tags": ["ohms-law", "proportionality"],
+      "solution": {
+        "approach": "First find resistance, then use Ohm's law for new conditions",
+        "formula": "V = I × R",
+        "given": {
+          "initial_voltage": "60 V",
+          "initial_current": "4 A",
+          "new_voltage": "120 V"
+        },
+        "steps": [
+          {
+            "number": 1,
+            "description": "First, find the resistance of the heater using initial conditions",
+            "calculation": [
+              "R = V₁/I₁",
+              "R = 60 V / 4 A",
+              "R = 15 Ω"
+            ]
+          },
+          {
+            "number": 2,
+            "description": "Since resistance remains constant, use Ohm's law for new voltage",
+            "calculation": [
+              "I₂ = V₂/R",
+              "I₂ = 120 V / 15 Ω",
+              "I₂ = 8 A"
+            ]
+          },
+          {
+            "number": 3,
+            "description": "Verify using proportionality (since R is constant, I ∝ V)",
+            "calculation": [
+              "I₂/I₁ = V₂/V₁",
+              "I₂ = I₁ × (V₂/V₁)",
+              "I₂ = 4 A × (120 V / 60 V) = 4 A × 2 = 8 A"
+            ]
+          }
+        ],
+        "answer": "8 A",
+        "explanation": "Therefore, the heater will draw 8 A current when the potential difference is increased to 120 V."
+      },
+      "relatedTopics": ["Variable Voltage", "Proportionality"],
+      "image": null,
+      "difficulty_explanation": "Requires understanding that resistance is constant and applying proportional relationships"
+    },
+    {
+      "id": 8,
+      "text": "How much energy is consumed in 2 hours by an electrical appliance of 100 W?",
+      "difficulty": "easy",
+      "type": "numerical",
+      "tags": ["power", "energy"],
+      "solution": {
+        "approach": "Use the relationship between power, energy and time",
+        "formula": "E = P × t",
+        "given": {
+          "power": "100 W",
+          "time": "2 hours"
+        },
+        "steps": [
+          {
+            "number": 1,
+            "description": "Energy consumed is the product of power and time",
+            "equation": "Energy (E) = Power (P) × Time (t)"
+          },
+          {
+            "number": 2,
+            "description": "Identify the given values",
+            "values": {
+              "Power (P)": "100 W",
+              "Time (t)": "2 hours"
+            }
+          },
+          {
+            "number": 3,
+            "description": "Calculate energy consumption",
+            "calculation": [
+              "E = P × t",
+              "E = 100 W × 2 h",
+              "E = 200 Wh = 0.2 kWh"
+            ]
+          }
+        ],
+        "answer": "200 Wh or 0.2 kWh",
+        "explanation": "Therefore, the electrical appliance consumes 200 watt-hours or 0.2 kilowatt-hours of energy in 2 hours."
+      },
+      "relatedTopics": ["Energy Consumption", "Electricity Bills"],
+      "image": null,
+      "difficulty_explanation": "Direct application of power-energy relationship"
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Ohm's Law",
+      "formula": "V = I × R",
+      "description": "Relates voltage, current, and resistance",
+      "variables": {
+        "V": "Potential difference (Volts)",
+        "I": "Current (Amperes)",
+        "R": "Resistance (Ohms)"
+      }
+    },
+    {
+      "name": "Power Formula",
+      "formula": "P = V × I",
+      "description": "Relates power to voltage and current",
+      "variables": {
+        "P": "Power (Watts)",
+        "V": "Potential difference (Volts)",
+        "I": "Current (Amperes)"
+      }
+    },
+    {
+      "name": "Resistivity",
+      "formula": "ρ = R × A / L",
+      "description": "Relates resistivity to resistance, area, and length",
+      "variables": {
+        "ρ": "Resistivity (Ohm-meters)",
+        "R": "Resistance (Ohms)",
+        "A": "Cross-sectional area (m²)",
+        "L": "Length (meters)"
+      }
+    },
+    {
+      "name": "Series Resistance",
+      "formula": "R_total = R₁ + R₂ + R₃ + ...",
+      "description": "Total resistance in series circuit",
+      "variables": {
+        "R_total": "Total resistance (Ohms)",
+        "R₁, R₂, R₃": "Individual resistances (Ohms)"
+      }
+    },
+    {
+      "name": "Parallel Resistance",
+      "formula": "1/R_total = 1/R₁ + 1/R₂ + 1/R₃ + ...",
+      "description": "Total resistance in parallel circuit",
+      "variables": {
+        "R_total": "Total resistance (Ohms)",
+        "R₁, R₂, R₃": "Individual resistances (Ohms)"
+      }
+    },
+    {
+      "name": "Electric Charge",
+      "formula": "Q = I × t",
+      "description": "Relates charge to current and time",
+      "variables": {
+        "Q": "Electric charge (Coulombs)",
+        "I": "Current (Amperes)",
+        "t": "Time (seconds)"
+      }
+    },
+    {
+      "name": "Energy Consumption",
+      "formula": "E = P × t",
+      "description": "Energy consumed by electrical appliance",
+      "variables": {
+        "E": "Energy (Watt-hours)",
+        "P": "Power (Watts)",
+        "t": "Time (hours)"
+      }
+    },
+    {
+      "name": "Series Resistance",
+      "formula": "R_total = R₁ + R₂ + R₃ + ...",
+      "description": "Total resistance in series circuit",
+      "variables": {
+        "R_total": "Total resistance (Ohms)",
+        "R₁, R₂, R₃": "Individual resistances (Ohms)"
+      }
+    },
+    {
+      "name": "Parallel Resistance",
+      "formula": "1/R_total = 1/R₁ + 1/R₂ + 1/R₃ + ...",
+      "description": "Total resistance in parallel circuit",
+      "variables": {
+        "R_total": "Total resistance (Ohms)",
+        "R₁, R₂, R₃": "Individual resistances (Ohms)"
+      }
+    }
+  ],
+  "tags": [
+    {
+      "id": "ohms-law",
+      "name": "Ohm's Law",
+      "description": "Problems involving the relationship between voltage, current, and resistance"
+    },
+    {
+      "id": "resistivity", 
+      "name": "Resistivity",
+      "description": "Problems involving material properties and resistivity calculations"
+    },
+    {
+      "id": "series-circuit",
+      "name": "Series Circuits",
+      "description": "Problems involving resistors connected in series"
+    },
+    {
+      "id": "parallel-circuit",
+      "name": "Parallel Circuits", 
+      "description": "Problems involving resistors connected in parallel"
+    },
+    {
+      "id": "power",
+      "name": "Electrical Power",
+      "description": "Problems involving power calculations and electrical appliances"
+    },
+    {
+      "id": "heating-effect",
+      "name": "Heating Effect",
+      "description": "Problems involving Joule's heating and thermal effects of current"
+    },
+    {
+      "id": "current",
+      "name": "Electric Current",
+      "description": "Basic problems involving current and charge flow"
+    },
+    {
+      "id": "charge",
+      "name": "Electric Charge", 
+      "description": "Problems involving electric charge calculations"
+    },
+    {
+      "id": "energy",
+      "name": "Electrical Energy",
+      "description": "Problems involving energy consumption and electrical work"
+    },
+    {
+      "id": "charge",
+      "name": "Electric Charge", 
+      "description": "Problems involving electric charge calculations"
+    }
+  ]
+}
